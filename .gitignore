@@ -38,6 +38,10 @@ captures/
 # Keystore files
 *.jks
 
+*.idea/*
+.idea/*
+.idea
+*.idea
 .gradle
 /local.properties
 /.idea/workspace.xml
