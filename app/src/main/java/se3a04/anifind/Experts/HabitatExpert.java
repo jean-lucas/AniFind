@@ -18,7 +18,29 @@ public class HabitatExpert extends Expert {
 
     @Override
     public int validateAttribute(String[] animalAttributes, String[] valuesToCompare) {
-        return 0;
+
+        int matchCounter = 0;
+
+        for (String attribute : animalAttributes) {
+            for (String target : valuesToCompare) {
+                if (attribute.equals(target)) {
+                    matchCounter++;
+                } else {
+                    for (String word : wordBankAccess.getWordBank()) {
+                        if (word.contains(attribute)) {
+                            matchCounter++;
+                        }
+
+
+                    }
+                }
+            }
+        }
+
+
+        return matchCounter;
+
+
     }
 
     private ArrayList<String> getKeywordsFromWordBank() {

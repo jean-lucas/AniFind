@@ -2,6 +2,11 @@ package se3a04.anifind.Experts;
 
 /**
  * Created by Zachary on 3/28/2016.
+ * Points
+ * < 25 km 3 points
+ * 26 - 50 km 2 points
+ * 51 - 150 1 points
+ *  > 150 0 points
  */
 public class LocationExpert extends Expert {
 
