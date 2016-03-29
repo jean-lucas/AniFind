@@ -13,6 +13,13 @@ import se3a04.anifind.Experts.MobilityExpert;
 import se3a04.anifind.Experts.SizeExpert;
 import se3a04.anifind.Experts.TimeExpert;
 
+
+/**
+ * TODO: Confirm the arguments for consultAlLExperts is valid, and do-able
+ * TODO: Should BlackBoard sort the results based on points once finished?
+ *
+ */
+
 public class BlackBoard {
 
 
@@ -32,6 +39,7 @@ public class BlackBoard {
 
 
 
+    //Call each respective expert with each animal's attribute
     public void consultAllExperts(ArrayList<Animal> animals, HashMap<String, QA> qas) {
 
         int pnt = 0;
@@ -62,6 +70,9 @@ public class BlackBoard {
                         break;
 
                     case "Time":
+                        //the split("##") is used just to turn a string into an array with 1 element.
+                        //the symbol ## is used since it is safe to assume it will not conflict with the actual
+                        //contents of the string
                         pnt = e.validateAttribute(a.getLifestyle().split("##"), qas.get("Lifestyle").getAnswersGivenByUsers());
                         a.updatePoint(pnt);
                         break;
