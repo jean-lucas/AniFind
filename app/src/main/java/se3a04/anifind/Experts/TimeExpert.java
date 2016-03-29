@@ -2,13 +2,13 @@ package se3a04.anifind.Experts;
 
 /**
  * Created by Zachary on 3/28/2016.
- * <p/>
+ * 
  * Time of day revisited.
  * To simplify time of day logic we are going to assume 4 "states" to a day. The user is going to
  * be asked what states that they saw the animal in. The user should be able to only choose 1.
- * <p/>
+ *
  * The 4 day options that should be available to the user
- * <p/>
+ *
  * Morning 5:00 AM - 9:00 AM
  * Day 9:01 AM - 6:00 PM
  * Evening 6:01 PM - 10:00 PM
