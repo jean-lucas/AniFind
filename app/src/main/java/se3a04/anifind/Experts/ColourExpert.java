@@ -47,6 +47,15 @@ public class ColourExpert extends Expert {
         double matchCounter = 0;
 
 
+        for (String attribute: animalAttributes) {
+            for (String target: valuesToCompare) {
+                if (attribute.equals(target)) {
+                    matchCounter++;
+                }
+            }
+        }
+
+        /*
         // comparing
         for (int i = 0; i < animalAttributes.length; i++) {
             for (int j = 0; j < valuesToCompare.length; j++) {
@@ -55,6 +64,7 @@ public class ColourExpert extends Expert {
                 }
             }
         }
+        */
 
         // percentage
         if (animalAttributes.length <= valuesToCompare.length) {
