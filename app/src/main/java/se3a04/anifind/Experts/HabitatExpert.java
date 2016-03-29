@@ -24,7 +24,7 @@ public class HabitatExpert extends Expert {
         for (String attribute : animalAttributes) {
             for (String target : valuesToCompare) {
                 if (attribute.equals(target)) {
-                    matchCounter++;
+                    matchCounter += 2;
                 } else {
                     for (String word : wordBankAccess.getWordBank()) {
                         if (word.contains(attribute)) {
