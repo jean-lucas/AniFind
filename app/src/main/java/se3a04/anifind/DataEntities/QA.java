@@ -16,15 +16,15 @@ public class QA {
     private String[] validAnswers;  //set of possible answers from user
     private String[] answerHints;   //helpful hints of answers given in the AudioActivity
 
-    //the ACTUAL answers given by the user. Key is the topic, answers is the value
-    private HashMap<String, String[]> answerGivenByUsers;
+
+    private String[] answerGivenByUsers;
 
     public QA(String topic, String qs, String[] answers, String[] hints) {
         this.topic = topic;
         this.question = qs;
         this.validAnswers = answers;
         this.answerHints = hints;
-        this.answerGivenByUsers = new HashMap<String, String[]>(); //initially empty
+        this.answerGivenByUsers = null; //initially empty
     }
 
 
@@ -44,12 +44,12 @@ public class QA {
         return this.answerHints;
     }
 
-    public String[] getAnswersGivenByUsers(String topic) {
-        return  this.answerGivenByUsers.get(topic);
+    public String[] getAnswersGivenByUsers() {
+        return this.answerGivenByUsers;
     }
 
-    public void setGivenAnswerByTopic(String topic, String[] answers) {
-        this.answerGivenByUsers.put(topic, answers);
+    public void setGivenAnswerByTopic(String[] answers) {
+        this.answerGivenByUsers = answers;
     }
 
 }
