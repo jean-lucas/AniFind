@@ -5,8 +5,25 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+
 
 public class GuiController extends AppCompatActivity {
+
+
+
+
+
+
+        private ProgressBar loading_spinner;
+        private TextView loading_text;
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,27 +33,37 @@ public class GuiController extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
+        //create loading animation
+        loading_text = (TextView) findViewById(R.id.loading_text);
+        loading_spinner = (ProgressBar) findViewById(R.id.loading_spinner);
+
+
+
+
+        //load all the required instatiations here..
+        //put loading screen
+        //when data is ready go to onstart
+
     }
+
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_gui_controller, menu);
-        return true;
+    protected void onStart() {
+        super.onStart();
+
+        //go to HomeActivity
     }
+
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+    protected void onRestart() {
+        super.onRestart();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+        //at this point, all questions should be finished
+        //so consult blackboard
+        //and get best results
 
-        return super.onOptionsItemSelected(item);
+        //follwed by going to resultsActivity
     }
+
 }
