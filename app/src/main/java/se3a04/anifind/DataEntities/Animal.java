@@ -7,9 +7,9 @@ public class Animal {
 
     private String name;
     private String lifestyle;   //for time expert
-    private String location;    //for location expert
-    private String mobility;    //for mobility expert
-    private String habitat;     //for habitat expert
+    private String[] habitat;     //for habitat expert
+    private String[] mobility;    //for mobility expert
+    private String[] locations;    //for location expert
     private String[] colors;    //for color expert
     private String[] size;      //for size expert
 
@@ -20,10 +20,10 @@ public class Animal {
     private int NUMBER_OF_PROPERTIES = 7;   //number of attributes DONT THINK THIS IS NEEDED
 
 
-    public Animal(String name, String lifestyle, String location, String mobility, String habitat, String[] colors, String[] size, String imgFileName) {
+    public Animal(String name, String lifestyle, String[] habitat, String[] mobility, String[] location, String[] colors, String[] size, String imgFileName) {
         this.name = name;
         this.lifestyle = lifestyle;
-        this.location = location;
+        this.locations = location;
         this.mobility = mobility;
         this.habitat = habitat;
         this.colors = colors;
@@ -43,15 +43,15 @@ public class Animal {
         return lifestyle;
     }
 
-    public String getLocation() {
-        return location;
+    public String[] getLocation() {
+        return locations;
     }
 
-    public String getMobility() {
+    public String[] getMobility() {
         return mobility;
     }
 
-    public String getHabitat() {
+    public String[] getHabitat() {
         return habitat;
     }
 
