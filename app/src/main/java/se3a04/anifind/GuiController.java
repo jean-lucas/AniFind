@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.lang.annotation.Target;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 
@@ -35,8 +36,7 @@ public class GuiController extends AppCompatActivity {
     private BlackBoard blackBoard;
 
 
-    private ProgressBar loading_spinner;
-    private TextView loading_text;
+
 
 
     //request codes from different activities
@@ -57,6 +57,10 @@ public class GuiController extends AppCompatActivity {
 
 
 
+    //views for the starting activity
+    private ProgressBar loading_spinner;
+    private TextView loading_text;
+    private Button goHome_btn;
 
 
 
@@ -71,7 +75,11 @@ public class GuiController extends AppCompatActivity {
         //create loading animation
         loading_text = (TextView) findViewById(R.id.loading_text);
         loading_spinner = (ProgressBar) findViewById(R.id.loading_spinner);
+        goHome_btn = (Button) findViewById(R.id.goHome_btn);
+
         loading_spinner.setVisibility(View.VISIBLE);
+        goHome_btn.setVisibility(View.GONE);
+
 
         //load all the required instatiations here..
         dataCtrl = new DataController(this.getApplicationContext());
@@ -87,6 +95,7 @@ public class GuiController extends AppCompatActivity {
 
         loading_text.setText("App Ready");
         loading_spinner.setVisibility(View.GONE);
+        goHome_btn.setVisibility(View.VISIBLE);
 
 
         Intent intent = new Intent(GuiController.this, HomeActivity2.class);
@@ -130,7 +139,7 @@ public class GuiController extends AppCompatActivity {
                     break;
 
                 case RESULT_ACTIVITY_REQUEST_CODE:
-                    //do something
+                    resultActivityLogic(data);
                     break;
 
                 case ERROR_ACTIVITY_REQUEST_CODE:
@@ -164,9 +173,6 @@ public class GuiController extends AppCompatActivity {
 
         //go to text questions
         if (identificationType == 0) {
-//            Intent intent = new Intent(GuiController.this, QuestionActivity2.class);
-//            intent.putExtra("qa",listOfQAs.get("Color"));
-//            startActivityForResult(intent, QUESTION_ACTIVITY_REQUEST_CODE);
             for (String qa_topic: listOfQAs.keySet()) {
                 Intent intent = new Intent(GuiController.this, QuestionActivity2.class);
                 intent.putExtra("qa",listOfQAs.get(qa_topic));
@@ -193,7 +199,7 @@ public class GuiController extends AppCompatActivity {
 
         //update the answers from users with the listOfQAs in this class
         this.listOfQAs.get(temp_topic).setGivenAnswerByTopic(temp_answers);
-        Toast.makeText(GuiController.this, "updated " + temp_topic, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(GuiController.this, "updated " + temp_topic, Toast.LENGTH_SHORT).show();
 
         question_counter++;
 
@@ -201,19 +207,40 @@ public class GuiController extends AppCompatActivity {
         //AND GO TO A LOADING SCREEN FOLLOWED BY THE RESULTS ACTIVITY
         // THIS IS TEMPORARY -- JUST TO SEE IF ITS WORKING
         if (question_counter == listOfQAs.size()) {
-            Toast.makeText(GuiController.this, "finished", Toast.LENGTH_SHORT).show();
             question_counter = 0;
 
-            Toast.makeText(GuiController.this, "Got the following answers from user: ", Toast.LENGTH_SHORT).show();
+            //now ask the expert
+            //from there we get an update animal dataset
+            //so we can put that in the extra for the result intent
+            Intent intent = new Intent(GuiController.this, ResultActivity2.class);
 
-            for (String topic: listOfQAs.keySet()) {
-                String p = "";
-                for (String s : listOfQAs.get(topic).getAnswersGivenByUsers()) {
-                    p += s+",";
-                }
-                Toast.makeText(GuiController.this, p, Toast.LENGTH_SHORT).show();
-            }
+
+            //send an arraylist of the animals
+            Animal[] temp_animals = {listOfAnimals.get("gorilla"), listOfAnimals.get("kangoroo"), listOfAnimals.get("goose")};
+
+            intent.putExtra("animals", temp_animals);
+            startActivityForResult(intent, RESULT_ACTIVITY_REQUEST_CODE);
+
+
+//            Toast.makeText(GuiController.this, "Got the following answers from user: ", Toast.LENGTH_SHORT).show();
+//
+//            for (String topic: listOfQAs.keySet()) {
+//                String p = "";
+//                for (String s : listOfQAs.get(topic).getAnswersGivenByUsers()) {
+//                    p += s+",";
+//                }
+//                Toast.makeText(GuiController.this, p, Toast.LENGTH_SHORT).show();
+//            }
         }
 
+    }
+
+    private void resultActivityLogic(Intent data) {
+        Toast.makeText(GuiController.this, "Welcome to results", Toast.LENGTH_SHORT).show();
+    }
+
+    //reset the activity
+    public void goHomeButton(View view) {
+        recreate();
     }
 }

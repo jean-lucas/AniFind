@@ -1,9 +1,11 @@
 package se3a04.anifind.DataEntities;
 
+import java.io.Serializable;
+
 /**
  * An ADT for an Animal object, with all attributes required for each expert
  */
-public class Animal {
+public class Animal implements Serializable {
 
     private String name;
     private String lifestyle;   //for time expert
