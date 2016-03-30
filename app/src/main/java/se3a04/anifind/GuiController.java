@@ -161,14 +161,14 @@ public class GuiController extends AppCompatActivity {
 
         //go to text questions
         if (identificationType == 0) {
-            Intent intent = new Intent(GuiController.this, QuestionActivity2.class);
-            intent.putExtra("qa",listOfQAs.get("Color"));
-            startActivityForResult(intent, QUESTION_ACTIVITY_REQUEST_CODE);
-//            for (String qa_topic: listOfQAs.keySet()) {
-//                Intent intent = new Intent(GuiController.this, QuestionActivity2.class);
-//                intent.putExtra("qa",listOfQAs.get(qa_topic));
-//                startActivityForResult(intent, QUESTION_ACTIVITY_REQUEST_CODE);
-//            }
+//            Intent intent = new Intent(GuiController.this, QuestionActivity2.class);
+//            intent.putExtra("qa",listOfQAs.get("Color"));
+//            startActivityForResult(intent, QUESTION_ACTIVITY_REQUEST_CODE);
+            for (String qa_topic: listOfQAs.keySet()) {
+                Intent intent = new Intent(GuiController.this, QuestionActivity2.class);
+                intent.putExtra("qa",listOfQAs.get(qa_topic));
+                startActivityForResult(intent, QUESTION_ACTIVITY_REQUEST_CODE);
+            }
         }
 
         //go to audio questions
