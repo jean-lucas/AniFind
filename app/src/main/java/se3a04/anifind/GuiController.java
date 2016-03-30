@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.HashMap;
 
@@ -45,6 +46,12 @@ public class GuiController extends AppCompatActivity {
     private final int ERROR_ACTIVITY_REQUEST_CODE = 5;
 
 
+    //identification type, can have only two options
+    // 0 for text based questions
+    // 1 for audio based questions
+    private int identificationType = -1;
+
+
 
 
 
@@ -70,54 +77,63 @@ public class GuiController extends AppCompatActivity {
 //        listOfQAs = dataCtrl.getAllQA();
 
 
+        //everything loaded at this point
 
-
-
-    }
-
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        loading_spinner = (ProgressBar) findViewById(R.id.loading_spinner);
-        loading_spinner.setVisibility(View.GONE);
-        loading_text = (TextView) findViewById(R.id.loading_text);
         loading_text.setText("App Ready");
+        loading_spinner.setVisibility(View.GONE);
 
-        //go to HomeActivity
 
-        Intent intent = new Intent();
+        Intent intent = new Intent(GuiController.this, HomeActivity2.class);
         startActivityForResult(intent, HOME_ACTIVITY_REQUEST_CODE);
+
+
     }
+
+
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        loading_spinner = (ProgressBar) findViewById(R.id.loading_spinner);
+//        loading_spinner.setVisibility(View.GONE);
+//        loading_text = (TextView) findViewById(R.id.loading_text);
+//        loading_text.setText("App Ready");
+//
+//        //go to HomeActivity
+//
+////        Intent intent = new Intent(GuiController.this, HomeActivity2.class);
+////        startActivityForResult(intent, HOME_ACTIVITY_REQUEST_CODE);
+//    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        switch (requestCode) {
+        if (resultCode == 1) {
+            switch (requestCode) {
 
-            case HOME_ACTIVITY_REQUEST_CODE:
-                //do something
-                break;
+                case HOME_ACTIVITY_REQUEST_CODE:
+                    homeActivityLogic(data);
+                    break;
 
-            case QUESTION_ACTIVITY_REQUEST_CODE:
-                //do something
-                break;
+                case QUESTION_ACTIVITY_REQUEST_CODE:
+                    //do something
+                    break;
 
-            case AUDIO_ACTIVITY_REQUEST_CODE:
-                //do something
-                break;
+                case AUDIO_ACTIVITY_REQUEST_CODE:
+                    //do something
+                    break;
 
-            case RESULT_ACTIVITY_REQUEST_CODE:
-                //do something
-                break;
+                case RESULT_ACTIVITY_REQUEST_CODE:
+                    //do something
+                    break;
 
-            case ERROR_ACTIVITY_REQUEST_CODE:
-                //do something
-                break;
+                case ERROR_ACTIVITY_REQUEST_CODE:
+                    //do something
+                    break;
 
-            default:
-                break;
+                default:
+                    break;
+            }
         }
     }
 
@@ -132,4 +148,29 @@ public class GuiController extends AppCompatActivity {
         //follwed by going to resultsActivity
     }
 
+
+
+    private void homeActivityLogic(Intent data) {
+
+        int identificationType = data.getIntExtra("identificationType", -1);
+
+
+
+        //go to text questions
+        if (identificationType == 0) {
+            Intent intent = new Intent(GuiController.this, QuestionActivity2.class);
+            startActivityForResult(intent, QUESTION_ACTIVITY_REQUEST_CODE);
+//            for (String qa_topic: listOfQAs.keySet()) {
+//                Intent intent = new Intent(GuiController.this, QuestionActivity2.class);
+//                intent.putExtra("qa",listOfQAs.get(qa_topic));
+//                startActivityForResult(intent, QUESTION_ACTIVITY_REQUEST_CODE);
+//            }
+        }
+
+        //go to audio questions
+        else {
+            Toast.makeText(GuiController.this, "cool", Toast.LENGTH_SHORT).show();
+
+        }
+    }
 }

@@ -1,5 +1,6 @@
 package se3a04.anifind.DataEntities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -9,7 +10,7 @@ import java.util.Iterator;
 /**
  * An ADT for question & answer objects
  */
-public class QA {
+public class QA implements Serializable {
 
     private String topic;
     private String question;
