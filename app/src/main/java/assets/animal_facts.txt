@@ -1,8 +1,0 @@
-name,diet,location,habitat,colors,lifestyle
-great white shark,carnivorous,pacific ocean,salt water,grey-white,daytime
-gorilla,herbivore,africa,tropical forest,black,daytime
-kangoroo,fruits,australia,grassy plains,beige-white-brown,daytime
-bat,bugs,,forests,black,nocturnal
-dolphin,fish,open waters,salt water,grey,daytime
-moose,herbivore,northern canada,woodlands,black-brown,daytime
-goose,fish,canada,lakes,brown-black-white-orange,daytime

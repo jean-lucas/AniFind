@@ -1,0 +1,5 @@
+name,lifestyle,location,mobility,habitat,colors,sizes,imageFile
+great white shark,daytime,australia-south africa-usa,fins-tail-swim,salt water,grey-white,2m-6m,shark.png
+gorilla,daytime,africa,feet-hands-walk-run,forest-jungle-woodlands,black,2m,gorilla.png
+kangoroo,daytime,australia,feet-hop-jump,desert-grassland-grassy plains-savannas,beige-white-brown,2m,kangorr.png
+goose,daytime,canada-usa,wings-fly,grass-water-lakes-lakeshore-beach,brown-white-black-green, 0.5m-1m,goose.png
