@@ -15,9 +15,9 @@ import se3a04.anifind.DataEntities.QA;
  */
 
 /**
- * TODO -Everything *sadface*
+ * TODO -No longer everything *slightly sadface*
+ * TODO -Create results data structure
  * TODO -Look into stupid context wizardry
- * TODO -create hash maps for animals and questions/answers
  */
 
 public class DataController {
@@ -40,6 +40,7 @@ public class DataController {
     private void initialize(){
         dataAccess = new DatastoreAccess(context);
         animalParse(dataAccess.getAnimalContent());
+        qaParse(dataAccess.getQuestionContent());
     }
 
     private void animalParse(List<String> animalLines){
