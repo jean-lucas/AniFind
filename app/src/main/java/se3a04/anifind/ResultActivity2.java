@@ -19,7 +19,7 @@ import se3a04.anifind.DataEntities.Animal;
 
 public class ResultActivity2 extends AppCompatActivity {
 
-    private Animal[] animals;
+    private ArrayList<Animal> animals;
     private TextView animalList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +35,14 @@ public class ResultActivity2 extends AppCompatActivity {
 
 
         //this need to be fixed. removed cast
-        this.animals = (Animal[]) b.getSerializable("animals");
+        animals = new ArrayList<Animal>();
+
+        this.animals = (ArrayList<Animal>) b.getSerializable("animals");
 
 
 
         for (Animal a: animals) {
-            animalList.append(a.getName() + "\n");
+            animalList.append(a.toString() + "\n");
         }
 
     }

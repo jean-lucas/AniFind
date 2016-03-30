@@ -1,5 +1,7 @@
 package se3a04.anifind.Experts;
 
+import android.util.Log;
+
 /**
     Created by Zachary on 3/28/2016.
 
@@ -49,11 +51,13 @@ public class ColourExpert extends Expert {
 
         for (String attribute: animalAttributes) {
             for (String target: valuesToCompare) {
+
                 if (attribute.equals(target)) {
                     matchCounter++;
                 }
             }
         }
+
 
         /*
         // comparing
@@ -74,6 +78,7 @@ public class ColourExpert extends Expert {
             percentage = 100 * (matchCounter/animalAttributes.length);
         }
 
+        Log.d("MC", "" + percentage);
         return assignPoints(percentage);
 
 
@@ -87,14 +92,19 @@ public class ColourExpert extends Expert {
         if (percent >= 90){
             points =4;
         }
-        else if (percent >= 65 && percent < 90){
+
+        //89% to 51%
+        else if (percent > 50 && percent < 90){
             points = 3;
         }
 
-        else if (percent >= 50 && percent< 65){
+        //50% to 26%
+        else if (percent > 25 && percent <= 50){
             points = 2;
         }
-        else if (percent >= 30 && percent < 50){
+
+        //25% to 5%
+        else if (percent >=5  && percent <= 25){
             points = 1;
         }
         else{
