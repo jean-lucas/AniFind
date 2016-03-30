@@ -2,6 +2,7 @@ package se3a04.anifind;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 import se3a04.anifind.DataEntities.Animal;
 
@@ -10,15 +11,15 @@ import se3a04.anifind.DataEntities.Animal;
  */
 public class Result {
 
-    private ArrayList<String> answers;  //List of user's answers associated with the selected animal
+    private List<String> answers;  //List of user's answers associated with the selected animal
     private String selectedAnimal;  //The name of the user selected animal
 
-    public Result(ArrayList<String> answers, String selectedAnimalName){
+    public Result(List<String> answers, String selectedAnimalName){
         this.answers = answers;
         this.selectedAnimal = selectedAnimalName;
     }
 
-    public ArrayList<String> getAnswers(){
+    public List<String> getAnswers(){
         return answers;
     }
 

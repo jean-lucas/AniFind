@@ -16,9 +16,8 @@ import se3a04.anifind.DataEntities.QA;
  */
 
 /**
- * TODO -No longer everything *slightly sadface*
- * TODO -Create results data structure
- * TODO -Look into stupid context wizardry
+ * TODO -data set updating/learning
+ * TODO -Look into context wizardry
  */
 
 public class DataController {
@@ -36,6 +35,9 @@ public class DataController {
     private HashMap<String, Animal> listOfAnimals;
     private HashMap<String, QA> listOfQAs;
 
+    //list containing all past results
+    private ArrayList<Result> listOfResults;
+
     public DataController(Context context){
         this.context = context;
         this.dataAccess = new DatastoreAccess(context);
@@ -43,6 +45,8 @@ public class DataController {
 
         this.listOfAnimals = new HashMap<String, Animal>();
         this.listOfQAs = new HashMap<String, QA>();
+        this.listOfResults = new ArrayList<Result>();
+
         initialize();
     }
 
@@ -50,6 +54,12 @@ public class DataController {
 //        dataAccess = new DatastoreAccess(context);
         animalParse(dataAccess.getAnimalContent());
         qaParse(dataAccess.getQuestionContent());
+    }
+
+    public void sessionCompleted(Result sessionResult){
+        listOfResults.add(sessionResult);   //adds the latest session's result to result list
+        resultParse(dataAccess.getResultsContent());
+        checkForUpdates();
     }
 
     //Parses lines from animal data set and creates animal obj's and adds them to listOfAnimals
@@ -98,7 +108,7 @@ public class DataController {
             String topic = qElements.get(0);
             String question = qElements.get(1);
             String[] answers = qElements.get(2).split("\\s*,\\s*", -1);
-            String[] hints = qElements.get(3).split("\\s*,\\s*",-1);
+            String[] hints = qElements.get(3).split("\\s*,\\s*", -1);
 
             //Use temp Q elements to create new QA obj
             QA newQA = new QA(topic, question, answers, hints);
@@ -116,11 +126,36 @@ public class DataController {
         return listOfQAs;
     }
 
-    public void setResults(ArrayList<String> newResults, Animal newObj){
-        //TODO
+    //Parses lines from past results data set and creates Result obj's and adds them to listOfResults
+    private void resultParse(List<String> rLines){
+        if (rLines == null) {
+            Log.d("NULL_LIST", "The list is null");
+            return;
+        }
+
+        for (String line : rLines){
+            List<String> rElements = Arrays.asList(line.split("\\s*,\\s*"));
+
+            //Create temp result elements
+            String animalName = rElements.get(0);
+            rElements.remove(0);
+
+            //Use temp result elements to create new Result obj
+            Result newResult = new Result(rElements,animalName);
+
+            //Add the new Result obj to listOfResults
+            listOfResults.add(newResult);
+        }
+    }
+
+    private void checkForUpdates(){
+        //TODO this method will compare past results with current QA data set and make necessary changes
     }
 
     private void resetAllDatastructures(){
-        //TODO
+        //TODO is this all this method needs to do?
+        listOfAnimals.clear();
+        listOfQAs.clear();
+        listOfResults.clear();
     }
 }
