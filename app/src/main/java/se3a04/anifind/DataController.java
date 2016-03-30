@@ -1,6 +1,7 @@
 package se3a04.anifind;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -48,6 +49,12 @@ public class DataController {
     }
 
     private void animalParse(List<String> animalLines){
+
+        if (animalLines == null) {
+            Log.d("NULL_LIST", "The list is null");
+            return;
+        }
+
         for (String line : animalLines) {
             List<String> attributes = Arrays.asList(line.split("\\s*,\\s*"));
 
@@ -71,6 +78,13 @@ public class DataController {
     }
 
     private void qaParse(List<String> qaLines){
+
+        if (qaLines == null) {
+            Log.d("NULL_LIST", "The list is null");
+            return;
+        }
+
+
         for (String line : qaLines){
             List<String> qElements = Arrays.asList(line.split("\\s*-\\s*"));
 

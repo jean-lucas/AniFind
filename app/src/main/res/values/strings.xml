@@ -2,4 +2,6 @@
     <string name="app_name">AniFind</string>
     <string name="action_settings">Settings</string>
     <string name="loading_text">Loading...</string>
+    <string name="title_activity_home2">HomeActivity2</string>
+    <string name="title_activity_question2">QuestionActivity2</string>
 </resources>

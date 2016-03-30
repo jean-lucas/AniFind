@@ -14,6 +14,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.lang.annotation.Target;
 import java.util.HashMap;
 
 
@@ -26,7 +27,7 @@ public class GuiController extends AppCompatActivity {
 
 
     //data required from dataCtrl
-//    private DataController dataCtrl;
+    private DataController dataCtrl;
     private HashMap<String, Animal> listOfAnimals;
     private HashMap<String, QA> listOfQAs;
 
@@ -70,11 +71,13 @@ public class GuiController extends AppCompatActivity {
         loading_spinner.setVisibility(View.VISIBLE);
 
         //load all the required instatiations here..
-//        dataCtrl = new DataController();
+        dataCtrl = new DataController(this.getApplicationContext());
         blackBoard = new BlackBoard();
 
-//        listOfAnimals = dataCtrl.getAllAnimals();
-//        listOfQAs = dataCtrl.getAllQA();
+        listOfAnimals = dataCtrl.getAnimals();
+        listOfQAs = dataCtrl.getQuestions();
+
+
 
 
         //everything loaded at this point
@@ -159,6 +162,7 @@ public class GuiController extends AppCompatActivity {
         //go to text questions
         if (identificationType == 0) {
             Intent intent = new Intent(GuiController.this, QuestionActivity2.class);
+            intent.putExtra("qa",listOfQAs.get("Color"));
             startActivityForResult(intent, QUESTION_ACTIVITY_REQUEST_CODE);
 //            for (String qa_topic: listOfQAs.keySet()) {
 //                Intent intent = new Intent(GuiController.this, QuestionActivity2.class);
