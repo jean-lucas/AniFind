@@ -22,10 +22,12 @@ import se3a04.anifind.DataEntities.QA;
 
 public class QuestionActivity2 extends AppCompatActivity {
 
-    TextView currentTitle;
-    TextView currentQuestion;
-    LinearLayout selectBoxArea;
-    CheckBox[] currentCheckBoxes;
+    private TextView currentTitle;
+    private TextView currentQuestion;
+    private LinearLayout selectBoxArea;
+    private CheckBox[] currentCheckBoxes;
+
+    private QA qa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +42,8 @@ public class QuestionActivity2 extends AppCompatActivity {
 
 //
         Bundle b = getIntent().getExtras();
-        QA qa = (QA) b.getSerializable("qa");
+        this.qa = (QA) b.getSerializable("qa");
+
 
         Log.d("QA_DEBUG", qa.getTopic());
         Log.d("QA_DEBUG", qa.getValidAnswers()[0]);
@@ -74,15 +77,18 @@ public class QuestionActivity2 extends AppCompatActivity {
 
         ArrayList<String> selectedAnswers = new ArrayList<String>();
 
-//        for (CheckBox cb: currentCheckBoxes) {
-//
-//            if (cb.isChecked()) {
-//                selectedAnswers.add(cb.getText().toString());
-//            }
-//        }
+        for (CheckBox cb: currentCheckBoxes) {
 
+            if (cb.isChecked()) {
+                selectedAnswers.add(cb.getText().toString());
+            }
+        }
+
+        String[] answers = selectedAnswers.toArray(new String[selectedAnswers.size()]);
+
+        this.qa.setGivenAnswerByTopic(answers);
         Intent result_intent = new Intent();
-//        result_intent.putExtra("selectedAnswer", selectedAnswers);
+        result_intent.putExtra("current_qa", this.qa);
 
         setResult(1, result_intent);
 

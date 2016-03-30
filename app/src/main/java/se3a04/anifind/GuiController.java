@@ -52,6 +52,9 @@ public class GuiController extends AppCompatActivity {
     // 1 for audio based questions
     private int identificationType = -1;
 
+    //keeping track of how many questions have been attempted
+    private int question_counter;
+
 
 
 
@@ -77,7 +80,7 @@ public class GuiController extends AppCompatActivity {
         listOfAnimals = dataCtrl.getAnimals();
         listOfQAs = dataCtrl.getQuestions();
 
-
+        this.question_counter = 0;
 
 
         //everything loaded at this point
@@ -119,7 +122,7 @@ public class GuiController extends AppCompatActivity {
                     break;
 
                 case QUESTION_ACTIVITY_REQUEST_CODE:
-                    //do something
+                    questionActivityLogic(data);
                     break;
 
                 case AUDIO_ACTIVITY_REQUEST_CODE:
@@ -173,8 +176,44 @@ public class GuiController extends AppCompatActivity {
 
         //go to audio questions
         else {
-            Toast.makeText(GuiController.this, "cool", Toast.LENGTH_SHORT).show();
+            Toast.makeText(GuiController.this, "AUDIO", Toast.LENGTH_SHORT).show();
 
         }
+    }
+
+
+    //once all questions are finished, this function is called
+    //it will be called one question at a time, but sequentially.
+    private void questionActivityLogic(Intent data) {
+
+        QA temp_qa = (QA) data.getSerializableExtra("current_qa");
+
+        String temp_topic = temp_qa.getTopic();
+        String[] temp_answers = temp_qa.getAnswersGivenByUsers();
+
+        //update the answers from users with the listOfQAs in this class
+        this.listOfQAs.get(temp_topic).setGivenAnswerByTopic(temp_answers);
+        Toast.makeText(GuiController.this, "updated " + temp_topic, Toast.LENGTH_SHORT).show();
+
+        question_counter++;
+
+        //IDEALLY FROM HERE WE WOULD WANT TO CALL THE BLACKBOARD WITH OUR ANSWERS
+        //AND GO TO A LOADING SCREEN FOLLOWED BY THE RESULTS ACTIVITY
+        // THIS IS TEMPORARY -- JUST TO SEE IF ITS WORKING
+        if (question_counter == listOfQAs.size()) {
+            Toast.makeText(GuiController.this, "finished", Toast.LENGTH_SHORT).show();
+            question_counter = 0;
+
+            Toast.makeText(GuiController.this, "Got the following answers from user: ", Toast.LENGTH_SHORT).show();
+
+            for (String topic: listOfQAs.keySet()) {
+                String p = "";
+                for (String s : listOfQAs.get(topic).getAnswersGivenByUsers()) {
+                    p += s+",";
+                }
+                Toast.makeText(GuiController.this, p, Toast.LENGTH_SHORT).show();
+            }
+        }
+
     }
 }
