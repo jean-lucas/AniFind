@@ -26,6 +26,9 @@ public class DataController {
     //needed to retrieve data required from text files
     private DatastoreAccess dataAccess;
 
+    //needed to update and analyse results for possible changes to data sets
+    private ResultsDataStructure resultsData;
+
     //needs to be used when reading in data from text file
     private Context context;
 
@@ -35,7 +38,8 @@ public class DataController {
 
     public DataController(Context context){
         this.context = context;
-        dataAccess = new DatastoreAccess(context);
+        this.dataAccess = new DatastoreAccess(context);
+        this.resultsData = new ResultsDataStructure();
 
         this.listOfAnimals = new HashMap<String, Animal>();
         this.listOfQAs = new HashMap<String, QA>();
@@ -48,6 +52,7 @@ public class DataController {
         qaParse(dataAccess.getQuestionContent());
     }
 
+    //Parses lines from animal data set and creates animal obj's and adds them to listOfAnimals
     private void animalParse(List<String> animalLines){
 
         if (animalLines == null) {
@@ -77,6 +82,7 @@ public class DataController {
         }
     }
 
+    //Parses lines from question/answer data set and creates QA obj's and adds them to listOfQAs
     private void qaParse(List<String> qaLines){
 
         if (qaLines == null) {
@@ -91,7 +97,7 @@ public class DataController {
             //Create temp question elements
             String topic = qElements.get(0);
             String question = qElements.get(1);
-            String[] answers = qElements.get(2).split("\\s*,\\s*",-1);
+            String[] answers = qElements.get(2).split("\\s*,\\s*", -1);
             String[] hints = qElements.get(3).split("\\s*,\\s*",-1);
 
             //Use temp Q elements to create new QA obj
