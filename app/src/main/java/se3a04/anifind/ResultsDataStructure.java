@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 
 /**
- * TODO -is just an arraylist of strings good enough to capture past results? Need list of answers and selected animal
+ * TODO -delete this class???
  */
 
 public class ResultsDataStructure {

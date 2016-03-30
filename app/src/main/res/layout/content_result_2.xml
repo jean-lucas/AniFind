@@ -4,44 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center|top"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:orientation="vertical"
-    android:layout_gravity="center"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="se3a04.anifind.GuiController"
-    tools:showIn="@layout/activity_gui_controller">
+    tools:context=".ResultActivity2"
+    tools:showIn="@layout/activity_result_2">
 
-
-
-    <ProgressBar
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:id="@+id/loading_spinner"
-        android:layout_marginTop="40dp"/>
+        android:text="Results"
+        android:textSize="20sp"
+        android:id="@+id/resultViewTitle"
+        android:textColor="#f56e6e" />
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/loading_text"
-        android:textSize="20sp"
-        android:layout_gravity="center"
-        android:layout_marginTop="50dp"
-        android:id="@+id/loading_text"/>
+        android:id="@+id/animalResultList"
+        android:layout_marginTop="20dp"
+        android:textSize="15sp">
 
+    </TextView>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Home"
-        android:id="@+id/goHome_btn"
-        android:layout_gravity="bottom|center"
-        android:layout_marginTop="60dp"
+        android:id="@+id/goHome"
         android:onClick="goHomeButton"/>
-
 
 </LinearLayout>

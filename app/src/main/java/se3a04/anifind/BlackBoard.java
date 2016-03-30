@@ -1,11 +1,14 @@
 package se3a04.anifind;
 
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import se3a04.anifind.DataEntities.Animal;
 import se3a04.anifind.DataEntities.QA;
+import se3a04.anifind.Experts.ColourExpert;
 import se3a04.anifind.Experts.Expert;
 import se3a04.anifind.Experts.HabitatExpert;
 import se3a04.anifind.Experts.LocationExpert;
@@ -27,20 +30,21 @@ public class BlackBoard {
 
     public BlackBoard() {
 
-
-        experts = new Expert[] {
+        this.experts = new Expert[] {
                 new HabitatExpert(),
                 new LocationExpert(),
                 new MobilityExpert(),
                 new SizeExpert(),
-                new TimeExpert()
+                new TimeExpert(),
+                new ColourExpert()
         };
     }
 
 
 
     //Call each respective expert with each animal's attribute
-    public void consultAllExperts(ArrayList<Animal> animals, HashMap<String, QA> qas) {
+    //return the updated list of animals
+    public ArrayList<Animal> consultAllExperts(ArrayList<Animal> animals, HashMap<String, QA> qas) {
 
         int pnt = 0;
 
@@ -49,33 +53,39 @@ public class BlackBoard {
 
                 switch (e.getExpertise()) {
 
-                    case "Habitat":
-                        pnt = e.validateAttribute(a.getHabitat(), qas.get("Habitat").getAnswersGivenByUsers());
+//                    case "Habitat":
+//                        pnt = e.validateAttribute(a.getHabitat(), qas.get("Habitat").getAnswersGivenByUsers());
+//                        a.updatePoint(pnt);
+//                        break;
+
+//                    case "Location":
+//                        pnt = e.validateAttribute(a.getLocation(), qas.get("Location").getAnswersGivenByUsers());
+//                        a.updatePoint(pnt);
+//                        break;
+
+//                    case "Mobility":
+//                        pnt = e.validateAttribute(a.getMobility(), qas.get("Mobility").getAnswersGivenByUsers());
+//                        a.updatePoint(pnt);
+//                        break;
+
+//                    case "Size":
+//                        pnt = e.validateAttribute(a.getSize(), qas.get("Size").getAnswersGivenByUsers());
+//                        a.updatePoint(pnt);
+//                        break;
+
+                    case "Colour":
+                        pnt = e.validateAttribute(a.getColors(), qas.get("Color").getAnswersGivenByUsers());
                         a.updatePoint(pnt);
+                        Log.d("POINT_CHECK", "points given = " + pnt);
                         break;
 
-                    case "Location":
-                        pnt = e.validateAttribute(a.getLocation(), qas.get("Location").getAnswersGivenByUsers());
-                        a.updatePoint(pnt);
-                        break;
-
-                    case "Mobility":
-                        pnt = e.validateAttribute(a.getMobility(), qas.get("Mobility").getAnswersGivenByUsers());
-                        a.updatePoint(pnt);
-                        break;
-
-                    case "Size":
-                        pnt = e.validateAttribute(a.getSize(), qas.get("Size").getAnswersGivenByUsers());
-                        a.updatePoint(pnt);
-                        break;
-
-                    case "Time":
-                        //the split("##") is used just to turn a string into an array with 1 element.
-                        //the symbol ## is used since it is safe to assume it will not conflict with the actual
-                        //contents of the string
-                        pnt = e.validateAttribute(a.getLifestyle().split("##"), qas.get("Lifestyle").getAnswersGivenByUsers());
-                        a.updatePoint(pnt);
-                        break;
+//                    case "Time":
+//                        //the split("##") is used just to turn a string into an array with 1 element.
+//                        //the symbol ## is used since it is safe to assume it will not conflict with the actual
+//                        //contents of the string
+//                        pnt = e.validateAttribute(a.getLifestyle().split("##"), qas.get("Lifestyle").getAnswersGivenByUsers());
+//                        a.updatePoint(pnt);
+//                        break;
 
                     default:
                         a.updatePoint(0);
@@ -83,6 +93,8 @@ public class BlackBoard {
                 }
             }
         }
+
+        return animals;
     }
 }
 
