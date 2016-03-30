@@ -34,12 +34,17 @@ public class DataController {
 
     public DataController(Context context){
         this.context = context;
+        dataAccess = new DatastoreAccess(context);
+
+        this.listOfAnimals = new HashMap<String, Animal>();
+        this.listOfQAs = new HashMap<String, QA>();
         initialize();
     }
 
     private void initialize(){
-        dataAccess = new DatastoreAccess(context);
+//        dataAccess = new DatastoreAccess(context);
         animalParse(dataAccess.getAnimalContent());
+        qaParse(dataAccess.getQuestionContent());
     }
 
     private void animalParse(List<String> animalLines){
