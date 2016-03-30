@@ -35,61 +35,27 @@ public class DatastoreAccess {
 
 
     public DatastoreAccess(Context context){
-        animalFilename = "../assets/animal_facts.txt";
-        resultsFilename = "../assets/old_results.txt";
-        questionsFilename = "../assets/question_answer_content.txt";
+        animalFilename = "animal_facts.txt";
+        resultsFilename = "old_results.txt";
+        questionsFilename = "question_answer_content.txt";
         imagesFilename = null;  //TODO
 
         this.mContext = context;
     }
 
-    /*
-    private ArrayList<String> getFileContent(String fileName) {
-        ArrayList<String> content;
 
-        Log.d("NULL_LIST", "S = " + in.nextLine());
-
-        try {
-            content = new ArrayList<String>();
-
-            Scanner in = new Scanner(new File(fileName));
-
-            in.nextLine(); //skip first line
-
-            while(in.hasNext()) {
-
-                String s = in.nextLine();
-                content.add(s);
-            }
-
-            in.close();
-        }
-
-        catch (FileNotFoundException e) {
-            return null;
-        }
-
-        return content;
-    }
-*/
 
     private List<String> getFileContent(String filename){
         //TODO
         List<String> mLines = new ArrayList<>();
-        Log.d("NULL_LIST", "Starting 1 ...");
         AssetManager am = mContext.getAssets();
-        Log.d("NULL_LIST", "Starting 2 ...");
 
         try {
             InputStream is = am.open(filename);
-            Log.d("NULL_LIST", "check 1...");
             BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-            Log.d("NULL_LIST", "check 2...");
             String line;
-            Log.d("NULL_LIST", "Starting...");
 
             while ((line = reader.readLine()) != null)
-                Log.d("NULL_LIST", "S = " + line);
                 mLines.add(line);
         } catch (IOException e) {
             e.printStackTrace();
