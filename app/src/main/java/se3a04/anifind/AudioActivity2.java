@@ -10,6 +10,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -23,20 +24,20 @@ import se3a04.anifind.DataEntities.QA;
 public class AudioActivity2 extends AppCompatActivity {
 
     private static final int REQUEST_CODE = 1234;
-    Button startRecordingBtn;
-    Button nextButton;
-    Button resetButton;
-    TextView title;
-    TextView question;
-    TextView hintExamples;
-    TextView finalRecognizedSpeech;
-    ArrayList<String> possibleMatches;
+    private Button startRecordingBtn;
+    private Button nextButton;
+    private Button resetButton;
+    private TextView title;
+    private TextView question;
+    private TextView hintExamples;
+    private TextView finalRecognizedSpeech;
+    private ArrayList<String> possibleMatches;
 
+    private String[] validAnswers;
     private QA qa;
 
 
-    String[] validColors = {"red","blue","green","black","grey","gray","purple","yellow",
-            "orange","brown","silver","white"};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +49,7 @@ public class AudioActivity2 extends AppCompatActivity {
 
         String newTitle = qa.getTopic();
         String newQuestion = qa.getQuestion();
-//        String[] possibleAnswers = qa.getValidAnswers();
+        this.validAnswers = qa.getValidAnswers();
         String[] answerHints = qa.getAnswerHints();
 
 
@@ -90,14 +91,7 @@ public class AudioActivity2 extends AppCompatActivity {
         });
 
 
-        //go to next activity (ie the next attribute to record)
-        nextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                finish();
-            }
-        });
     }
 
     public void setupViewContent(String title, String question, String[] hints ) {
@@ -113,7 +107,7 @@ public class AudioActivity2 extends AppCompatActivity {
         int counter = 0; //for formatting the commas
         for (String hint: hints) {
             counter++;
-            if (counter == hints.length-1) {
+            if (counter == hints.length) {
                 this.hintExamples.append(hint);
             }
             else {
@@ -126,9 +120,6 @@ public class AudioActivity2 extends AppCompatActivity {
     }
 
 
-    public void getRecordingActionListener() {
-
-    }
 
 
     private  boolean isConnected()
@@ -150,13 +141,13 @@ public class AudioActivity2 extends AppCompatActivity {
             possibleMatches = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
             HashSet<String> validMatches = new HashSet<>();
 
-
+            Log.d("Audio_values", possibleMatches.toString());
             //filter for valid colors
             for (String s: possibleMatches) {
                 String[] values = s.split(" ");
 
                 for (String v: values) {
-                    if (contains(v, validColors)) {
+                    if (contains(v, validAnswers)) {
                         validMatches.add(v);
                     }
                 }
