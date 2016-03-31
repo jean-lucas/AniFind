@@ -8,6 +8,7 @@ import java.util.Scanner;
 /**
  * Created by Zachary on 3/28/2016.
  */
+
 public class WordBank {
 
     // assuming the key words are stored in the below list directory
@@ -38,6 +39,7 @@ public class WordBank {
 
 
     public ArrayList<String> getWordBank() {
+        readFileContent();
         return wordBank;
     }
 
