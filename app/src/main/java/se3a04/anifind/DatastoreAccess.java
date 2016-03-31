@@ -105,6 +105,8 @@ public class DatastoreAccess {
     }
 
     public void writeResultsContent(List<String> content){
+        content.add(0,"name,lifestyle,location,mobility,habitat,colors,sizes");
+        Log.d("print",content.toString());
         writeToFile(resultsFilename,content);
     }
 

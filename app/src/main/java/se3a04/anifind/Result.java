@@ -1,5 +1,7 @@
 package se3a04.anifind;
 
+import android.util.Log;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
