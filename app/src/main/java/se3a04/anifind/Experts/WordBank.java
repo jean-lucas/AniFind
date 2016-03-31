@@ -12,7 +12,7 @@ public class WordBank {
 
     // assuming the key words are stored in the below list directory
     private static final String FILEPATHNAME = "assets/key_words";
-    private ArrayList<String> wordBank;
+    private ArrayList<String> wordBank = new ArrayList<String>();
 
 
     private void readFileContent() {
