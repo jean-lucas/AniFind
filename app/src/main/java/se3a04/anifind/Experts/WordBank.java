@@ -1,39 +1,44 @@
 package se3a04.anifind.Experts;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * Created by Zachary on 3/28/2016.
  */
 public class WordBank {
 
-    private final String FILEPATHNAME = "Path";
-    private ArrayList<String> fileContents;
-
-
-    // Testing stub to get things working because IO is not working
-    private String [] test = {"dense grassland", "dense woodland", "flat grassland", "prairie grassland", "desert", "forest",
-    "dense forest"};
+    // assuming the key words are stored in the below list directory
+    private static final String FILEPATHNAME = "assets/key_words";
+    private ArrayList<String> wordBank;
 
 
     private void readFileContent() {
-        // read file in
-        // split on the commas
+        File file = new File(FILEPATHNAME);
+        try {
+            Scanner read = new Scanner(file);
+            while (read.hasNextLine()) {
+
+                // Assuming words are separated by comma
+                String [] wordLine = read.nextLine().split(",");
+
+                // Add each of these words to arrayList
+                for (int i = 0; i < wordLine.length; i++) {
+                    wordBank.add(wordLine[i]);
+                }
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
-    // Returns the word bank in an ArrayList
-    private void parseByKeywords(String[] keywords) {
 
-    }
 
     public ArrayList<String> getWordBank() {
-
-        // for the purpose of testing until we get file IO working
-        for (int i = 0; i < test.length; i++){
-            fileContents.add(test[i]);
-        }
-
-        return fileContents;
+        return wordBank;
     }
 
 

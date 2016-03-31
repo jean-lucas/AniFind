@@ -1,7 +1,5 @@
 package se3a04.anifind.Experts;
 
-import java.util.ArrayList;
-
 /**
  * Created by Zachary on 3/28/2016.
  */
@@ -38,7 +36,7 @@ public class MobilityExpert extends Expert {
         return matchCounter;
     }
 
-    private ArrayList<String> getKeywordsFromWordBank() {
-        return wordBankAccess.getWordBank();
-    }
+//    private ArrayList<String> getKeywordsFromWordBank() {
+//        return wordBankAccess.getWordBank();
+//    }
 }
