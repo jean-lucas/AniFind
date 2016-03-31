@@ -32,8 +32,8 @@ public class DataController {
     private Context context;
 
     //data structures that contain all animals, and all questions and associated answers
-    private HashMap<String, Animal> listOfAnimals;
-    private HashMap<String, QA> listOfQAs;
+    private HashMap<String, Animal> animalMap;
+    private HashMap<String, QA> qaMap;
 
     //list containing all past results
     private ArrayList<Result> listOfResults;
@@ -43,8 +43,8 @@ public class DataController {
         this.dataAccess = new DatastoreAccess(context);
         this.resultsData = new ResultsDataStructure();
 
-        this.listOfAnimals = new HashMap<String, Animal>();
-        this.listOfQAs = new HashMap<String, QA>();
+        this.animalMap = new HashMap<String, Animal>();
+        this.qaMap = new HashMap<String, QA>();
         this.listOfResults = new ArrayList<Result>();
 
         initialize();
@@ -56,13 +56,15 @@ public class DataController {
         qaParse(dataAccess.getQuestionContent());
     }
 
-    public void sessionCompleted(Result sessionResult){
+    public void sessionCompleted(List<String[]> sessionAnswers, String selectedAnimal){
+        Result sessionResult = new Result(sessionAnswers,selectedAnimal);
         listOfResults.add(sessionResult);   //adds the latest session's result to result list
         resultParse(dataAccess.getResultsContent());
         checkForUpdates();
+        saveResults();
     }
 
-    //Parses lines from animal data set and creates animal obj's and adds them to listOfAnimals
+    //Parses lines from animal data set and creates animal obj's and adds them to animalMap
     private void animalParse(List<String> animalLines){
 
         if (animalLines == null) {
@@ -78,21 +80,21 @@ public class DataController {
             String lifestyle = attributes.get(1);
                 //attributes 2-6 may be multi-valued
             String[] habitat = attributes.get(2).split("\\s*-\\s*",-1);
-            String[] mobility = attributes.get(3).split("\\s*-\\s*",-1);
-            String[] location = attributes.get(4).split("\\s*-\\s*",-1);
-            String[] colors = attributes.get(5).split("\\s*-\\s*",-1);
+            String[] mobility = attributes.get(3).split("\\s*-\\s*", -1);
+            String[] location = attributes.get(4).split("\\s*-\\s*", -1);
+            String[] colors = attributes.get(5).split("\\s*-\\s*", -1);
             String[] size = attributes.get(6).split("\\s*-\\s*",-1);
             String imgFile = attributes.get(7);
 
             //Use temp animal attributes to create new animal obj
             Animal newAnimal = new Animal(name,lifestyle,habitat,mobility,location,colors,size,imgFile);
 
-            //Add the new animal to listOfAnimals
-            listOfAnimals.put(newAnimal.getName(),newAnimal);
+            //Add the new animal to animalMap
+            animalMap.put(newAnimal.getName(), newAnimal);
         }
     }
 
-    //Parses lines from question/answer data set and creates QA obj's and adds them to listOfQAs
+    //Parses lines from question/answer data set and creates QA obj's and adds them to qaMap
     private void qaParse(List<String> qaLines){
 
         if (qaLines == null) {
@@ -113,17 +115,17 @@ public class DataController {
             //Use temp Q elements to create new QA obj
             QA newQA = new QA(topic, question, answers, hints);
 
-            //Add the new QA obj to listOfQAs
-            listOfQAs.put(newQA.getTopic(),newQA);
+            //Add the new QA obj to qaMap
+            qaMap.put(newQA.getTopic(), newQA);
         }
     }
 
     public HashMap<String, Animal> getAnimals(){
-        return listOfAnimals;
+        return animalMap;
     }
 
     public HashMap<String, QA> getQuestions(){
-        return listOfQAs;
+        return qaMap;
     }
 
     //Parses lines from past results data set and creates Result obj's and adds them to listOfResults
@@ -136,12 +138,19 @@ public class DataController {
         for (String line : rLines){
             List<String> rElements = Arrays.asList(line.split("\\s*,\\s*"));
 
+            Log.d("rElements",rElements.toString());
             //Create temp result elements
             String animalName = rElements.get(0);
-            rElements.remove(0);
+//            rElements.remove(0);
+
+            List<String[]> answers = new ArrayList<String[]>();
+            for(int i = 1; i<rElements.size(); i++){
+                answers.set(i, rElements.get(i).split("\\s*-\\s*", -1));
+            }
+
 
             //Use temp result elements to create new Result obj
-            Result newResult = new Result(rElements,animalName);
+            Result newResult = new Result(answers,animalName);
 
             //Add the new Result obj to listOfResults
             listOfResults.add(newResult);
@@ -152,10 +161,19 @@ public class DataController {
         //TODO this method will compare past results with current QA data set and make necessary changes
     }
 
+    private void saveResults(){
+        List<String> resultLines = new ArrayList<String>();
+        for(Result e : listOfResults){
+            resultLines.add(e.toString());
+            Log.d("RESULTS", e.toString());
+        }
+        dataAccess.writeResultsContent(resultLines);
+    }
+
     private void resetAllDatastructures(){
         //TODO is this all this method needs to do?
-        listOfAnimals.clear();
-        listOfQAs.clear();
+        animalMap.clear();
+        qaMap.clear();
         listOfResults.clear();
     }
 }

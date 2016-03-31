@@ -16,15 +16,15 @@ import se3a04.anifind.DataEntities.Animal;
 
 public class Result {
 
-    private List<String> answers;  //List of user's answers associated with the selected animal
+    private List<String[]> answers;  //List of user's answers associated with the selected animal
     private String selectedAnimal;  //The name of the user selected animal
 
-    public Result(List<String> answers, String selectedAnimalName){
+    public Result(List<String[]> answers, String selectedAnimalName){
         this.answers = answers;
         this.selectedAnimal = selectedAnimalName;
     }
 
-    public List<String> getAnswers(){
+    public List<String[]> getAnswers(){
         return answers;
     }
 
@@ -43,14 +43,21 @@ public class Result {
         return likeness;
     }
 
+    @Override
     public String toString(){
-        String resultsOutput = "";
+        String resultsOutput = "Mat";
 
-        resultsOutput += selectedAnimal;
+        /*resultsOutput += selectedAnimal;
 
-        for (String s : answers){
-            resultsOutput += "," + s;
-        }
+        for (String[] s : answers){
+            resultsOutput += ",";
+            for(int i = 0; i<s.length; i++) {
+                resultsOutput += s[i];
+                if(s.length>1 && i < s.length-1)
+                    resultsOutput+= "-";
+            }
+
+        }*/
 
         return resultsOutput;
     }

@@ -12,6 +12,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ArrayList;
@@ -36,7 +37,7 @@ public class DatastoreAccess {
 
     public DatastoreAccess(Context context){
         animalFilename = "animal_facts.txt";
-        resultsFilename = "old_results.txt";
+        resultsFilename = "old_results_test.txt";
         questionsFilename = "question_answer_content.txt";
         imagesFilename = null;  //TODO
 
@@ -86,7 +87,18 @@ public class DatastoreAccess {
 
     private void writeToFile(String filename, List<String> content){
         //TODO
+        try {
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(mContext.openFileOutput(filename, Context.MODE_PRIVATE));
+            for (String e : content) {
+                outputStreamWriter.write(e);
+            }
+            outputStreamWriter.close();
+        }
+        catch (IOException e) {
+            Log.e("Exception", "File write failed: " + e.toString());
+        }
     }
+
 
     public void writeAnimalContent(List<String> content){
         writeToFile(animalFilename,content);
