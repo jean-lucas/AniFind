@@ -1,7 +1,5 @@
 package se3a04.anifind.Experts;
 
-
-
 /**
  * Created by Zachary on 3/28/2016.
  *
