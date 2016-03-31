@@ -51,7 +51,7 @@ public class QuestionActivity2 extends AppCompatActivity {
         String[] possibleAnswers = qa.getValidAnswers();
 
 
-        currentCheckBoxes = new CheckBox[possibleAnswers.length-1];
+        currentCheckBoxes = new CheckBox[possibleAnswers.length];
 //
         setupViewContent(qa.getTopic(), qa.getQuestion(), possibleAnswers);
 
@@ -61,14 +61,14 @@ public class QuestionActivity2 extends AppCompatActivity {
         this.currentTitle.setText(title);
         this.currentQuestion.setText(question);
 
-        for (int i = 1; i < possibleAnswerList.length; i++) {
+        for (int i =0; i < possibleAnswerList.length; i++) {
             CheckBox cb = new CheckBox(getApplicationContext());
             cb.setText(possibleAnswerList[i]);
             cb.setTextColor(Color.BLACK);
             cb.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
             selectBoxArea.addView(cb);
 
-            currentCheckBoxes[i-1] = cb;
+            currentCheckBoxes[i] = cb;
         }
 
     }

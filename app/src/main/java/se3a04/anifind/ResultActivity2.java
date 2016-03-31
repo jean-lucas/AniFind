@@ -42,6 +42,8 @@ public class ResultActivity2 extends AppCompatActivity {
 
 
 
+
+
         for (Animal a: animals) {
             animalList.append(a.toString() + "\n");
         }

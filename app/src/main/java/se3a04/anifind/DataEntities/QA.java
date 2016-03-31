@@ -55,6 +55,8 @@ public class QA implements Serializable {
     //for debugging purposes
     public String getAnswersGivenToString() {
         String s = "";
+        if (this.answerGivenByUsers == null) return s;
+
         for (String a : this.answerGivenByUsers) {
             s += a +", ";
         }

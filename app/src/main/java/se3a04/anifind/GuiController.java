@@ -1,6 +1,7 @@
 package se3a04.anifind;
 
 import android.content.Intent;
+import android.location.Address;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.location.places.Places;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -20,6 +23,24 @@ import java.util.Map;
 
 import se3a04.anifind.DataEntities.Animal;
 import se3a04.anifind.DataEntities.QA;
+
+
+/*
+    TODO: fill up the animal dataset
+    TODO: fix question dataset
+    TODO: hints for audio need to be better
+    TODO: radio buttons for certain questions
+    TODO: parse valid answers from audio questions
+    TODO: create error view
+    TODO: get animals with most points for result
+    TODO: add proper buttons in result acitivity
+    TODO: add questionType in QA object and the dataset
+    TODO: Fix size expert
+    TODO: create logic for location expert
+    TODO: remove a question to be asked, if an expert is commented out
+    TODO: if user selects Use current location, or Use current time, make sure the qa_map gets the right value saved!
+
+ */
 
 
 
@@ -221,6 +242,9 @@ public class GuiController extends AppCompatActivity {
             //send an arraylist of the animals
 //            Animal[] temp_animals = {animal_map.get("gorilla"), animal_map.get("kangoroo"), animal_map.get("goose")};
 
+
+
+
             Intent intent = new Intent(GuiController.this, ResultActivity2.class);
             intent.putExtra("animals", this.listOfAnimals);
             startActivityForResult(intent, RESULT_ACTIVITY_REQUEST_CODE);
@@ -244,8 +268,20 @@ public class GuiController extends AppCompatActivity {
 
 
     private void mapActivityLogic(Intent data) {
-        Toast.makeText(GuiController.this, data.getStringExtra("loc"), Toast.LENGTH_SHORT).show();
 
+
+        String[] locations =  data.getStringArrayExtra("loc");
+
+
+        qa_map.get("Location").setGivenAnswerByTopic(locations);
+
+        ArrayList<String> temp = new ArrayList<String>();
+
+        for (String t: qa_map.keySet()) {
+            temp.add(qa_map.get(t).getAnswersGivenToString());
+        }
+
+        Log.d("QA", temp.toString());
 
         Intent intent = new Intent(GuiController.this, HomeActivity2.class);
         startActivityForResult(intent, HOME_ACTIVITY_REQUEST_CODE);
