@@ -1,6 +1,5 @@
 QuestionTitle-QuestionToBeAsked-ValidAnswers-HintsForAnswers
-Color-Colors found on the animal?-red,blue,green,black,grey,purple,yellow,orange,brown,silver,white-hints
-Size-What is the estimated animal size?-1m,2m,3m,4m,5m-hints
+Color-Colors found on the animal?-red,blue,green,black,grey,purple,yellow,orange,brown,silver,white-black,white,beige...
 Habitat-Which habit seems natural for this animal?-woodlands,jungle,rain forest, desert,ocean,lakes-hints
 Mobility-How does this animal move around?-two legs,four legs, fins,more than four legs,wings-hints
 Time-When was this animal seen?-Morning,Daytime, Afternoon, Nighttime, Use current time-hints

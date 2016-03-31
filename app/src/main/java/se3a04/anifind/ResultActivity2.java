@@ -1,5 +1,6 @@
 package se3a04.anifind;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -48,6 +49,8 @@ public class ResultActivity2 extends AppCompatActivity {
     }
 
     public void goHomeButton(View view) {
+        Intent result_intent = new Intent();
+        setResult(1, result_intent);
         finish();
     }
 }

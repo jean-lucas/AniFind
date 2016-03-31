@@ -166,8 +166,11 @@ public class GuiController extends AppCompatActivity {
 
         //go to audio questions
         else {
-            Toast.makeText(GuiController.this, "AUDIO", Toast.LENGTH_SHORT).show();
-
+            for (String qa_topic: qa_map.keySet()) {
+                Intent intent = new Intent(GuiController.this, AudioActivity2.class);
+                intent.putExtra("qa", qa_map.get(qa_topic));
+                startActivityForResult(intent, AUDIO_ACTIVITY_REQUEST_CODE);
+            }
         }
     }
 

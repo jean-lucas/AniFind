@@ -5,4 +5,5 @@
     <string name="title_activity_home2">HomeActivity2</string>
     <string name="title_activity_question2">QuestionActivity2</string>
     <string name="title_activity_result_2">Result_Activity2</string>
+    <string name="title_activity_audio2">AudioActivity2</string>
 </resources>

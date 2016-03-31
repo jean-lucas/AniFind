@@ -17,7 +17,6 @@ public class QA implements Serializable {
     private String[] validAnswers;  //set of possible answers from user
     private String[] answerHints;   //helpful hints of answers given in the AudioActivity
 
-
     private String[] answerGivenByUsers;
 
     public QA(String topic, String qs, String[] answers, String[] hints) {
