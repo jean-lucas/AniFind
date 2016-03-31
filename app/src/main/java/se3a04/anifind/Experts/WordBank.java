@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class WordBank {
 
     // assuming the key words are stored in the below list directory
-    private static final String FILEPATHNAME = "assets/key_words";
+    private static final String FILEPATHNAME = "key_words";
     private ArrayList<String> wordBank = new ArrayList<String>();
 
 

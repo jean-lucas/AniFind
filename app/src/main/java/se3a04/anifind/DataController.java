@@ -144,8 +144,12 @@ public class DataController {
 //            rElements.remove(0);
 
             List<String[]> answers = new ArrayList<String[]>();
+            String[] emptyS = {""};
             for(int i = 1; i<rElements.size(); i++){
-                answers.set(i, rElements.get(i).split("\\s*-\\s*", -1));
+                Log.d("element",rElements.get(i));
+                String[] answerVals =  rElements.get(i).split("\\s*-\\s*", -1);
+                answers.add(emptyS);
+                answers.set(i-1,answerVals);
             }
 
 

@@ -45,9 +45,9 @@ public class Result {
 
     @Override
     public String toString(){
-        String resultsOutput = "Mat";
+        String resultsOutput = "";
 
-        /*resultsOutput += selectedAnimal;
+        resultsOutput += selectedAnimal;
 
         for (String[] s : answers){
             resultsOutput += ",";
@@ -57,7 +57,7 @@ public class Result {
                     resultsOutput+= "-";
             }
 
-        }*/
+        }
 
         return resultsOutput;
     }
