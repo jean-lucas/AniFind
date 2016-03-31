@@ -64,7 +64,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Reset Values"
-        android:id="@+id/resetButton"/>
+        android:id="@+id/resetButton"
+        android:onClick="resetCurrentValues"/>
 
     <Button
         android:layout_width="wrap_content"

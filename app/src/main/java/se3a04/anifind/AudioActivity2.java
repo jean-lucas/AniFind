@@ -27,10 +27,12 @@ public class AudioActivity2 extends AppCompatActivity {
     private Button startRecordingBtn;
     private Button nextButton;
     private Button resetButton;
+
     private TextView title;
     private TextView question;
     private TextView hintExamples;
     private TextView finalRecognizedSpeech;
+
     private ArrayList<String> possibleMatches;
 
     private String[] validAnswers;
@@ -46,6 +48,8 @@ public class AudioActivity2 extends AppCompatActivity {
 
         Bundle b = getIntent().getExtras();
         this.qa = (QA) b.getSerializable("qa");
+
+        possibleMatches  = new ArrayList<String>();
 
         String newTitle = qa.getTopic();
         String newQuestion = qa.getQuestion();
@@ -137,9 +141,10 @@ public class AudioActivity2 extends AppCompatActivity {
         if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
 
 
-            possibleMatches = new ArrayList<String>();
             possibleMatches = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
             HashSet<String> validMatches = new HashSet<>();
+
+            //get valid options based ont the QA type...
 
             Log.d("Audio_values", possibleMatches.toString());
             //filter for valid colors
@@ -170,10 +175,12 @@ public class AudioActivity2 extends AppCompatActivity {
 
 
 
+
+
     private boolean contains(String target, String[] values) {
 
         for (String s: values) {
-            if (s.equals(target)) {
+            if (s.equalsIgnoreCase(target)) {
                 return true;
             }
         }
@@ -184,5 +191,9 @@ public class AudioActivity2 extends AppCompatActivity {
     public void evaluateAudioAnswer(View view) {
 
         finish();
+    }
+
+    public void resetCurrentValues(View view) {
+        finalRecognizedSpeech.setText("");
     }
 }

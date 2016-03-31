@@ -6,4 +6,6 @@
     <string name="title_activity_question2">QuestionActivity2</string>
     <string name="title_activity_result_2">Result_Activity2</string>
     <string name="title_activity_audio2">AudioActivity2</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="google_maps_key">AIzaSyAnu54IEoV8zvkSbtjpDXcHHF9a0587toY</string>
 </resources>

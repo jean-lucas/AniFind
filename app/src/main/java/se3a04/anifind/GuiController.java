@@ -1,6 +1,7 @@
 package se3a04.anifind;
 
 import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 import se3a04.anifind.DataEntities.Animal;
@@ -44,6 +46,7 @@ public class GuiController extends AppCompatActivity {
     private final int AUDIO_ACTIVITY_REQUEST_CODE = 3;
     private final int RESULT_ACTIVITY_REQUEST_CODE = 4;
     private final int ERROR_ACTIVITY_REQUEST_CODE = 5;
+    private final int MAP_ACTIVITY_REQUEST_CODE = 6;
 
 
     //identification type, can have only two options
@@ -53,6 +56,10 @@ public class GuiController extends AppCompatActivity {
 
     //keeping track of how many questions have been attempted
     private int question_counter;
+
+
+    //user location object
+    Location loc;
 
 
 
@@ -104,9 +111,13 @@ public class GuiController extends AppCompatActivity {
         loading_spinner.setVisibility(View.GONE);
         goHome_btn.setVisibility(View.VISIBLE);
 
+        //get map stuff
+        Intent intent = new Intent(GuiController.this, MapsActivity.class);
+        startActivityForResult(intent, MAP_ACTIVITY_REQUEST_CODE);
 
-        Intent intent = new Intent(GuiController.this, HomeActivity2.class);
-        startActivityForResult(intent, HOME_ACTIVITY_REQUEST_CODE);
+
+//        Intent intent = new Intent(GuiController.this, HomeActivity2.class);
+//        startActivityForResult(intent, HOME_ACTIVITY_REQUEST_CODE);
 
 
     }
@@ -138,6 +149,10 @@ public class GuiController extends AppCompatActivity {
 
                 case ERROR_ACTIVITY_REQUEST_CODE:
                     //do something
+                    break;
+
+                case MAP_ACTIVITY_REQUEST_CODE:
+                    mapActivityLogic(data);
                     break;
 
                 default:
@@ -217,15 +232,24 @@ public class GuiController extends AppCompatActivity {
     }
 
     private void resultActivityLogic(Intent data) {
-        List<String[]> sessionAnswers = new ArrayList<String[]>();
-        for (String topic : qa_map.keySet()){
-            sessionAnswers.add(qa_map.get(topic).getAnswersGivenByUsers());
-        }
-        dataCtrl.sessionCompleted(sessionAnswers,"animal name test");
+//        List<String[]> sessionAnswers = new ArrayList<String[]>();
+//        for (String topic : qa_map.keySet()){
+//            sessionAnswers.add(qa_map.get(topic).getAnswersGivenByUsers());
+//        }
+//        dataCtrl.sessionCompleted(sessionAnswers,"animal name test");
 
         Toast.makeText(GuiController.this, "Welcome to results", Toast.LENGTH_SHORT).show();
     }
 
+
+
+    private void mapActivityLogic(Intent data) {
+        Toast.makeText(GuiController.this, data.getStringExtra("loc"), Toast.LENGTH_SHORT).show();
+
+
+        Intent intent = new Intent(GuiController.this, HomeActivity2.class);
+        startActivityForResult(intent, HOME_ACTIVITY_REQUEST_CODE);
+    }
     //reset the activity
     public void goHomeButton(View view) {
         recreate();

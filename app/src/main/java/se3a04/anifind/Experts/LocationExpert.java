@@ -1,5 +1,7 @@
 package se3a04.anifind.Experts;
 
+
+
 /**
  * Created by Zachary on 3/28/2016.
  * Points
@@ -11,6 +13,7 @@ package se3a04.anifind.Experts;
 public class LocationExpert extends Expert {
 
     private final String EXPERTISE = "Location";
+
 
      /* This variable is will implement the Google Maps API
     and allow us to get the users current location.
