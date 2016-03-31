@@ -9,6 +9,11 @@ import se3a04.anifind.DataEntities.Animal;
 /**
  * An ADT for a Result object. Holds a user session's answers and selected animal.
  */
+
+/**
+ * TODO -change compareTo method to return an int that is proportional to likeness
+ */
+
 public class Result {
 
     private List<String> answers;  //List of user's answers associated with the selected animal
@@ -27,11 +32,15 @@ public class Result {
         return selectedAnimal;
     }
 
-    public boolean compareTo(Result otherResult){
-        boolean equal = false;
-        if (this.answers.equals(otherResult) && this.selectedAnimal.equals(otherResult.selectedAnimal))
-            equal = true;
-        return equal;
+    //Returns an int value that is proportional to the likeness of the 2 Result obj's
+    public int compareTo(Result otherResult){
+        int likeness = 0;
+        if (this.selectedAnimal.equals(otherResult.selectedAnimal))
+            for (int i = 0; i<6; i++){
+                if(this.answers.get(i).equals(otherResult.answers.get(i)))
+                    likeness++;
+            }
+        return likeness;
     }
 
     public String toString(){
