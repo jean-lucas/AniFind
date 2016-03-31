@@ -1,12 +1,6 @@
-package se3a04.anifind;
+package se3a04.anifind.DataEntities;
 
-import android.util.Log;
-
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
-
-import se3a04.anifind.DataEntities.Animal;
 
 /**
  * An ADT for a Result object. Holds a user session's answers and selected animal.

@@ -33,13 +33,15 @@ import se3a04.anifind.DataEntities.QA;
     TODO: parse valid answers from audio questions
     TODO: create error view
     TODO: get animals with most points for result
-    TODO: add proper buttons in result acitivity
+    TODO: add proper buttons in result activity
     TODO: add questionType in QA object and the dataset
     TODO: Fix size expert
     TODO: create logic for location expert
     TODO: remove a question to be asked, if an expert is commented out
     TODO: if user selects Use current location, or Use current time, make sure the qa_map gets the right value saved!
-
+    TODO: VERY IMPORTANT: Once the animal dataset is finished, get all possible attributes and store them as asnwersToBeParsedByAudio withing the QA object
+    TODO: In Audioacitivy for the size question be specific on how large the sizes are, and make the speaker say Very small, Small, Medium, etc..
+    TODO: In Audio activy tell the user when only ONE answer is allowed
  */
 
 
@@ -270,19 +272,14 @@ public class GuiController extends AppCompatActivity {
     private void mapActivityLogic(Intent data) {
 
 
+        //get the location information retrieved from mapactivity,
+        //and save it to the respective qa object
         String[] locations =  data.getStringArrayExtra("loc");
-
 
         qa_map.get("Location").setGivenAnswerByTopic(locations);
 
-        ArrayList<String> temp = new ArrayList<String>();
 
-        for (String t: qa_map.keySet()) {
-            temp.add(qa_map.get(t).getAnswersGivenToString());
-        }
-
-        Log.d("QA", temp.toString());
-
+        //now start the app
         Intent intent = new Intent(GuiController.this, HomeActivity2.class);
         startActivityForResult(intent, HOME_ACTIVITY_REQUEST_CODE);
     }

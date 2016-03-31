@@ -146,18 +146,28 @@ public class AudioActivity2 extends AppCompatActivity {
 
             //get valid options based ont the QA type...
 
+            validMatches = parseAudioValues(qa.getTopic());
+
+            //for certain topics we need to only allow one value
+            if (qa.getTopic().equals("Size")) {
+                if (validMatches.size() > 1) {
+                    Toast.makeText(AudioActivity2.this, "Only one value allowed! Try again", Toast.LENGTH_SHORT).show();
+                    resetCurrentValues(this.resetButton);
+                }
+            }
+
             Log.d("Audio_values", possibleMatches.toString());
             //filter for valid colors
-            for (String s: possibleMatches) {
-                String[] values = s.split(" ");
-
-                for (String v: values) {
-                    if (contains(v, validAnswers)) {
-                        validMatches.add(v);
-                    }
-                }
-
-            }
+//            for (String s: possibleMatches) {
+//                String[] values = s.split(" ");
+//
+//                for (String v: values) {
+//                    if (contains(v, validAnswers)) {
+//                        validMatches.add(v);
+//                    }
+//                }
+//
+//            }
 
 
             for (String s: validMatches) {
@@ -173,14 +183,75 @@ public class AudioActivity2 extends AppCompatActivity {
 
 
 
+    private HashSet<String> parseAudioValues(String topic) {
+        HashSet<String> tempMatches = new HashSet<>();
 
+        switch(topic) {
+
+            case "Color":
+                //for color we can simply split the values and compare it
+                // to the possible answers in the qa object
+                for (String s: possibleMatches) {
+                    String[] values = s.split(" ");
+
+                    for (String v: values) {
+                        if (contains(v, validAnswers)) {
+                            tempMatches.add(v);
+                        }
+                    }
+                }
+                break;
+
+            case "Location":
+
+                for (String s: possibleMatches) {
+                    String[] values = s.split(",");
+
+                    for (String v: values) {
+                        if (contains(v, validAnswers)) {
+                            tempMatches.add(v);
+                        }
+                    }
+                }
+
+                break;
+
+            //Only one size allowrd
+            case "Size":
+
+                for (String s: possibleMatches) {
+                    String[] values = s.split(",");
+                    for (String v: values) {
+                        for (String p: validAnswers) {
+                            if (contains(v, p.split("\\s\\("))) {
+                                tempMatches.add(s);
+                            }
+                        }
+                    }
+                }
+
+                break;
+
+            case "Habitat":
+                break;
+
+            case "Mobility":
+                break;
+
+            case "Time":
+                break;
+
+        }
+
+        return tempMatches;
+    }
 
 
 
     private boolean contains(String target, String[] values) {
 
         for (String s: values) {
-            if (s.equalsIgnoreCase(target)) {
+            if (s.toLowerCase().equals(target.toLowerCase())) {
                 return true;
             }
         }
