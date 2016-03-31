@@ -42,6 +42,8 @@ import se3a04.anifind.DataEntities.QA;
     TODO: VERY IMPORTANT: Once the animal dataset is finished, get all possible attributes and store them as asnwersToBeParsedByAudio withing the QA object
     TODO: In Audioacitivy for the size question be specific on how large the sizes are, and make the speaker say Very small, Small, Medium, etc..
     TODO: In Audio activy tell the user when only ONE answer is allowed
+
+    TODO: USER MANUAL
  */
 
 
