@@ -3,8 +3,6 @@ package se3a04.anifind.ActivitiesLogic;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -12,9 +10,9 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
+import android.widget.RadioGroup;
+import android.widget.RadioButton
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -25,8 +23,10 @@ public class QuestionActivity2 extends AppCompatActivity {
 
     private TextView currentTitle;
     private TextView currentQuestion;
-    private LinearLayout selectBoxArea;
+    private LinearLayout selectBoxGroup;
+    private RadioGroup radiouGroup
     private CheckBox[] currentCheckBoxes;
+    private RadioButton[] currentRadioButtons;
 
     private QA qa;
 
@@ -39,15 +39,25 @@ public class QuestionActivity2 extends AppCompatActivity {
 
         currentTitle = (TextView) findViewById(R.id.question_title);
         currentQuestion = (TextView) findViewById(R.id.question_text);
-        selectBoxArea = (LinearLayout) findViewById(R.id.possible_answers);
-
+        selectBoxGroup = (LinearLayout) findViewById(R.id.possible_answers);
+        radiouGroup = (RadioGroup) findViewById(R.id.possible_answers_radio);
+        System a;
 //
         Bundle b = getIntent().getExtras();
         this.qa = (QA) b.getSerializable("qa");
 
+        //check if we want radio buttons or select boxes
 
-        Log.d("QA_DEBUG", qa.getTopic());
-        Log.d("QA_DEBUG", qa.getValidAnswers()[0]);
+        if (qa.getMultiVal()) {
+            this.radiouGroup.setVisibility(View.GONE);
+        }
+
+        else {
+            this.selectBoxGroup.setVisibility(View.GONE);
+        }
+
+
+
 
         String[] possibleAnswers = qa.getValidAnswers();
 
@@ -67,7 +77,7 @@ public class QuestionActivity2 extends AppCompatActivity {
             cb.setText(possibleAnswerList[i]);
             cb.setTextColor(Color.BLACK);
             cb.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
-            selectBoxArea.addView(cb);
+            selectBoxGroup.addView(cb);
 
             currentCheckBoxes[i] = cb;
         }

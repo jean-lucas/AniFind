@@ -122,10 +122,7 @@ public class DataController {
             String question = qElements.get(1);
             String[] answers = qElements.get(2).split("\\s*,\\s*", -1);
             String[] hints = qElements.get(3).split("\\s*,\\s*", -1);
-
-            boolean multiV = true;
-            if(topic.equals("Time"))
-                multiV = false;
+            boolean multiV = (qElements.get(4).equals("1"));
 
             //Use temp Q elements to create new QA obj
             QA newQA = new QA(topic, question, answers, hints, multiV);

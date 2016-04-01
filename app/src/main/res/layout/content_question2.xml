@@ -38,10 +38,15 @@
         android:orientation="vertical"
         android:id="@+id/possible_answers">
 
-
-
-
     </LinearLayout>
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/possible_answers_radio">
+
+    </RadioGroup>
 
     <Button
         android:layout_width="wrap_content"

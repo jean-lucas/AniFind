@@ -36,7 +36,6 @@ import se3a04.anifind.Misc.CustomComparator;
     TODO: create error view
     TODO: get animals with most points for result
     TODO: add proper buttons in result activity
-    TODO: add questionType in QA object and the dataset
     TODO: Fix size expert
     TODO: create logic for location expert
     TODO: remove a question to be asked, if an expert is commented out
