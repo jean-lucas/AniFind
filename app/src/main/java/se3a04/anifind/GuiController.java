@@ -5,6 +5,7 @@ import android.location.Location;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -126,6 +127,15 @@ public class GuiController extends AppCompatActivity {
             listOfAnimals.add(animal_map.get(name));
         }
 
+        //if an expert is not activated, remove it from the qa_map;
+        ArrayList<String> questionsToRemove = new ArrayList<String>();
+        for (String topic: qa_map.keySet()) {
+            if (blackBoard.getActiveExperts().split(topic).length == 1) {
+                questionsToRemove.add(topic);
+            }
+        }
+
+        for (String topic : questionsToRemove) qa_map.remove(topic);
 
 
         this.question_counter = 0;
@@ -137,15 +147,20 @@ public class GuiController extends AppCompatActivity {
         loading_spinner.setVisibility(View.GONE);
         goHome_btn.setVisibility(View.VISIBLE);
 
-        //get map stuff
-        Intent intent = new Intent(GuiController.this, MapsActivity.class);
-        startActivityForResult(intent, MAP_ACTIVITY_REQUEST_CODE);
 
+        //now start the activities,
+        //if we removed Location expert go straight to home,
+        //else go to map activity first
+        if (questionsToRemove.contains("Location")) {
+            Intent intent = new Intent(GuiController.this, HomeActivity2.class);
+            startActivityForResult(intent, HOME_ACTIVITY_REQUEST_CODE);
+        }
 
-//        Intent intent = new Intent(GuiController.this, HomeActivity2.class);
-//        startActivityForResult(intent, HOME_ACTIVITY_REQUEST_CODE);
-
-
+        else {
+            //get map stuff
+            Intent intent = new Intent(GuiController.this, MapsActivity.class);
+            startActivityForResult(intent, MAP_ACTIVITY_REQUEST_CODE);
+        }
     }
 
 

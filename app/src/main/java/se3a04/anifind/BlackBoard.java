@@ -32,10 +32,10 @@ public class BlackBoard {
 
         this.experts = new Expert[] {
                 new HabitatExpert(),
-                new LocationExpert(),
+//                new LocationExpert(),
                 new MobilityExpert(),
-                new SizeExpert(),
-                new TimeExpert(),
+//                new SizeExpert(),
+//                new TimeExpert(),
                 new ColourExpert()
         };
     }
@@ -58,34 +58,34 @@ public class BlackBoard {
                         a.updatePoint(pnt);
                         break;
 
-//                    case "Location":
-//                        pnt = e.validateAttribute(a.getLocation(), qas.get("Location").getAnswersGivenByUsers());
-//                        a.updatePoint(pnt);
-//                        break;
+                    case "Location":
+                        pnt = e.validateAttribute(a.getLocation(), qas.get("Location").getAnswersGivenByUsers());
+                        a.updatePoint(pnt);
+                        break;
 
                     case "Mobility":
                         pnt = e.validateAttribute(a.getMobility(), qas.get("Mobility").getAnswersGivenByUsers());
                         a.updatePoint(pnt);
                         break;
 
-//                    case "Size":
-//                        pnt = e.validateAttribute(a.getSize(), qas.get("Size").getAnswersGivenByUsers());
-//                        a.updatePoint(pnt);
-//                        break;
+                    case "Size":
+                        pnt = e.validateAttribute(a.getSize(), qas.get("Size").getAnswersGivenByUsers());
+                        a.updatePoint(pnt);
+                        break;
 
                     case "Colour":
-                        pnt = e.validateAttribute(a.getColors(), qas.get("Color").getAnswersGivenByUsers());
+                        pnt = e.validateAttribute(a.getColors(), qas.get("Colour").getAnswersGivenByUsers());
                         a.updatePoint(pnt);
                         Log.d("POINT_CHECK", "points given = " + pnt);
                         break;
 
-//                    case "Time":
-//                        //the split("##") is used just to turn a string into an array with 1 element.
-//                        //the symbol ## is used since it is safe to assume it will not conflict with the actual
-//                        //contents of the string
-//                        pnt = e.validateAttribute(a.getLifestyle().split("##"), qas.get("Lifestyle").getAnswersGivenByUsers());
-//                        a.updatePoint(pnt);
-//                        break;
+                    case "Time":
+                        //the split("##") is used just to turn a string into an array with 1 element.
+                        //the symbol ## is used since it is safe to assume it will not conflict with the actual
+                        //contents of the string
+                        pnt = e.validateAttribute(a.getLifestyle().split("##"), qas.get("Lifestyle").getAnswersGivenByUsers());
+                        a.updatePoint(pnt);
+                        break;
 
                     default:
                         a.updatePoint(0);
@@ -95,6 +95,20 @@ public class BlackBoard {
         }
 
         return animals;
+    }
+
+
+
+
+    public String getActiveExperts() {
+
+        String activeExperts = "";
+
+        for (Expert e: this.experts) {
+            activeExperts += e.getExpertise() + ", ";
+        }
+
+        return activeExperts;
     }
 }
 
