@@ -1,4 +1,4 @@
-package se3a04.anifind;
+package se3a04.anifind.ActivitiesLogic;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -19,6 +19,7 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 
 import se3a04.anifind.DataEntities.QA;
+import se3a04.anifind.R;
 
 public class QuestionActivity2 extends AppCompatActivity {
 

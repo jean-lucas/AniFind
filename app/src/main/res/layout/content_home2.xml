@@ -11,7 +11,7 @@
     android:gravity="center|top"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="se3a04.anifind.HomeActivity2"
+    tools:context=".ActivitiesLogic.HomeActivity2"
     tools:showIn="@layout/activity_home2">
 
 

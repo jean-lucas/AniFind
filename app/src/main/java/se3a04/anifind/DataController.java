@@ -11,6 +11,7 @@ import java.util.List;
 import se3a04.anifind.DataEntities.Animal;
 import se3a04.anifind.DataEntities.QA;
 import se3a04.anifind.DataEntities.Result;
+import se3a04.anifind.DataEntities.ResultsDataStructure;
 
 /**
  * Created by Mathew on 2016-03-29.

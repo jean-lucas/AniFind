@@ -1,4 +1,4 @@
-package se3a04.anifind;
+package se3a04.anifind.DataEntities;
 
 import java.util.ArrayList;
 

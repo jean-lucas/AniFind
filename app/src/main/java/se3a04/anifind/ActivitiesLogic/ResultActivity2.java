@@ -1,4 +1,4 @@
-package se3a04.anifind;
+package se3a04.anifind.ActivitiesLogic;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import se3a04.anifind.DataEntities.Animal;
+import se3a04.anifind.R;
 
 public class ResultActivity2 extends AppCompatActivity {
 

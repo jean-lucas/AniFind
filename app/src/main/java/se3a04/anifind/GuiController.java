@@ -1,29 +1,29 @@
 package se3a04.anifind;
 
 import android.content.Intent;
-import android.location.Address;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.location.places.Places;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 
+import se3a04.anifind.ActivitiesLogic.AudioActivity2;
+import se3a04.anifind.ActivitiesLogic.HomeActivity2;
+import se3a04.anifind.ActivitiesLogic.MapsActivity;
+import se3a04.anifind.ActivitiesLogic.QuestionActivity2;
+import se3a04.anifind.ActivitiesLogic.ResultActivity2;
 import se3a04.anifind.DataEntities.Animal;
 import se3a04.anifind.DataEntities.QA;
+import se3a04.anifind.Misc.CustomComparator;
 
 
 /*

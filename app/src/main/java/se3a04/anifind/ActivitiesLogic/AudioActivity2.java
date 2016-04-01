@@ -1,4 +1,4 @@
-package se3a04.anifind;
+package se3a04.anifind.ActivitiesLogic;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,10 +6,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -20,6 +17,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 import se3a04.anifind.DataEntities.QA;
+import se3a04.anifind.R;
 
 public class AudioActivity2 extends AppCompatActivity {
 
