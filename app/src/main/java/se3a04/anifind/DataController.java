@@ -122,8 +122,12 @@ public class DataController {
             String[] answers = qElements.get(2).split("\\s*,\\s*", -1);
             String[] hints = qElements.get(3).split("\\s*,\\s*", -1);
 
+            boolean multiV = true;
+            if(topic.equals("Time"))
+                multiV = false;
+
             //Use temp Q elements to create new QA obj
-            QA newQA = new QA(topic, question, answers, hints);
+            QA newQA = new QA(topic, question, answers, hints, multiV);
 
             //Add the new QA obj to qaMap
             qaMap.put(newQA.getTopic(), newQA);

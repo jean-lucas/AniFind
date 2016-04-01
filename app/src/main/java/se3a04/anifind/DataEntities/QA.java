@@ -19,12 +19,15 @@ public class QA implements Serializable {
 
     private String[] answerGivenByUsers;
 
-    public QA(String topic, String qs, String[] answers, String[] hints) {
+    private boolean multiVal;
+
+    public QA(String topic, String qs, String[] answers, String[] hints, boolean multiVal) {
         this.topic = topic;
         this.question = qs;
         this.validAnswers = answers;
         this.answerHints = hints;
         this.answerGivenByUsers = null; //initially empty
+        this.multiVal = multiVal;
     }
 
 
@@ -47,6 +50,8 @@ public class QA implements Serializable {
     public String[] getAnswersGivenByUsers() {
         return this.answerGivenByUsers;
     }
+
+    public boolean getMultiVal(){ return this.multiVal; }
 
     public void setGivenAnswerByTopic(String[] answers) {
         this.answerGivenByUsers = answers;
