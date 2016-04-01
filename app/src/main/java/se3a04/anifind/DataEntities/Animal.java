@@ -15,14 +15,14 @@ public class Animal implements Serializable {
     private String[] colors;    //for color expert
     private String[] size;      //for size expert
 
-    private String imgFileName;
+    //private String imgFileName;
 
     private int points;         //points assigned from experts
 
     private int NUMBER_OF_PROPERTIES = 7;   //number of attributes DONT THINK THIS IS NEEDED
 
 
-    public Animal(String name, String lifestyle, String[] habitat, String[] mobility, String[] location, String[] colors, String[] size, String imgFileName) {
+    public Animal(String name, String lifestyle, String[] habitat, String[] mobility, String[] location, String[] colors, String[] size) {
         this.name = name;
         this.lifestyle = lifestyle;
         this.locations = location;
@@ -31,7 +31,7 @@ public class Animal implements Serializable {
         this.colors = colors;
         this.size = size;
 
-        this.imgFileName = imgFileName;
+        //this.imgFileName = imgFileName;
 
         this.points = 0;
     }
@@ -65,9 +65,9 @@ public class Animal implements Serializable {
         return size;
     }
 
-    public String getImgFileName() {
+    /*public String getImgFileName() {
         return imgFileName;
-    }
+    }*/
 
     public int getPoints() {
         return points;

@@ -74,21 +74,30 @@ public class DataController {
         }
 
         for (String line : animalLines) {
-            List<String> attributes = Arrays.asList(line.split("\\s*,\\s*"));
+            List<String> attributes = Arrays.asList(line.split("\\s*,\\s*",-1));
 
+            Log.d("attr", Integer.toString(attributes.size()));
+            Log.d("attr",attributes.toString());
+            Log.d("attr",attributes.get(0));
+            Log.d("attr",attributes.get(1));
+            Log.d("attr",attributes.get(2));
+            Log.d("attr",attributes.get(3));
+            Log.d("attr",attributes.get(4));
+            Log.d("attr",attributes.get(5));
+            Log.d("attr",attributes.get(6));
             //Create temp animal attributes
             String name = attributes.get(0);
-            String lifestyle = attributes.get(1);
+            String lifestyle = attributes.get(5);
                 //attributes 2-6 may be multi-valued
             String[] habitat = attributes.get(2).split("\\s*-\\s*",-1);
-            String[] mobility = attributes.get(3).split("\\s*-\\s*", -1);
-            String[] location = attributes.get(4).split("\\s*-\\s*", -1);
-            String[] colors = attributes.get(5).split("\\s*-\\s*", -1);
-            String[] size = attributes.get(6).split("\\s*-\\s*",-1);
-            String imgFile = attributes.get(7);
+            String[] mobility = attributes.get(6).split("\\s*-\\s*", -1);
+            String[] location = attributes.get(1).split("\\s*-\\s*", -1);
+            String[] colors = attributes.get(3).split("\\s*-\\s*", -1);
+            String[] size = attributes.get(4).split("\\s*-\\s*", -1);
+            //String imgFile = attributes.get(7);
 
             //Use temp animal attributes to create new animal obj
-            Animal newAnimal = new Animal(name,lifestyle,habitat,mobility,location,colors,size,imgFile);
+            Animal newAnimal = new Animal(name,lifestyle,habitat,mobility,location,colors,size);
 
             //Add the new animal to animalMap
             animalMap.put(newAnimal.getName(), newAnimal);
