@@ -52,7 +52,7 @@ public class ColourExpert extends Expert {
         for (String attribute: animalAttributes) {
             for (String target: valuesToCompare) {
 
-                if (attribute.equals(target)) {
+                if (attribute.equalsIgnoreCase(target)) {
                     matchCounter++;
                 }
             }
