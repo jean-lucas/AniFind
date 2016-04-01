@@ -53,20 +53,20 @@ public class BlackBoard {
 
                 switch (e.getExpertise()) {
 
-//                    case "Habitat":
-//                        pnt = e.validateAttribute(a.getHabitat(), qas.get("Habitat").getAnswersGivenByUsers());
-//                        a.updatePoint(pnt);
-//                        break;
+                    case "Habitat":
+                        pnt = e.validateAttribute(a.getHabitat(), qas.get("Habitat").getAnswersGivenByUsers());
+                        a.updatePoint(pnt);
+                        break;
 
 //                    case "Location":
 //                        pnt = e.validateAttribute(a.getLocation(), qas.get("Location").getAnswersGivenByUsers());
 //                        a.updatePoint(pnt);
 //                        break;
 
-//                    case "Mobility":
-//                        pnt = e.validateAttribute(a.getMobility(), qas.get("Mobility").getAnswersGivenByUsers());
-//                        a.updatePoint(pnt);
-//                        break;
+                    case "Mobility":
+                        pnt = e.validateAttribute(a.getMobility(), qas.get("Mobility").getAnswersGivenByUsers());
+                        a.updatePoint(pnt);
+                        break;
 
 //                    case "Size":
 //                        pnt = e.validateAttribute(a.getSize(), qas.get("Size").getAnswersGivenByUsers());

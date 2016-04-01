@@ -1,5 +1,5 @@
 Name,Location,Habitat,Colors,Size,Lifestyle,Mobility
-Adelie Penguin, , Antarctic land-ocean, Black with white chest, 40cm-75cm, Diurnal, 
+Adelie Penguin, , Antarctic land-ocean, Black with white chest, 40cm-75cm, Diurnal,
 Affenpinscher, Germany, , Black-Grey, 25cm, , 
 Afghan Hound, Afghanistan, , Black-White-Brown-Gold, 68cm, , 
 African Bush Elephant, , Forest  savannah-flood plains, Grey-Brown, 3m-3.5m, Diurnal, 
@@ -97,7 +97,7 @@ Border Terrier, Great Britain, , Tan-Fawn-Black-Brown-Grey, , ,
 Bornean Orang utan, , Lowland forest-peat-swamps, Red-Orange-Brown-Grey-Black, 1.25m-1.5m, Diurnal, 
 borneo elephant, , Rainforest-tropical woodland, Grey-Brown-Black, 2m-3m, Herd, 
 Boston Terrier, North America, , Black-Red-Brown-White-Tan-Grey, , , 
-bottle nosed dolphin, , Warm harbours-bays, Light grey-Dark grey, 2.5m-4m, Pod, fin
+bottle nosed dolphin, , Warm harbours-bays, Light grey-Dark grey, 2.5m-4m, Pod, fins
 Boxer Dog, Germany, , Tan-Black-Brown, , , 
 Boykin Spaniel, North America, , Brown-Black-Tan-White, , , 
 Brazilian Terrier, Brazil, , Black-Brown-Tan-White, , , 
@@ -105,7 +105,7 @@ brown bear, , Forest-mountainous regions, Brown-Black-Tan, 1.5m-2.8m, Solitary,
 budgerigar, , Open woodland-grassland near water, Black-White-Grey-Green-Blue-Yellow, 15cm-20cm, Flock, 
 buffalo, , Woodland-grass pastures, Brown-Grey-Black, 1.7m-1.8m, Herd, 
 BullMastiff, Great Britain, , Brown-Black-Tan-Fawn-Cream, , , 
-bull shark, , Shallow-tropical waters, Blue-Grey, 2.1m-3.5m, Solitary, fin
+bull shark, , Shallow-tropical waters, Blue-Grey, 2.1m-3.5m, Solitary, fins
 Bull Terrier, Great Britain, , Black-Brown-Tan-White, , , 
 Bulldog, Great Britain, , Tan-Fawn-White-Brown-Black, , , 
 bullfrog, , Lakes  ponds  rivers-streams, Black-Green-Grey-Brown-Yellow, 9cm-15cm, Solitary, leg
@@ -217,7 +217,7 @@ falcon, , High areas like mountains-cliffs, Black-Grey-Brown-White-Yellow, 22cm-
 fennec fox, , Sandy Desert, Sandy-White, 35cm-40cm, Solitary, 
 ferret, , Forest-grasslands, Brown-Black-Tan-Grey, 40cm-50cm, Solitary, 
 Field Spaniel, Great Britain, , , 46cm, , 
-fin whale, , Deep offshore waters, Grey-Black-White-Blue, 6.5m-24m, Herd, 
+fin whale, , Deep offshore waters, Grey-Black-White-Blue, 6.5m-24m, Herd,
 Finnish Spitz, Finland, , , 50cm, , 
 fire bellied toad, , Forests  jungle-marshes, Black-Green-Grey-Brown-Yellow-Orange-Red, 4cm-7cm, Solitary, 
 fish, , All freshwater-saltwater habitats, Black-White-Yellow-Orange-Silver-Blue-Green-Red, 2.5cm-1m, , 
@@ -275,7 +275,7 @@ grizzly bear, , Forest-mountainous regions, Dark brown-Black, 2.1m-3m, Solitary,
 grouse, , Forest  shrubland-grassy plains, Black-White-Brown-Yellow-Green-Blue-Red, 31cm-95cm, Flock, tail-leg
 guinea fowl, , Forest  desert-grasslands, Black-White-Brown-Red-Yellow-White-Grey, 40cm-71cm, Flock, 
 guinea pig, , Tropical grassland areas, Grey-Tan-Brown-Black-White-Orange, 20-25cm, Solitary, 
-Guppy, South America, Rivers in the Amazon, , 4cm-7.6cm, , fin
+Guppy, South America, Rivers in the Amazon, , 4cm-7.6cm, , fins
 hammerhead shark, , Warm waters-continental shelves, Grey-Brown-White, 3.5-6m, Herd, 
 hamster, , Dry deserts-sand dunes, Tan-Brown-White-Black, 5-28cm, Solitary, 
 hare, , Dense vegetation-open fields, Tan-Brown-White-Black, 36-71cm, Solitary, 
@@ -371,7 +371,7 @@ Meerkat, , Semi-desert-scrub-land, Light Brown-Tan-Yellow-White-Brown-Black, 25c
 Millipede, , Moist micro-habitats, Red-Black-Yellow-Orange-Brown, 1.5-38cm, , 
 minke whale, , Ocean surface in temperate waters, Black-Brown-Grey-White, 6.9-10.7m, Herd, 
 mole, , Woodland  grassland-farmland, Brown-Grey-Black-White, 12-15cm, Solitary, 
-Molly, Central America, Rivers in the Amazon Rainforest, Brown-Black-Yellow-White-Green-Blue-Red-Orange, 5cm-10cm, , fin
+Molly, Central America, Rivers in the Amazon Rainforest, Brown-Black-Yellow-White-Green-Blue-Red-Orange, 5cm-10cm, , fins
 mongoose, , Open forests-grass plains, Tan-Brown-Grey, 18-120cm, Gang, 
 monitor lizard, , River banks-coastal forests, Tan-Brown-Grey-Green, 12-310cm, Solitary, 
 monkey, , Tropical forests  grasslands-mountainous plains, Tan-Brown-Grey-Black-White-Yellow, 14-100cm, Troop, 
@@ -484,11 +484,11 @@ sheep, , Grass plains-mountainous regions, Brown-White-Yellow-Black, 90-140cm, H
 Shih Tzu, China, , , 28cm, , 
 Shrimp, Worldwide, All water regions around the world, , 0.3-5cm, , 
 Siamese, Thailand, , Cream-Brown-Lilac, , , 
-Siamese Fighting Fish, Southeast Asia, Mekong river in south-east Asia, , 6cm-8cm, , tail-fin
+Siamese Fighting Fish, Southeast Asia, Mekong river in south-east Asia, , 6cm-8cm, , tail-fins
 Siberian, Russia, , Cream-Brown-Lilac-Fawn-Golden-Black-White, , , 
 Siberian Husky, North America, , , 58cm, , 
 siberian tiger, , Dense tropical forest, Orange-Black-White, 2.4m-3.7m, Solitary, 
-Silver Dollar, South America, Tropical well-vegetated rivers, Silver-Grey, 5cm-14cm, , fin
+Silver Dollar, South America, Tropical well-vegetated rivers, Silver-Grey, 5cm-14cm, , fins
 skunk, , Open woodland-dense shrub, Black-White-Grey, 40-80cm, Solitary, 
 sloth, , Tall trees in tropical rainforest, Brown-Tan-White-Grey, 50-70cm, Solitary, 
 slow worm, , Grassland-woodlands, Black-Brown-Tan-Yellow-Grey, 20cm-50cm, Solitary, 
@@ -577,7 +577,7 @@ woodpecker, , Dense forest-woodland, Black-White-Grey-Tan-Brown-Red-Green, 8-58c
 woolly mammoth, , Arctic Tundra, Brown-Black-Tan, 1.8m-4m, Herd, 
 woolly monkey, , Humid-mature tropical forests, Black-Brown-Grey, 50-60cm, Troop, 
 Wrasse, Atlantic  Indian and Pacific Oceans, Coral reefs-rocky shores, Grey-Black-Brown-White-Yellow-Green-Blue-Orange, 11cm-250cm, , 
-X Ray Tetra, , Amazon coastal waters, Silver-Yellow-Black-White, 3.2cm-5cm, Diurnal, fin
+X Ray Tetra, , Amazon coastal waters, Silver-Yellow-Black-White, 3.2cm-5cm, Diurnal, fins
 yak, , Alpine meadows-open hills, Brown-Black-White, 2-2.2m, Herd, 
 yellow eyed penguin, , Rocky Antarctic Islands, Black-White-Grey-Brown-Yellow, 60cm-75cm, Colony, 
 Yorkshire Terrier, Great Britain, , , 22cm, , 

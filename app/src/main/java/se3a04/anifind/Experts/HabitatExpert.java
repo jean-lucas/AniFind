@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class HabitatExpert extends Expert {
 
     private final String EXPERTISE = "Habitat";
-    private WordBank wordBankAccess = new WordBank();
+//    private WordBank wordBankAccess = new WordBank();
 
     @Override
     public String getExpertise() {
@@ -23,17 +23,18 @@ public class HabitatExpert extends Expert {
 
         for (String attribute : animalAttributes) {
             for (String target : valuesToCompare) {
-                if (attribute.equals(target)) {
+                if (attribute.equalsIgnoreCase(target)) {
                     matchCounter += 2;
-                } else {
-                    for (String word : wordBankAccess.getWordBank()) {
-                        if (word.contains(attribute)) {
-                            matchCounter++;
-                        }
-
-
-                    }
                 }
+//                else {
+//                    for (String word : wordBankAccess.getWordBank()) {
+//                        if (word.contains(attribute)) {
+//                            matchCounter++;
+//                        }
+//
+//
+//                    }
+//                }
             }
         }
 
@@ -43,7 +44,7 @@ public class HabitatExpert extends Expert {
 
     }
 
-    private ArrayList<String> getKeywordsFromWordBank() {
-        return wordBankAccess.getWordBank();
-    }
+//    private ArrayList<String> getKeywordsFromWordBank() {
+//        return wordBankAccess.getWordBank();
+//    }
 }

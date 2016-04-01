@@ -6,7 +6,7 @@ package se3a04.anifind.Experts;
 public class MobilityExpert extends Expert {
 
     private final String EXPERTISE = "Mobility";
-    private WordBank wordBankAccess = new WordBank();
+//    private WordBank wordBankAccess = new WordBank();
 
 
     @Override
@@ -20,15 +20,16 @@ public class MobilityExpert extends Expert {
 
         for (String attribute : animalAttributes) {
             for (String target : valuesToCompare) {
-                if (attribute.equals(target)) {
-                    matchCounter += 2;
-                } else {
-                    for (String word : wordBankAccess.getWordBank()) {
-                        if (word.contains(attribute)) {
-                            matchCounter++;
-                        }
-                    }
+                if (attribute.equalsIgnoreCase(target)) {
+                    matchCounter += 10;
                 }
+//                else {
+//                    for (String word : wordBankAccess.getWordBank()) {
+//                        if (word.contains(attribute)) {
+//                            matchCounter++;
+//                        }
+//                    }
+//                }
             }
         }
 
