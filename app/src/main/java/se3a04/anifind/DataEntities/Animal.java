@@ -1,6 +1,7 @@
 package se3a04.anifind.DataEntities;
 
 import java.io.Serializable;
+import java.util.Comparator;
 
 /**
  * An ADT for an Animal object, with all attributes required for each expert
@@ -74,11 +75,9 @@ public class Animal implements Serializable {
     }
 
 
-
     public void updatePoint(int points) {
         this.points += points;
     }
-
 
 
     @Override
@@ -87,3 +86,5 @@ public class Animal implements Serializable {
 
     }
 }
+
+

@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.google.android.gms.location.places.Places;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -243,10 +244,11 @@ public class GuiController extends AppCompatActivity {
 
             this.listOfAnimals = blackBoard.consultAllExperts(listOfAnimals, qa_map);
 
-            //send an arraylist of the animals
-//            Animal[] temp_animals = {animal_map.get("gorilla"), animal_map.get("kangoroo"), animal_map.get("goose")};
 
 
+            //but now we need to sort the list by points!
+
+            Collections.sort(this.listOfAnimals, new CustomComparator());
 
 
             Intent intent = new Intent(GuiController.this, ResultActivity2.class);
