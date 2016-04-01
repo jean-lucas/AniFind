@@ -7,20 +7,15 @@ lifestyle : [, nocturnal, flock, 12, sociable, gang, pod, colony, social, solita
 COLOR:
 <color name="white">
  <color name="yellow">
- <color name="fuchsia">
  <color name="red">
  <color name="silver">
- <color name="gray">
- <color name="olive">
+ <color name="grey">
  <color name="purple">
- <color name="maroon">
- <color name="aqua">r>
- <color name="lime">
- <color name="teal">
  <color name="green">
  <color name="blue">
- <color name="navy">#
  <color name="black">
+ brown
+ beige
 
 HABITAT:
 saltwater
@@ -36,6 +31,9 @@ mountains
 tundra
 swamp
 polar regions
+domestic
+tropical islands
+wetlands
 
 
 MOBILITY:
@@ -46,6 +44,8 @@ many legs
 fins
 tail
 wings
+none
+arms
 
 
 LIFESTYLE:

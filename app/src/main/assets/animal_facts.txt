@@ -46,7 +46,7 @@ Australian Terrier, Australia, domestic, beige-Yellow-Black, , , four legs
 avocet, ,wetlands, White-Black, 0.42-0.45, , two legs-wings
 axolotl, , lakes-river, Black-White-Pink-Grey-Brown, 0.15-0.45, ,four legs-tail-fins
 Aye Aye, , tropical rainforest, Black-Brown, 0.30-0.40, Nocturnal, four legs
-Baboon, , Grassland-tropical rainforest, Olive-Yellow-Grey-Silver-Brown-Black, .5-.86, daytime,arms-two legs
+Baboon, , Grassland-tropical rainforest, Yellow-Grey-Silver-Brown-Black, .5-.86, daytime,arms-two legs
 bactrian camel, , Deserts, Brown-beige, 1.7-2.1, daytime, four legs
 badger, , deciduous forest-grassland, Brown-Black-White, .4-.75, nocturnal,four legs
 Balinese, North America, domestic, Brown-Black,.4-.5, ,four legs
@@ -123,7 +123,7 @@ cat, , , , 35cm, ,
 Caterpillar, , Quiet forests-pastures, Yellow-Black-Orange-Red-Green-Blue-White. Brown, 30-60mm, , 
 catfish, Warm freshwater, Fast-flowing rivers-lakes, Brown-Black-Yellow-White-beige-Grey, 1cm-270cm, , 
 Cavalier King Charles Spaniel, Great Britain, , , 33cm, , 
-Centipede, , Decomposing matter on forest floor, Yellow-Black-Orange-Red-White. Brown, 3-300mm, , 
+Centipede, , deciduous forest-domestic, Yellow-Black-Orange-Red-White-Brown, 0.003-0.300, ,many legs
 Cesky Fousek, Czech Republic, , , 66cm, , 
 chameleon, , Tropical forests-desert, Green-Brown-Black-Yellow-Red-beige, 2.8cm-68.5cm, , 
 chamois, , Mountainous-rocky terrain, Brown-Grey-Black-beige-White, 75cm-80cm, Herd, 
