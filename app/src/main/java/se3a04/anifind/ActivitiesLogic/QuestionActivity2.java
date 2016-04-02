@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
-import android.widget.RadioButton
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -23,8 +23,10 @@ public class QuestionActivity2 extends AppCompatActivity {
 
     private TextView currentTitle;
     private TextView currentQuestion;
+
     private LinearLayout selectBoxGroup;
-    private RadioGroup radiouGroup
+    private RadioGroup radiouGroup;
+
     private CheckBox[] currentCheckBoxes;
     private RadioButton[] currentRadioButtons;
 
@@ -39,38 +41,47 @@ public class QuestionActivity2 extends AppCompatActivity {
 
         currentTitle = (TextView) findViewById(R.id.question_title);
         currentQuestion = (TextView) findViewById(R.id.question_text);
+
         selectBoxGroup = (LinearLayout) findViewById(R.id.possible_answers);
         radiouGroup = (RadioGroup) findViewById(R.id.possible_answers_radio);
-        System a;
+
 //
         Bundle b = getIntent().getExtras();
         this.qa = (QA) b.getSerializable("qa");
 
-        //check if we want radio buttons or select boxes
+        String[] possibleAnswers = qa.getValidAnswers();
 
+
+        this.currentTitle.setText(qa.getTopic());
+        this.currentQuestion.setText(qa.getQuestion());
+
+        //check if we want radio buttons or select boxes
         if (qa.getMultiVal()) {
             this.radiouGroup.setVisibility(View.GONE);
+
+            currentCheckBoxes = new CheckBox[possibleAnswers.length];
+
+            setupViewContentSelectBoxes(possibleAnswers);
         }
 
         else {
             this.selectBoxGroup.setVisibility(View.GONE);
+
+            currentRadioButtons = new RadioButton[possibleAnswers.length];
+
+            setupViewContentRadioButtons(possibleAnswers);
         }
 
 
 
 
-        String[] possibleAnswers = qa.getValidAnswers();
 
 
-        currentCheckBoxes = new CheckBox[possibleAnswers.length];
-//
-        setupViewContent(qa.getTopic(), qa.getQuestion(), possibleAnswers);
 
     }
 
-    public void setupViewContent(String title,String question, String[] possibleAnswerList) {
-        this.currentTitle.setText(title);
-        this.currentQuestion.setText(question);
+    public void setupViewContentSelectBoxes(String[] possibleAnswerList) {
+
 
         for (int i =0; i < possibleAnswerList.length; i++) {
             CheckBox cb = new CheckBox(getApplicationContext());
@@ -84,14 +95,38 @@ public class QuestionActivity2 extends AppCompatActivity {
 
     }
 
+    public void setupViewContentRadioButtons(String[] possibleAnswerList) {
+
+        for (int i = 0; i < possibleAnswerList.length; i++) {
+            RadioButton rb = new RadioButton(getApplicationContext());
+            rb.setText(possibleAnswerList[i]);
+            rb.setTextColor(Color.BLACK);
+            rb.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
+            radiouGroup.addView(rb);
+
+            currentRadioButtons[i] = rb;
+        }
+
+    }
+
+
     public void evaluateAnswer(View view) {
 
         ArrayList<String> selectedAnswers = new ArrayList<String>();
 
-        for (CheckBox cb: currentCheckBoxes) {
+        if (this.qa.getMultiVal()) {
+            for (CheckBox cb : currentCheckBoxes) {
+                if (cb.isChecked()) {
+                    selectedAnswers.add(cb.getText().toString());
+                }
+            }
+        }
 
-            if (cb.isChecked()) {
-                selectedAnswers.add(cb.getText().toString());
+        else {
+            for (RadioButton rb : currentRadioButtons) {
+                if (rb.isChecked()) {
+                    selectedAnswers.add(rb.getText().toString());
+                }
             }
         }
 

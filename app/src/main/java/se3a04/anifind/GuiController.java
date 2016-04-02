@@ -31,7 +31,6 @@ import se3a04.anifind.Misc.CustomComparator;
     TODO: fill up the animal dataset
     TODO: fix question dataset
     TODO: hints for audio need to be better
-    TODO: radio buttons for certain questions
     TODO: parse valid answers from audio questions
     TODO: create error view
     TODO: get animals with most points for result
@@ -150,12 +149,14 @@ public class GuiController extends AppCompatActivity {
         //now start the activities,
         //if we removed Location expert go straight to home,
         //else go to map activity first
-        if (questionsToRemove.contains("Location")) {
+        if (!qa_map.containsKey("Location")) {
+            Log.d("CHECK_ONE", "CALLED IF");
             Intent intent = new Intent(GuiController.this, HomeActivity2.class);
             startActivityForResult(intent, HOME_ACTIVITY_REQUEST_CODE);
         }
 
         else {
+            Log.d("CHECK_ONE", "CALLED ELSE");
             //get map stuff
             Intent intent = new Intent(GuiController.this, MapsActivity.class);
             startActivityForResult(intent, MAP_ACTIVITY_REQUEST_CODE);
@@ -256,17 +257,17 @@ public class GuiController extends AppCompatActivity {
             //from there we get an update animal dataset
             //so we can put that in the extra for the result intent
 
+
             this.listOfAnimals = blackBoard.consultAllExperts(listOfAnimals, qa_map);
 
 
-
             //but now we need to sort the list by points!
-
+            //only get the top 10 for now..
             Collections.sort(this.listOfAnimals, new CustomComparator());
-
+            ArrayList<Animal> bestResults = new ArrayList<> (this.listOfAnimals.subList(0,9));
 
             Intent intent = new Intent(GuiController.this, ResultActivity2.class);
-            intent.putExtra("animals", this.listOfAnimals);
+            intent.putExtra("animals", bestResults);
             startActivityForResult(intent, RESULT_ACTIVITY_REQUEST_CODE);
 
 
