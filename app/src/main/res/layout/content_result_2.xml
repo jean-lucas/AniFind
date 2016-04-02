@@ -29,18 +29,19 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:id="@+id/animalResultList">
 
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/animalResultList"
-                android:layout_marginTop="20dp"
-                android:textSize="15sp">
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:id="@+id/animalResultList_text"-->
+                <!--android:layout_marginTop="20dp"-->
+                <!--android:textSize="15sp">-->
 
-            </TextView>
+            <!--</TextView>-->
 
             <LinearLayout
                 android:layout_width="wrap_content"
