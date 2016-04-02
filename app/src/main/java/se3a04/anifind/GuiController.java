@@ -295,7 +295,7 @@ public class GuiController extends AppCompatActivity {
         //and save it to the respective qa object
         String[] locations =  data.getStringArrayExtra("loc");
 
-        qa_map.get("Location").setGivenAnswerByTopic(locations);
+        //qa_map.get("Location").setGivenAnswerByTopic(locations);
 
 
         //now start the app

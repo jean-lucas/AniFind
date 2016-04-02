@@ -23,15 +23,16 @@
         android:text="Colors "
         android:textSize="25sp"
         android:id="@+id/attributeTitle"
-        android:textColor="#f49494" />
+        android:textColor="#75900b" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="question "
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:id="@+id/attributeQuestion"
-        android:textColor="#f49494" />
+        android:textColor="#75900b" />
 
 
     <TextView

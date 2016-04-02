@@ -1,7 +1,7 @@
 QuestionTitle-QuestionToBeAsked-ValidAnswers-HintsForAnswers-MultiVal
-Location-What is the location of the spotted animal?-Use current location,Canada, United States, North America, Atlantic Ocean, Pacific Ocean,Europe,Russia,Australia,Africa,North Pole-Countries\nContinents\nOceans-1
-Colour-Colors found on the animal?-Red,Blue,Green,Black,Grey,Purple,Yellow,Orange,Brown,Silver,White-null-1
-Size-What is the estimated animal size?-Very Small (up to 0.10m)\n Ex. Insects,Small (0.10m to .50m)\nEx. Squirrel, Medium (.50m to 2m)\nEx. Dog, Large (2m to 5m)\nEx. Bear, Very Large (5m and beyond)\nEx. Whale-Very Small(Ex. Insects)\nSmall(Ex. Squirrel)\nMedium(Ex. Dog)\nLarge(Ex. Bear)\nVery Large(Ex. Whale)-0
-Habitat-Which habitats seems natural for this animal?-Saltwater,Lakes,River,Savanna,Grassland,Desert,Tropical Rainforest,Deciduous Forest,Pine Forest,Mountains,Tundra,Swamp,Polar Regions,Domestic,Tropical Islands,Wetlands-null-1
-Mobility-What does this animal use to move around?-Two Legs,Four Legs,Fins,Many Legs,Arms,Wings,Fins,Tail,Slither,None-null-1
-Time-When was this animal seen?-Daytime,Nocturnal,Twilight,Use Current Time-Daytime\nNocturnal\nTwilight-0
+Location-Where did you see the animal?-Use current location,Canada, United States, North America, Atlantic Ocean, Pacific Ocean,Europe,Russia,Australia,Africa,North Pole-Countries\nContinents\nOceans-1
+Colour-What colour(s) do you see on the animal?-Red,Blue,Green,Black,Grey,Purple,Yellow,Orange,Brown,Silver,White-null-1
+Size-How big was the animal?-Very Small (up to 0.10m)\n Ex. Insects,Small (0.10m to .50m)\nEx. Squirrel, Medium (.50m to 2m)\nEx. Dog, Large (2m to 5m)\nEx. Bear, Very Large (5m and beyond)\nEx. Whale-Very Small(Ex. Insects)\nSmall(Ex. Squirrel)\nMedium(Ex. Dog)\nLarge(Ex. Bear)\nVery Large(Ex. Whale)-0
+Habitat-Where does the animal live?-Saltwater,Lakes,River,Savanna,Grassland,Desert,Tropical Rainforest,Deciduous Forest,Pine Forest,Mountains,Tundra,Swamp,Polar Regions,Domestic,Tropical Islands,Wetlands-null-1
+Mobility-What does the animal use to move?-Two Legs,Four Legs,Fins,Many Legs,Arms,Wings,Fins,Tail,Slither,None-null-1
+Time-What time did you see the animal?-Daytime,Nocturnal,Twilight,Use Current Time-Daytime\nNocturnal\nTwilight-0
