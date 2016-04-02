@@ -84,27 +84,27 @@ public class SizeExpert extends Expert {
                 // full point scenario
                 // when attribute and value to compare  are both within in single range
                 // very small
-                if (attributeMin > VERYSMALLMIN && attributeMin > VERYSMALLMIN && attributeMax < VERYSMALLMAX && valueCompareMax < VERYSMALLMAX) {
+                if (attributeMin > VERYSMALLMIN && valueCompareMin > VERYSMALLMIN && attributeMax < VERYSMALLMAX && valueCompareMax < VERYSMALLMAX) {
                     points += FULLPOINTS;
                 }
 
                 // small
-                else if (attributeMin > SMALLMIN && attributeMin > SMALLMIN && attributeMax < SMALLMAX && valueCompareMax < SMALLMAX) {
+                else if (attributeMin > SMALLMIN && valueCompareMin > SMALLMIN && attributeMax < SMALLMAX && valueCompareMax < SMALLMAX) {
                     points += FULLPOINTS;
                 }
 
                 // medium
-                else if (attributeMin > MEDIUMMIN && attributeMin > MEDIUMMIN && attributeMax < MEDIUMMAX && valueCompareMax < MEDIUMMAX) {
+                else if (attributeMin > MEDIUMMIN && valueCompareMin > MEDIUMMIN && attributeMax < MEDIUMMAX && valueCompareMax < MEDIUMMAX) {
                     points += FULLPOINTS;
                 }
 
                 // large
-                else if (attributeMin > LARGEMIN && attributeMin > LARGEMIN && attributeMax < LARGEMAX && valueCompareMax < LARGEMAX) {
+                else if (attributeMin > LARGEMIN && valueCompareMin > LARGEMIN && attributeMax < LARGEMAX && valueCompareMax < LARGEMAX) {
                     points += FULLPOINTS;
                 }
 
                 // huge
-                else if (attributeMin > HUGEMIN && attributeMin > HUGEMIN && attributeMax < HUGEMAX && valueCompareMax < HUGEMAX) {
+                else if (attributeMin > HUGEMIN && valueCompareMin > HUGEMIN && attributeMax < HUGEMAX && valueCompareMax < HUGEMAX) {
                     points += FULLPOINTS;
                 }
 
@@ -120,26 +120,26 @@ public class SizeExpert extends Expert {
                 // assign points
 
                 // range from very small --> huge
-                else if (attributeMin > VERYSMALLMIN && attributeMin > VERYSMALLMIN && attributeMin < VERYSMALLMAX && valueCompareMin < VERYSMALLMAX) {
+                else if (attributeMin > VERYSMALLMIN && valueCompareMin > VERYSMALLMIN && attributeMin < VERYSMALLMAX && valueCompareMin < VERYSMALLMAX) {
 
                     // small
-                    if (attributeMin > SMALLMIN && attributeMin > SMALLMIN && attributeMin < SMALLMAX && valueCompareMin < SMALLMAX) {
+                    if (attributeMin > SMALLMIN && valueCompareMin > SMALLMIN && attributeMin < SMALLMAX && valueCompareMin < SMALLMAX) {
                         points += PPPOINTS;
                     }
 
                     // medium
-                    else if (attributeMin > MEDIUMMIN && attributeMin > MEDIUMMIN && attributeMin < MEDIUMMAX && valueCompareMin < MEDIUMMAX) {
+                    else if (attributeMin > MEDIUMMIN && valueCompareMin > MEDIUMMIN && attributeMin < MEDIUMMAX && valueCompareMin < MEDIUMMAX) {
                         points += PPOINTS;
                     }
 
                     // large
-                    else if (attributeMin > LARGEMIN && attributeMin > LARGEMIN && attributeMin < LARGEMAX && valueCompareMin < LARGEMAX) {
+                    else if (attributeMin > LARGEMIN && valueCompareMin > LARGEMIN && attributeMin < LARGEMAX && valueCompareMin < LARGEMAX) {
                         points += POINTS;
                     }
 
                     //huge
                     // This one is kind of useless but put her for completeness right now
-                    else if (attributeMin > HUGEMIN && attributeMin > HUGEMIN && attributeMin < HUGEMAX && valueCompareMin < HUGEMAX) {
+                    else if (attributeMin > HUGEMIN && valueCompareMin > HUGEMIN && attributeMin < HUGEMAX && valueCompareMin < HUGEMAX) {
                         points += 0;
                     }
 
@@ -147,21 +147,21 @@ public class SizeExpert extends Expert {
 
                 // small --> huge
 
-                else if (attributeMin > SMALLMIN && attributeMin > SMALLMIN && attributeMin < SMALLMAX && valueCompareMin < SMALLMAX) {
+                else if (attributeMin > SMALLMIN && valueCompareMin > SMALLMIN && attributeMin < SMALLMAX && valueCompareMin < SMALLMAX) {
 
                     // medium
-                    if (attributeMin > MEDIUMMIN && attributeMin > MEDIUMMIN && attributeMin < MEDIUMMAX && valueCompareMin < MEDIUMMAX) {
+                    if (attributeMin > MEDIUMMIN && valueCompareMin > MEDIUMMIN && attributeMin < MEDIUMMAX && valueCompareMin < MEDIUMMAX) {
                         points += PPPOINTS;
                     }
 
                     // large
-                    else if (attributeMin > LARGEMIN && attributeMin > LARGEMIN && attributeMin < LARGEMAX && valueCompareMin < LARGEMAX) {
+                    else if (attributeMin > LARGEMIN && valueCompareMin > LARGEMIN && attributeMin < LARGEMAX && valueCompareMin < LARGEMAX) {
                         points += PPOINTS;
                     }
 
                     //huge
                     // This one is kind of useless but put her for completeness right now
-                    else if (attributeMin > HUGEMIN && attributeMin > HUGEMIN && attributeMin < HUGEMAX && valueCompareMin < HUGEMAX) {
+                    else if (attributeMin > HUGEMIN && valueCompareMin > HUGEMIN && attributeMin < HUGEMAX && valueCompareMin < HUGEMAX) {
                         points += POINTS;
                     }
 
@@ -170,17 +170,17 @@ public class SizeExpert extends Expert {
 
                 // medium --> huge
 
-                else if (attributeMin > MEDIUMMIN && attributeMin > MEDIUMMIN && attributeMin < LARGEMAX && valueCompareMin < LARGEMAX) {
+                else if (attributeMin > MEDIUMMIN && valueCompareMin > MEDIUMMIN && attributeMin < LARGEMAX && valueCompareMin < LARGEMAX) {
 
 
                     // large
-                    if (attributeMin > LARGEMIN && attributeMin > LARGEMIN && attributeMin < LARGEMAX && valueCompareMin < LARGEMAX) {
+                    if (attributeMin > LARGEMIN && valueCompareMin > LARGEMIN && attributeMin < LARGEMAX && valueCompareMin < LARGEMAX) {
                         points += PPPOINTS;
                     }
 
                     //huge
                     // This one is kind of useless but put her for completeness right now
-                    else if (attributeMin > HUGEMIN && attributeMin > HUGEMIN && attributeMin < HUGEMAX && valueCompareMin < HUGEMAX) {
+                    else if (attributeMin > HUGEMIN && valueCompareMin > HUGEMIN && attributeMin < HUGEMAX && valueCompareMin < HUGEMAX) {
                         points += PPOINTS;
                     }
 
@@ -189,12 +189,12 @@ public class SizeExpert extends Expert {
 
                 // large --> Huge
 
-                else if (attributeMin > LARGEMIN && attributeMin > LARGEMIN && attributeMin < HUGEMAX && valueCompareMin < HUGEMAX) {
+                else if (attributeMin > LARGEMIN && valueCompareMin > LARGEMIN && attributeMin < HUGEMAX && valueCompareMin < HUGEMAX) {
 
 
                     //huge
                     // This one is kind of useless but put her for completeness right now
-                    if (attributeMin > HUGEMIN && attributeMin > HUGEMIN && attributeMin < HUGEMAX && valueCompareMin < HUGEMAX) {
+                    if (attributeMin > HUGEMIN && valueCompareMin > HUGEMIN && attributeMin < HUGEMAX && valueCompareMin < HUGEMAX) {
                         points += PPPOINTS;
                     }
 
