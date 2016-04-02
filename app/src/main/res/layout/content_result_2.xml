@@ -22,52 +22,64 @@
         android:id="@+id/resultViewTitle"
         android:textColor="#f56e6e" />
 
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
 
-        <LinearLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center" >
+
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Done"
+            android:id="@+id/doneBtn"
+            android:background="#88e1aa"
+            android:padding="5dp"
+            android:layout_margin="10dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Error"
+            android:id="@+id/errorBtn"
+            android:background="#ec9292"
+            android:padding="5dp"
+            android:layout_margin="10dp" />
+
+
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center"
+        android:fillViewport="false"
+        android:layout_below="@+id/doneBtn"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentTop="false"
+        android:layout_margin="0dp"
+        android:layout_marginTop="10dp"
+        android:minWidth="300dp"
+        android:padding="3dp">
+
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="300dp"
             android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:id="@+id/animalResultList">
 
+            <!--<TableRow android:minWidth="300dp">-->
+
+            <!--</TableRow>-->
 
 
-            <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:id="@+id/animalResultList_text"-->
-                <!--android:layout_marginTop="20dp"-->
-                <!--android:textSize="15sp">-->
-
-            <!--</TextView>-->
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center" >
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Done"
-                    android:id="@+id/doneBtn"
-                    android:background="#88e1aa"
-                    android:layout_margin="5dp"
-                    android:padding="5dp"/>
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Error"
-                    android:id="@+id/errorBtn"
-                    android:background="#ec9292"
-                    android:layout_margin="5dp"
-                    android:padding="5dp"/>
-
-            </LinearLayout>
-        </LinearLayout>
+        </TableLayout>
     </ScrollView>
 
 
