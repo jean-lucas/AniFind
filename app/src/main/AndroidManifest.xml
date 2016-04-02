@@ -47,7 +47,7 @@
             android:label="@string/title_activity_audio2"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".AnimalFactsActivity"
+            android:name=".ActivitiesLogic.AnimalFactsActivity"
             android:label="@string/title_activity_animal_facts"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>

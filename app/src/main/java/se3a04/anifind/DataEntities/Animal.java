@@ -2,6 +2,7 @@ package se3a04.anifind.DataEntities;
 
 import java.io.Serializable;
 import java.util.Comparator;
+import java.util.HashMap;
 
 /**
  * An ADT for an Animal object, with all attributes required for each expert
@@ -79,6 +80,20 @@ public class Animal implements Serializable {
         this.points += points;
     }
 
+
+    public HashMap<String, String[]> getFacts() {
+        HashMap<String,String[]> facts = new HashMap<String, String[]>();
+
+        facts.put("color",this.getColors());
+        facts.put("habitat",this.getHabitat());
+        facts.put("location",this.getLocation());
+        facts.put("lifestyle",this.getLifestyle().split("."));
+        facts.put("mobility", this.getMobility());
+        facts.put("size", this.getSize());
+
+        return facts;
+
+   }
 
     @Override
     public String toString() {
