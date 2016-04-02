@@ -1,7 +1,7 @@
 QuestionTitle-QuestionToBeAsked-ValidAnswers-HintsForAnswers-MultiVal
-Loation-What is the location of the spotted animal?-Use current location,Canada, United States, North America, Atlantic Ocean, Pacific Ocean,Europe,Russia,Australia,Africa,North Pole-Countries, Continents, Oceans-1
-Colour-Colors found on the animal?-red,blue,green,black,grey,purple,yellow,orange,brown,silver,white-black,white,beige...-1
-Size-What is the estimated animal size?-Very small (up to 0.25m),Small (0.25m to 1m), Medium (1m to 3m), Large (3m to 5m), Very large (5m and beyond)-1m,2m,3m...-0
-Habitat-Which habit seems natural for this animal?-woodlands,jungle,rain forest, desert,ocean,lakes-woodlands,jungle,ocean...-1
-Mobility-How does this animal move around?-two legs,four legs, fins,more than four legs,wings-two legs, wings, fins...-1
-Time-When was this animal seen?-Morning,Daytime, Afternoon, Nighttime, Use current time-Morning,Daytime, Afternoon, or Nighttime-0
+Location-What is the location of the spotted animal?-Use current location,Canada, United States, North America, Atlantic Ocean, Pacific Ocean,Europe,Russia,Australia,Africa,North Pole-Countries\nContinents\nOceans-1
+Colour-Colors found on the animal?-Red,Blue,Green,Black,Grey,Purple,Yellow,Orange,Brown,Silver,White-null-1
+Size-What is the estimated animal size?-Very Small (up to 0.10m)\n Ex. Insects,Small (0.10m to .50m)\nEx. Squirrel, Medium (.50m to 2m)\nEx. Dog, Large (2m to 5m)\nEx. Bear, Very Large (5m and beyond)\nEx. Whale-Very Small(Ex. Insects)\nSmall(Ex. Squirrel)\nMedium(Ex. Dog)\nLarge(Ex. Bear)\nVery Large(Ex. Whale)-0
+Habitat-Which habitats seems natural for this animal?-Saltwater,Lakes,River,Savanna,Grassland,Desert,Tropical Rainforest,Deciduous Forest,Pine Forest,Mountains,Tundra,Swamp,Polar Regions,Domestic,Tropical Islands,Wetlands-null-1
+Mobility-What does this animal use to move around?-Two Legs,Four Legs,Fins,Many Legs,Arms,Wings,Fins,Tail,Slither,None-null-1
+Time-When was this animal seen?-Daytime,Nocturnal,Twilight,Use Current Time-Daytime\nNocturnal\nTwilight-0

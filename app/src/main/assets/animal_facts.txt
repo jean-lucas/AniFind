@@ -374,7 +374,7 @@ monkey, , Tropical forests  grassland-mountainous plains, beige-Brown-Grey-Black
 monte iberia eleuth, , Water around Mount Iberia, Black-Yellow-Brown-White, 9.6mm-9.8mm, , 
 moorhen, , swamp  wetlands-ponds, Black-White-Brown, 25cm-38cm, Flock, 
 moose, , Forest areas close to the Arctic tundra, beige-Brown-Grey, 1.8-2.1m, Herd, 
-Moray Eel, Tropical and temperate waters, Coastal-deep waters, Grey-Black-Brown-White-Yellow-Green-Blue-Orange, 11-400cm, , 
+Moray Eel, Tropical and temperate waters, saltwater, Grey-Black-Brown-White-Yellow-Green-Blue-Orange, .11-4, ,slither-tail
 Moth, , Quiet forests-pastures, Red-Black-Yellow-Orange-Brown-White, 0.6-30cm, , 
 mountain gorilla, , Tropical forest-jungles in mountainous regions, Black-Brown-Grey, 1.5-1.8m, Social, 
 mountain lion, , Forest-mountainous regions, beige-Black-Brown, 1.5-2.75m, , 
@@ -489,7 +489,7 @@ skunk, , Open woodland-dense shrub, Black-White-Grey, 40-80cm, ,
 sloth, , Tall trees in tropical rainforest, Brown-beige-White-Grey, 50-70cm, , 
 slow worm, , Grassland-woodlands, Black-Brown-beige-Yellow-Grey, 20cm-50cm, , 
 Snail, , Well-vegetated areas, Black. Brown-Yellow-beige, 0.5cm-80cm, , 
-snake, , , , 5.4m, , 
+snake, , wetlands-deciduous forest-tropical islands-tropical rainforest-savanna-river-grassland, green-black-brown-red-blue-yellow, 5.4, ,slither-tail
 snapping turtle, , Slow rivers  lakes-marshland, Brown-beige-Black, 47-80cm, , 
 Snowshoe, North America, , Cream-Brown-Lilac-Fawn-Golden-Black-White, , , 
 snowy owl, , Woodland within the Arctic tundra, Black-White-Grey, 60cm-75cm, , 
