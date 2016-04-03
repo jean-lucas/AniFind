@@ -10,6 +10,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:windowSoftInputMode="stateAlwaysVisible"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".ActivitiesLogic.QuestionActivity2"
     tools:showIn="@layout/activity_question2">
@@ -42,6 +43,37 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:id="@+id/question_wrapper">
+
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/useCurrentOption"
+                android:onClick="toggleAutoComplete"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/useCurrentOptionSeperator"
+                android:text="- OR -"
+                android:textSize="12sp"/>
+
+            <MultiAutoCompleteTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/autocomplete_location"
+
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:gravity="left"
+                android:singleLine="false"
+                android:textColor="@android:color/primary_text_light"
+                android:minWidth="250dp"
+                android:nestedScrollingEnabled="true">
+
+                <requestFocus />
+            </MultiAutoCompleteTextView>
 
 
             <LinearLayout

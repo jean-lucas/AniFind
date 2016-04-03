@@ -137,7 +137,7 @@ public class ResultActivity2 extends AppCompatActivity {
 
     }
 
-    private View.OnClickListener highlightRow(final TableRow tr, final TableLayout list) {
+    public View.OnClickListener highlightRow(final TableRow tr, final TableLayout list) {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -157,7 +157,7 @@ public class ResultActivity2 extends AppCompatActivity {
         };
     }
 
-    private View.OnClickListener getAnimalDetails(final Animal a, final String path) {
+    public View.OnClickListener getAnimalDetails(final Animal a, final String path) {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {

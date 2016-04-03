@@ -8,11 +8,17 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
+import android.widget.MultiAutoCompleteTextView;
 import android.widget.RadioGroup;
 import android.widget.RadioButton;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -21,14 +27,27 @@ import se3a04.anifind.R;
 
 public class QuestionActivity2 extends AppCompatActivity {
 
+
+
+    //basic elements of the screen
     private TextView currentTitle;
     private TextView currentQuestion;
 
-    private LinearLayout selectBoxGroup;
-    private RadioGroup radiouGroup;
+    private MultiAutoCompleteTextView autocomplete_location;
 
+    //contains all the checkboxes for a multivalued question
+    private LinearLayout selectBoxGroup;
     private CheckBox[] currentCheckBoxes;
+
+    //contains all the radiou buttons for a singlevalued question
+    private RadioGroup radiouGroup;
     private RadioButton[] currentRadioButtons;
+
+    //for when user wants to use the current time or current location
+    private CheckBox useCurrentOption;
+    private TextView useCurrentOptionSeperator;
+
+
 
     private QA qa;
 
@@ -39,15 +58,24 @@ public class QuestionActivity2 extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+        //setup all the views;
         currentTitle = (TextView) findViewById(R.id.question_title);
         currentQuestion = (TextView) findViewById(R.id.question_text);
+        useCurrentOptionSeperator = (TextView) findViewById(R.id.useCurrentOptionSeperator);
+
+        autocomplete_location = (MultiAutoCompleteTextView) findViewById(R.id.autocomplete_location);
+
+        useCurrentOption = (CheckBox) findViewById(R.id.useCurrentOption);
 
         selectBoxGroup = (LinearLayout) findViewById(R.id.possible_answers);
         radiouGroup = (RadioGroup) findViewById(R.id.possible_answers_radio);
 
-//
+        //get required content
         Bundle b = getIntent().getExtras();
         this.qa = (QA) b.getSerializable("qa");
+
+
 
         String[] possibleAnswers = qa.getValidAnswers();
 
@@ -55,20 +83,36 @@ public class QuestionActivity2 extends AppCompatActivity {
         this.currentTitle.setText(qa.getTopic());
         this.currentQuestion.setText(qa.getQuestion());
 
-        //check if we want radio buttons or select boxes
-        if (qa.getMultiVal()) {
-            this.radiouGroup.setVisibility(View.GONE);
+
+        //if the question allows for the user to use current location, than
+        //set up the activity accordingling
+        if (this.qa.getTopic().equalsIgnoreCase("Location")) {
+            autocomplete_location.setVisibility(View.VISIBLE);
+            radiouGroup.setVisibility(View.GONE);
 
             currentCheckBoxes = new CheckBox[possibleAnswers.length];
+            setupViewContentLocation(possibleAnswers);
+        }
 
+        //check if we want radio buttons or select boxes, and remove
+        //unecessary views;
+        else if (qa.getMultiVal()) {
+            this.radiouGroup.setVisibility(View.GONE);
+            this.autocomplete_location.setVisibility(View.GONE);
+            useCurrentOption.setVisibility(View.GONE);
+            useCurrentOptionSeperator.setVisibility(View.GONE);
+
+            currentCheckBoxes = new CheckBox[possibleAnswers.length];
             setupViewContentSelectBoxes(possibleAnswers);
         }
 
         else {
             this.selectBoxGroup.setVisibility(View.GONE);
+            this.autocomplete_location.setVisibility(View.GONE);
+            useCurrentOption.setVisibility(View.GONE);
+            useCurrentOptionSeperator.setVisibility(View.GONE);
 
             currentRadioButtons = new RadioButton[possibleAnswers.length];
-
             setupViewContentRadioButtons(possibleAnswers);
         }
 
@@ -80,8 +124,25 @@ public class QuestionActivity2 extends AppCompatActivity {
 
     }
 
-    public void setupViewContentSelectBoxes(String[] possibleAnswerList) {
+    private void setupViewContentLocation(String[] possibleAnswerList) {
 
+        useCurrentOption.setText("Use Current Location");
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1 ,possibleAnswerList);
+
+        autocomplete_location.setAdapter(adapter);
+        autocomplete_location.setThreshold(2);
+        autocomplete_location.setHint("Countries, Continents, and Oceans");
+        autocomplete_location.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
+        autocomplete_location.requestFocus();
+
+        autocomplete_location.setOnItemClickListener(toggleItems());
+
+    }
+
+
+
+    private void setupViewContentSelectBoxes(String[] possibleAnswerList) {
 
         for (int i =0; i < possibleAnswerList.length; i++) {
             CheckBox cb = new CheckBox(getApplicationContext());
@@ -92,7 +153,6 @@ public class QuestionActivity2 extends AppCompatActivity {
 
             currentCheckBoxes[i] = cb;
         }
-
     }
 
     public void setupViewContentRadioButtons(String[] possibleAnswerList) {
@@ -110,13 +170,57 @@ public class QuestionActivity2 extends AppCompatActivity {
     }
 
 
+    //add items as new checkboxes once they are clicked in the autocomeplete view
+    public AdapterView.OnItemClickListener toggleItems() {
+        return new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String item = (String) parent.getItemAtPosition(position);
+
+                boolean newItem = true;
+
+                for (CheckBox cb: currentCheckBoxes) {
+                    if (cb == null)  break;
+
+                    else if (cb.getText().toString().equalsIgnoreCase(item)) {
+                        newItem = false;
+                        break;
+                    }
+                }
+
+                if (newItem) {
+                    CheckBox cb = new CheckBox(getApplicationContext());
+                    cb.setText(item);
+                    cb.setTextColor(Color.BLACK);
+                    cb.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
+                    cb.setChecked(true);
+                    selectBoxGroup.addView(cb);
+                    currentCheckBoxes[currentCheckBoxes.length - 1] = cb;
+                }
+            }
+        };
+    }
+
+    //if we want to use current location/time than remove the items from the autocomplete
+    public void toggleAutoComplete(View view) {
+
+        if (selectBoxGroup.getVisibility() == View.VISIBLE) {
+            selectBoxGroup.setVisibility(View.INVISIBLE);
+        }
+        else {
+            selectBoxGroup.setVisibility(View.VISIBLE);
+        }
+    }
+
+    //user clicked the next button, so get all needed values
     public void evaluateAnswer(View view) {
 
         ArrayList<String> selectedAnswers = new ArrayList<String>();
 
         if (this.qa.getMultiVal()) {
             for (CheckBox cb : currentCheckBoxes) {
-                if (cb.isChecked()) {
+                if (cb == null) continue;
+                else if (cb.isChecked()) {
                     selectedAnswers.add(cb.getText().toString());
                 }
             }
@@ -132,7 +236,15 @@ public class QuestionActivity2 extends AppCompatActivity {
 
         String[] answers = selectedAnswers.toArray(new String[selectedAnswers.size()]);
 
-        this.qa.setGivenAnswerByTopic(answers);
+
+        //check if user wanted the single option
+        if (useCurrentOption.isChecked()) {
+            this.qa.setGivenAnswerByTopic(new String[]{"current"});
+        }
+        else {
+            this.qa.setGivenAnswerByTopic(answers);
+        }
+
         Intent result_intent = new Intent();
         result_intent.putExtra("current_qa", this.qa);
 
@@ -140,6 +252,4 @@ public class QuestionActivity2 extends AppCompatActivity {
 
         finish();
     }
-
-
 }
