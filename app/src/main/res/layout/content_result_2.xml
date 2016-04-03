@@ -43,6 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Error"
+            android:onClick="openErrorForm"
             android:id="@+id/errorBtn"
             android:background="#ec9292"
             android:padding="5dp"

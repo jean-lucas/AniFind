@@ -1,6 +1,5 @@
 package se3a04.anifind.ActivitiesLogic;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Color;
@@ -10,7 +9,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
@@ -20,15 +18,11 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
 import se3a04.anifind.DataEntities.Animal;
-import se3a04.anifind.DataEntities.Result;
-import se3a04.anifind.GuiController;
 import se3a04.anifind.R;
 
 public class ResultActivity2 extends AppCompatActivity {
@@ -201,19 +195,40 @@ public class ResultActivity2 extends AppCompatActivity {
     //User highlited an animal and pressed DONE
     public void finishIdentification(View view) {
 
+        //get the animal corresponding to the highlighted one, and send it back to guicontroller
+        Intent intent = new Intent();
+        intent.putExtra("selectedAnimal", getHighlightedAnimal());
+        intent.putExtra("needErrorForm", false);
+        setResult(1, intent);
+        finish();
 
+
+    }
+
+
+    // go back to guiController, and let the errorAcvtitivy be opened from there
+    public void openErrorForm(View view) {
+        Intent intent = new Intent();
+        intent.putExtra("selectedAnimal", getHighlightedAnimal());
+        intent.putExtra("needErrorForm", true);
+        setResult(1, intent);
+        finish();
+    }
+
+
+
+
+    //find which ANimal is highlighted in yellow
+    private Animal getHighlightedAnimal() {
         Animal animal = null;
         String animal_name = "";
-
         //get the highlighted animal
         for (int i = 0 ; i < animalList.getChildCount(); i++) {
-
             //check which one is yellow
             if ( ((ColorDrawable) animalList.getChildAt(i).getBackground()).getColor() == HIGHLIGHT_COLOR)  {
                 animal_name = animalList.getChildAt(i).getTag().toString();
             }
         }
-
 
         for (Animal a: animals) {
             if (a.getName().equalsIgnoreCase(animal_name)) {
@@ -221,14 +236,6 @@ public class ResultActivity2 extends AppCompatActivity {
             }
         }
 
-
-        //get the animal corresponding to the highlighted one, and send it back to guicontroller
-
-        Intent intent = new Intent();
-        intent.putExtra("selectedAnimal",animal);
-        setResult(1, intent);
-        finish();
-
-
+        return animal;
     }
 }

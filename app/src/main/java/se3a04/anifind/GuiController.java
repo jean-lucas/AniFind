@@ -18,6 +18,7 @@ import java.util.HashMap;
 
 
 import se3a04.anifind.ActivitiesLogic.AudioActivity2;
+import se3a04.anifind.ActivitiesLogic.ErrorReportActivity;
 import se3a04.anifind.ActivitiesLogic.HomeActivity2;
 import se3a04.anifind.ActivitiesLogic.MapsActivity;
 import se3a04.anifind.ActivitiesLogic.QuestionActivity2;
@@ -189,7 +190,7 @@ public class GuiController extends AppCompatActivity {
                     break;
 
                 case ERROR_ACTIVITY_REQUEST_CODE:
-                    //do something
+                    errorActivityLogic(data);
                     break;
 
                 case MAP_ACTIVITY_REQUEST_CODE:
@@ -276,16 +277,53 @@ public class GuiController extends AppCompatActivity {
 
     }
 
+
+    //
     private void resultActivityLogic(Intent data) {
 
         Animal selectedAnimal = (Animal) data.getSerializableExtra("selectedAnimal");
+        boolean needErrorForm = data.getBooleanExtra("needErrorForm", false);
 
-        //do something with selectedAnimal if needed...
 
-        //then finish/restart the app.
-        recreate();
+        //start the errorActivity
+        if (needErrorForm) {
+            Intent intent = new Intent(GuiController.this, ErrorReportActivity.class);
+            intent.putExtra("animal", selectedAnimal);
+            startActivityForResult(intent, ERROR_ACTIVITY_REQUEST_CODE);
+        }
+
+        else {
+            //do something else with animal here
+
+            //restart the app
+            recreate();
+        }
+
     }
 
+
+    private void errorActivityLogic(Intent data) {
+
+
+        String errorReportSubmission = data.getStringExtra("errorSubmission");
+        Animal animal = (Animal) data.getSerializableExtra("animal");
+
+        //if submission is not blank than email it to the developer(s)
+        //followed by restarting the app;
+        if (!errorReportSubmission.equalsIgnoreCase("")) {
+            //this code is taken from http://stackoverflow.com/questions/2197741
+            Intent i = new Intent(Intent.ACTION_SEND);
+            i.setType("message/rfc822");
+            i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"developers@anifind.com"});
+            i.putExtra(Intent.EXTRA_SUBJECT, "AniFind Error Submission - " + animal.getName() );
+            i.putExtra(Intent.EXTRA_TEXT   , "Submission message: \n\n" + errorReportSubmission);
+            try {
+                startActivity(Intent.createChooser(i, "Send mail..."));
+            } catch (android.content.ActivityNotFoundException ex) {
+                Toast.makeText(GuiController.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
 
 
     private void mapActivityLogic(Intent data) {
