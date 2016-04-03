@@ -77,17 +77,27 @@ public class DataController {
         for (String line : animalLines) {
             List<String> attributes = Arrays.asList(line.split("\\s*,\\s*",-1));
 
-            Log.d("attr", Integer.toString(attributes.size()));
-            Log.d("attr",attributes.toString());
-            Log.d("attr",attributes.get(0));
-            Log.d("attr",attributes.get(1));
-            Log.d("attr",attributes.get(2));
-            Log.d("attr",attributes.get(3));
-            Log.d("attr",attributes.get(4));
-            Log.d("attr",attributes.get(5));
-            Log.d("attr",attributes.get(6));
+//            Log.d("attr", Integer.toString(attributes.size()));
+//            Log.d("attr",attributes.toString());
+//            Log.d("attr",attributes.get(0));
+//            Log.d("attr",attributes.get(1));
+//            Log.d("attr",attributes.get(2));
+//            Log.d("attr",attributes.get(3));
+//            Log.d("attr",attributes.get(4));
+//            Log.d("attr",attributes.get(5));
+//            Log.d("attr",attributes.get(6));
+
+
             //Create temp animal attributes
-            String name = attributes.get(0);
+
+            //capitalize the animal names
+            String name = "";
+            for (String names: attributes.get(0).split(" ")) {
+                name += names.substring(0, 1).toUpperCase() + names.substring(1) + " ";
+            }
+            name = name.substring(0, name.length() -1) + name.substring(name.length()-1).replace(" ", "");
+
+
             String lifestyle = attributes.get(5);
                 //attributes 2-6 may be multi-valued
             String[] habitat = attributes.get(2).split("\\s*-\\s*",-1);
