@@ -27,7 +27,7 @@ American Staffordshire Terrier, North America, domestic , Black-White-Beige-Brow
 American Water Spaniel, North America, domestic, Black-Brown, , , four legs
 Anatolian Shepherd Dog, North America, domestic, Red-Brown-White, , , four legs
 Angelfish, Southern Hemisphere, river-saltwater, Black-White-Yellow-Orange-Purple-Silver-Blue-Green, 0.07-0.30, ,fins-tail
-Ant, , forest-grassland-savanna, Brown-Black-Red, 0.0002-0.0025, ,many legs
+Ant, , forest-grassland-savanna, Brown-Black-Red, 0.002-0.025, ,many legs
 anteater, , Forest-grassland, Brown-Grey-Black-beige, 0.9m-2.1m, , four legs
 antelope, , Forest-grassland, Brown-Red-beige, 1m-1.5m, , four legs
 Appenzeller Dog, Switzerland, domestic , Black-beige-White, , , four legs
