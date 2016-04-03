@@ -1,16 +1,20 @@
 package se3a04.anifind.ActivitiesLogic;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -24,12 +28,17 @@ import java.util.ArrayList;
 
 import se3a04.anifind.DataEntities.Animal;
 import se3a04.anifind.DataEntities.Result;
+import se3a04.anifind.GuiController;
 import se3a04.anifind.R;
 
 public class ResultActivity2 extends AppCompatActivity {
 
     private ArrayList<Animal> animals;
     private TableLayout animalList;
+    private Button doneBtn;
+    private Button errorBtn;
+
+    private final int HIGHLIGHT_COLOR = Color.parseColor("#ffff99");
 
     private final String DEFAULT_IMAGE = "animal_images/file_not_found.jpg";
     @Override
@@ -38,6 +47,13 @@ public class ResultActivity2 extends AppCompatActivity {
         setContentView(R.layout.activity_result_2);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
+        this.doneBtn = (Button) findViewById(R.id.doneBtn);
+        this.errorBtn = (Button) findViewById(R.id.errorBtn);
+
+        this.doneBtn.setVisibility(View.INVISIBLE);
+        this.errorBtn.setVisibility(View.INVISIBLE);
 
         this.animalList = (TableLayout) findViewById(R.id.animalResultList);
         this.animalList.setPadding(0,20,0,0);
@@ -137,11 +153,15 @@ public class ResultActivity2 extends AppCompatActivity {
 
     }
 
+    //only once a user highlights an animal will the Done/Error buttons show up
     public View.OnClickListener highlightRow(final TableRow tr, final TableLayout list) {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                //make buttons visible
+                doneBtn.setVisibility(View.VISIBLE);
+                errorBtn.setVisibility(View.VISIBLE);
 
                 //reset all the colors
                 for (int i = 0; i < list.getChildCount(); i++) {
@@ -151,7 +171,7 @@ public class ResultActivity2 extends AppCompatActivity {
                 }
 
 
-                tr.setBackgroundColor(Color.parseColor("#ffff99"));
+                tr.setBackgroundColor(HIGHLIGHT_COLOR);
 
             }
         };
@@ -174,5 +194,41 @@ public class ResultActivity2 extends AppCompatActivity {
         Intent result_intent = new Intent();
         setResult(1, result_intent);
         finish();
+    }
+
+
+
+    //User highlited an animal and pressed DONE
+    public void finishIdentification(View view) {
+
+
+        Animal animal = null;
+        String animal_name = "";
+
+        //get the highlighted animal
+        for (int i = 0 ; i < animalList.getChildCount(); i++) {
+
+            //check which one is yellow
+            if ( ((ColorDrawable) animalList.getChildAt(i).getBackground()).getColor() == HIGHLIGHT_COLOR)  {
+                animal_name = animalList.getChildAt(i).getTag().toString();
+            }
+        }
+
+
+        for (Animal a: animals) {
+            if (a.getName().equalsIgnoreCase(animal_name)) {
+                animal = a;
+            }
+        }
+
+
+        //get the animal corresponding to the highlighted one, and send it back to guicontroller
+
+        Intent intent = new Intent();
+        intent.putExtra("selectedAnimal",animal);
+        setResult(1, intent);
+        finish();
+
+
     }
 }

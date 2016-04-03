@@ -277,13 +277,13 @@ public class GuiController extends AppCompatActivity {
     }
 
     private void resultActivityLogic(Intent data) {
-//        List<String[]> sessionAnswers = new ArrayList<String[]>();
-//        for (String topic : qa_map.keySet()){
-//            sessionAnswers.add(qa_map.get(topic).getAnswersGivenByUsers());
-//        }
-//        dataCtrl.sessionCompleted(sessionAnswers,"animal name test");
 
-        Toast.makeText(GuiController.this, "Welcome to results", Toast.LENGTH_SHORT).show();
+        Animal selectedAnimal = (Animal) data.getSerializableExtra("selectedAnimal");
+
+        //do something with selectedAnimal if needed...
+
+        //then finish/restart the app.
+        recreate();
     }
 
 
