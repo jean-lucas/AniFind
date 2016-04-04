@@ -11,7 +11,7 @@ import se3a04.anifind.DataEntities.QA;
 import se3a04.anifind.Experts.ColourExpert;
 import se3a04.anifind.Experts.Expert;
 import se3a04.anifind.Experts.HabitatExpert;
-import se3a04.anifind.Experts.LocationExpert;
+//import se3a04.anifind.Experts.LocationExpert;
 import se3a04.anifind.Experts.MobilityExpert;
 import se3a04.anifind.Experts.SizeExpert;
 import se3a04.anifind.Experts.SizeExpert2;
@@ -33,7 +33,7 @@ public class BlackBoard {
 
         this.experts = new Expert[] {
                 new HabitatExpert(),
-                new LocationExpert(),
+//                new LocationExpert(),
                 new MobilityExpert(),
                 new SizeExpert2(),
                 new TimeExpert(),
