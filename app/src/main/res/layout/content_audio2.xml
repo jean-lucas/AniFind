@@ -23,7 +23,7 @@
         android:text="Colors "
         android:textSize="25sp"
         android:id="@+id/attributeTitle"
-        android:textColor="#f39595" />
+        android:textColor="#060606" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -32,7 +32,7 @@
         android:text="question "
         android:textSize="20sp"
         android:id="@+id/attributeQuestion"
-        android:textColor="#75900b" />
+        android:textColor="#2c3800" />
 
 
     <TextView
@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Example: 'red, blue, black'"
-        android:textColor="#8b8b8b"
+        android:textColor="#c10000"
         android:id="@+id/exampleText"
         android:paddingTop="5dp"/>
 

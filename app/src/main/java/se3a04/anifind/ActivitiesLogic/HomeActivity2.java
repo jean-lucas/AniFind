@@ -50,29 +50,29 @@ public class HomeActivity2 extends AppCompatActivity {
 
     }
 
-    public class BackgroundSound extends AsyncTask<Void, Void, Void> {
-
-        @Override
-        protected Void doInBackground(Void... params) {
-            MediaPlayer player = MediaPlayer.create(HomeActivity2.this, R.raw.nature);
-            player.setLooping(true); // Set looping
-            player.setVolume(1.0f, 1.0f);
-            player.start();
-
-            return null;
-        }
-
-    }
-
-    BackgroundSound bBackgroundSound = new BackgroundSound();
-
-    public void onResume() {
-        super.onResume();
-        bBackgroundSound.execute((Void[]) null);
-    }
-
-    public void onPause() {
-        super.onPause();
-        bBackgroundSound.cancel(true);
-    }
+//    public class BackgroundSound extends AsyncTask<Void, Void, Void> {
+//
+//        @Override
+//        protected Void doInBackground(Void... params) {
+//            MediaPlayer player = MediaPlayer.create(HomeActivity2.this, R.raw.nature);
+//            player.setLooping(true); // Set looping
+//            player.setVolume(1.0f, 1.0f);
+//            player.start();
+//
+//            return null;
+//        }
+//
+//    }
+//
+//    BackgroundSound bBackgroundSound = new BackgroundSound();
+//
+//    public void onResume() {
+//        super.onResume();
+//        bBackgroundSound.execute((Void[]) null);
+//    }
+//
+//    public void onPause() {
+//        super.onPause();
+//        bBackgroundSound.cancel(true);
+//    }
 }

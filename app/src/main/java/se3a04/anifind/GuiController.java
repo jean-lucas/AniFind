@@ -1,15 +1,11 @@
 package se3a04.anifind;
 
 import android.content.Intent;
-import android.location.Location;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -33,17 +29,12 @@ import se3a04.anifind.Misc.CustomComparator;
     TODO: fix question dataset
     TODO: hints for audio need to be better
     TODO: parse valid answers from audio questions
-    TODO: create error view
-    TODO: get animals with most points for result
-    TODO: add proper buttons in result activity
     TODO: Fix size expert
     TODO: create logic for location expert
-    TODO: remove a question to be asked, if an expert is commented out
     TODO: if user selects Use current location, or Use current time, make sure the qa_map gets the right value saved!
     TODO: VERY IMPORTANT: Once the animal dataset is finished, get all possible attributes and store them as asnwersToBeParsedByAudio withing the QA object
     TODO: In Audioacitivy for the size question be specific on how large the sizes are, and make the speaker say Very small, Small, Medium, etc..
     TODO: In Audio activy tell the user when only ONE answer is allowed
-
     TODO: USER MANUAL
  */
 
@@ -84,14 +75,10 @@ public class GuiController extends AppCompatActivity {
     private int question_counter;
 
 
-    //user location object
-    Location loc;
-
-
 
     //views for the starting activity
-    private ProgressBar loading_spinner;
-    private TextView loading_text;
+//    private ProgressBar loading_spinner;
+//    private TextView loading_text;
     private Button goHome_btn;
 
 
@@ -105,20 +92,19 @@ public class GuiController extends AppCompatActivity {
 
 
         //create loading animation
-        loading_text = (TextView) findViewById(R.id.loading_text);
-        loading_spinner = (ProgressBar) findViewById(R.id.loading_spinner);
+//        loading_text = (TextView) findViewById(R.id.loading_text);
+//        loading_spinner = (ProgressBar) findViewById(R.id.loading_spinner);
         goHome_btn = (Button) findViewById(R.id.goHome_btn);
 
-        loading_spinner.setVisibility(View.VISIBLE);
+//        loading_spinner.setVisibility(View.VISIBLE);
         goHome_btn.setVisibility(View.GONE);
 
 
         //load all the required instatiations here..
         dataCtrl = new DataController(this.getApplicationContext());
-        blackBoard = new BlackBoard();
-
         animal_map = dataCtrl.getAnimals();
         qa_map = dataCtrl.getQuestions();
+        blackBoard = new BlackBoard();
         listOfAnimals = new ArrayList<Animal>();
 
         //fill our list of animals
@@ -133,7 +119,6 @@ public class GuiController extends AppCompatActivity {
                 questionsToRemove.add(topic);
             }
         }
-
         for (String topic : questionsToRemove) qa_map.remove(topic);
 
 
@@ -142,8 +127,8 @@ public class GuiController extends AppCompatActivity {
 
         //everything loaded at this point
 
-        loading_text.setText("App Ready");
-        loading_spinner.setVisibility(View.GONE);
+//        loading_text.setText("App Ready");
+//        loading_spinner.setVisibility(View.GONE);
         goHome_btn.setVisibility(View.VISIBLE);
 
 
@@ -151,13 +136,11 @@ public class GuiController extends AppCompatActivity {
         //if we removed Location expert go straight to home,
         //else go to map activity first
         if (!qa_map.containsKey("Location")) {
-            Log.d("CHECK_ONE", "CALLED IF");
             Intent intent = new Intent(GuiController.this, HomeActivity2.class);
             startActivityForResult(intent, HOME_ACTIVITY_REQUEST_CODE);
         }
 
         else {
-            Log.d("CHECK_ONE", "CALLED ELSE");
             //get map stuff
             Intent intent = new Intent(GuiController.this, MapsActivity.class);
             startActivityForResult(intent, MAP_ACTIVITY_REQUEST_CODE);
@@ -166,6 +149,8 @@ public class GuiController extends AppCompatActivity {
 
 
 
+    //Once an acitivy has finished, it will alert the GuiController with a result code and a requestCode
+    //those values are then used to determine what logic is to be proceeded
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -207,10 +192,10 @@ public class GuiController extends AppCompatActivity {
 
 
 
+    //results given in home activity
     private void homeActivityLogic(Intent data) {
 
         int identificationType = data.getIntExtra("identificationType", -1);
-
 
 
         //go to text questions
@@ -234,7 +219,7 @@ public class GuiController extends AppCompatActivity {
 
 
     //once all questions are finished, this function is called
-    //it will be called one question at a time, but sequentially.
+    //it will be called one question at a time.
     private void questionActivityLogic(Intent data) {
 
         QA temp_qa = (QA) data.getSerializableExtra("current_qa");
@@ -248,37 +233,26 @@ public class GuiController extends AppCompatActivity {
 
         question_counter++;
 
-        //IDEALLY FROM HERE WE WOULD WANT TO CALL THE BLACKBOARD WITH OUR ANSWERS
-        //AND GO TO A LOADING SCREEN FOLLOWED BY THE RESULTS ACTIVITY
-        // THIS IS TEMPORARY -- JUST TO SEE IF ITS WORKING
+        //this is true if user has gone through all questions
         if (question_counter == qa_map.size()) {
             question_counter = 0;
 
-            //now ask the expert
-            //from there we get an update animal dataset
-            //so we can put that in the extra for the result intent
-
-
+            //now we can consult all the experts
             this.listOfAnimals = blackBoard.consultAllExperts(listOfAnimals, qa_map);
 
 
-            //but now we need to sort the list by points!
-            //only get the top 10 for now..
+            //sort the list by points, and only get the top 5
             Collections.sort(this.listOfAnimals, new CustomComparator());
-            ArrayList<Animal> bestResults = new ArrayList<> (this.listOfAnimals.subList(0,9));
+            ArrayList<Animal> bestResults = new ArrayList<> (this.listOfAnimals.subList(0,4));
 
             Intent intent = new Intent(GuiController.this, ResultActivity2.class);
             intent.putExtra("animals", bestResults);
             startActivityForResult(intent, RESULT_ACTIVITY_REQUEST_CODE);
-
-
-
         }
-
     }
 
 
-    //
+    //get the selected animal from results or go to error report page
     private void resultActivityLogic(Intent data) {
 
         Animal selectedAnimal = (Animal) data.getSerializableExtra("selectedAnimal");
@@ -295,6 +269,8 @@ public class GuiController extends AppCompatActivity {
         else {
             //do something else with animal here
 
+            //if we had something to store results it would go in here
+
             //restart the app
             recreate();
         }
@@ -302,6 +278,8 @@ public class GuiController extends AppCompatActivity {
     }
 
 
+    //logic for sending an email to developers if user has encountered an issue
+    //with the dataset
     private void errorActivityLogic(Intent data) {
 
 
@@ -325,7 +303,8 @@ public class GuiController extends AppCompatActivity {
         }
     }
 
-
+    //TODO FIX ME!
+    //once user location is retrieved we can put this in the qa_map answer for Locaton
     private void mapActivityLogic(Intent data) {
 
 
@@ -340,7 +319,10 @@ public class GuiController extends AppCompatActivity {
         Intent intent = new Intent(GuiController.this, HomeActivity2.class);
         startActivityForResult(intent, HOME_ACTIVITY_REQUEST_CODE);
     }
-    //reset the activity
+
+
+
+    //home button listener : reset the activity
     public void goHomeButton(View view) {
         recreate();
     }
