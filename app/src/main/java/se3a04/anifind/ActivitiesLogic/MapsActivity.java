@@ -80,7 +80,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         //the address it returns consist of: Lat, Lon, City, Country
         //city and country MAY be empty!
-        String[] address = {String.valueOf(loc.getLatitude()), String.valueOf(loc.getLongitude()), "", ""};
+        String[] address = {"Use", "", ""};
 
         try {
             List<Address> addr = geo.getFromLocation(loc.getLatitude(), loc.getLongitude(), 5);

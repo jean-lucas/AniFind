@@ -214,6 +214,9 @@ public class SizeExpert extends Expert {
 
         }
 
+
+        Log.d("POINTS", "point given " + points);
+
         return points;
     }
 

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -32,10 +33,9 @@ import se3a04.anifind.Misc.CustomComparator;
     TODO: Fix size expert
     TODO: create logic for location expert
     TODO: if user selects Use current location, or Use current time, make sure the qa_map gets the right value saved!
-    TODO: VERY IMPORTANT: Once the animal dataset is finished, get all possible attributes and store them as asnwersToBeParsedByAudio withing the QA object
-    TODO: In Audioacitivy for the size question be specific on how large the sizes are, and make the speaker say Very small, Small, Medium, etc..
     TODO: In Audio activy tell the user when only ONE answer is allowed
     TODO: USER MANUAL
+
  */
 
 
@@ -227,8 +227,21 @@ public class GuiController extends AppCompatActivity {
         String temp_topic = temp_qa.getTopic();
         String[] temp_answers = temp_qa.getAnswersGivenByUsers();
 
-        //update the answers from users with the qa_map in this class
-        this.qa_map.get(temp_topic).setGivenAnswerByTopic(temp_answers);
+
+//        if (temp_topic.equalsIgnoreCase("Location") && temp_answers[0].equalsIgnoreCase("current")) {
+//            this.qa_map.get("Location").setGivenAnswerByTopic({"current + "USER LOCATION);
+//        }
+//
+//        else if (temp_topic.equalsIgnoreCase("Time") && temp_answers[0].equalsIgnoreCase("current")) {
+//            this.qa_map.get("Time").setGivenAnswerByTopic(current + USER TIMe);
+//        }
+//
+//        else {
+//            //update the answers from users with the qa_map in this class
+//            this.qa_map.get(temp_topic).setGivenAnswerByTopic(temp_answers);
+//        }
+
+
 
 
         question_counter++;
