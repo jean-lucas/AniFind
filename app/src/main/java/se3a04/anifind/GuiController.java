@@ -9,7 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 
@@ -54,8 +56,9 @@ public class GuiController extends AppCompatActivity {
     private BlackBoard blackBoard;
 
 
-
-
+    //userLocation will be provided through the mapActivity
+    //contains: {"current",countryCode,countryName, cityName}
+    private String[] userLocation = new String[4];
 
     //request codes from different activities
     private final int HOME_ACTIVITY_REQUEST_CODE = 1;
@@ -225,30 +228,41 @@ public class GuiController extends AppCompatActivity {
         QA temp_qa = (QA) data.getSerializableExtra("current_qa");
 
         String temp_topic = temp_qa.getTopic();
+
         String[] temp_answers = temp_qa.getAnswersGivenByUsers();
 
 
-//        if (temp_topic.equalsIgnoreCase("Location") && temp_answers[0].equalsIgnoreCase("current")) {
-//            this.qa_map.get("Location").setGivenAnswerByTopic({"current + "USER LOCATION);
-//        }
-//
-//        else if (temp_topic.equalsIgnoreCase("Time") && temp_answers[0].equalsIgnoreCase("current")) {
-//            this.qa_map.get("Time").setGivenAnswerByTopic(current + USER TIMe);
-//        }
-//
-//        else {
-//            //update the answers from users with the qa_map in this class
-//            this.qa_map.get(temp_topic).setGivenAnswerByTopic(temp_answers);
-//        }
+        if (temp_answers.length > 0) {
+
+            if (temp_topic.equalsIgnoreCase("Location") && temp_answers[0].equalsIgnoreCase("current")) {
+                this.qa_map.get("Location").setGivenAnswerByTopic(userLocation);
+            }
+            else if (temp_topic.equalsIgnoreCase("Time") && temp_answers[0].equalsIgnoreCase("Use Current Time")) {
+                this.qa_map.get("Time").setGivenAnswerByTopic(new String[]{"current"});
+            }
+            else {
+                //update the answers from users with the qa_map in this class
+                this.qa_map.get(temp_topic).setGivenAnswerByTopic(temp_answers);
+            }
+        }
+
+        else {
+            this.qa_map.get(temp_topic).setGivenAnswerByTopic(new String[] {""});
+        }
+
+
+
+        Log.d("QQ", "qq " +  this.qa_map.get(temp_topic).getAnswersGivenByUsers()[0]);
 
 
 
 
         question_counter++;
 
-        //this is true if user has gone through all questions
+                //this is true if user has gone through all questions
         if (question_counter == qa_map.size()) {
             question_counter = 0;
+
 
             //now we can consult all the experts
             this.listOfAnimals = blackBoard.consultAllExperts(listOfAnimals, qa_map);
@@ -323,9 +337,9 @@ public class GuiController extends AppCompatActivity {
 
         //get the location information retrieved from mapactivity,
         //and save it to the respective qa object
-        String[] locations =  data.getStringArrayExtra("loc");
+        this.userLocation =  data.getStringArrayExtra("loc");
 
-        //qa_map.get("Location").setGivenAnswerByTopic(locations);
+//        qa_map.get("Location").setGivenAnswerByTopic(locations);
 
 
         //now start the app

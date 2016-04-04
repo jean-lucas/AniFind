@@ -21,7 +21,7 @@ public class MobilityExpert extends Expert {
         for (String attribute : animalAttributes) {
             for (String target : valuesToCompare) {
                 if (attribute.equalsIgnoreCase(target)) {
-                    matchCounter += 10;
+                    matchCounter += 9;
                 }
 //                else {
 //                    for (String word : wordBankAccess.getWordBank()) {

@@ -12,6 +12,7 @@ import se3a04.anifind.Experts.ColourExpert;
 import se3a04.anifind.Experts.Expert;
 import se3a04.anifind.Experts.HabitatExpert;
 //import se3a04.anifind.Experts.LocationExpert;
+import se3a04.anifind.Experts.LocationExpert;
 import se3a04.anifind.Experts.MobilityExpert;
 import se3a04.anifind.Experts.SizeExpert;
 import se3a04.anifind.Experts.SizeExpert2;
@@ -36,7 +37,7 @@ public class BlackBoard {
 //                new LocationExpert(),
                 new MobilityExpert(),
                 new SizeExpert2(),
-                new TimeExpert(),
+//                new TimeExpert(),
                 new ColourExpert()
         };
     }
@@ -83,7 +84,7 @@ public class BlackBoard {
                         //the split("##") is used just to turn a string into an array with 1 element.
                         //the symbol ## is used since it is safe to assume it will not conflict with the actual
                         //contents of the string
-                        pnt = e.validateAttribute(a.getLifestyle().split("##"), qas.get("Lifestyle").getAnswersGivenByUsers());
+                        pnt = e.validateAttribute(a.getLifestyle().split("##"), qas.get("Time").getAnswersGivenByUsers());
                         a.updatePoint(pnt);
                         break;
 

@@ -78,17 +78,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         Geocoder geo = new Geocoder(this.getApplicationContext(), Locale.getDefault());
 
-        //the address it returns consist of: Lat, Lon, City, Country
-        //city and country MAY be empty!
-        String[] address = {"Use", "", ""};
+        //the address it returns consist of: "current", countrycode, countryName, cityName
+        //city and country MAY be empty!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        String[] address = {"current", "", "", ""};
 
         try {
             List<Address> addr = geo.getFromLocation(loc.getLatitude(), loc.getLongitude(), 5);
 
             if (addr.size() > 0) {
                for (Address a: addr) {
-                   if (a.getLocality() != null) address[2] = a.getLocality(); Log.d("LAT", address[2]);
-                   if (a.getFeatureName() != null) address[3] = a.getCountryName();Log.d("LAT", address[3]);
+                   if (a.getCountryCode() != null)  address[1] = a.getCountryCode();
+                   if (a.getLocality() != null)     address[2] = a.getLocality();
+                   if (a.getFeatureName() != null)  address[3] = a.getCountryName();
                }
             }
         } catch (IOException e) {

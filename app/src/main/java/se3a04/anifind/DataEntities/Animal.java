@@ -87,7 +87,7 @@ public class Animal implements Serializable {
         facts.put("color",this.getColors());
         facts.put("habitat",this.getHabitat());
         facts.put("location",this.getLocation());
-        facts.put("lifestyle",this.getLifestyle().split("."));
+        facts.put("Time",this.getLifestyle().split("."));
         facts.put("mobility", this.getMobility());
         facts.put("size", this.getSize());
 
