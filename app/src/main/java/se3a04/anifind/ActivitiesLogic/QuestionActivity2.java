@@ -18,6 +18,8 @@ import android.widget.RadioGroup;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import com.google.android.gms.location.places.Places;
+
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
@@ -215,14 +217,19 @@ public class QuestionActivity2 extends AppCompatActivity {
 
         if (selectBoxGroup.getVisibility() == View.VISIBLE) {
             selectBoxGroup.setVisibility(View.INVISIBLE);
+            autocomplete_location.setVisibility(View.INVISIBLE);
         }
         else {
             selectBoxGroup.setVisibility(View.VISIBLE);
+            autocomplete_location.setVisibility(View.VISIBLE);
         }
     }
 
     //user clicked the next button, so get all needed values
     public void evaluateAnswer(View view) {
+
+
+
 
         ArrayList<String> selectedAnswers = new ArrayList<String>();
 
@@ -247,9 +254,14 @@ public class QuestionActivity2 extends AppCompatActivity {
         String[] answers = selectedAnswers.toArray(new String[selectedAnswers.size()]);
 
 
-        //check if user wanted the single option
+
+
+        //check if user wanted the single option, or if question corrsponds to size;
         if (useCurrentOption.isChecked()) {
             this.qa.setGivenAnswerByTopic(new String[]{"current"});
+        }
+        else if (this.qa.getTopic().equalsIgnoreCase("Size")) {
+            this.qa.setGivenAnswerByTopic(evaluateAnswerForSize());
         }
         else {
             this.qa.setGivenAnswerByTopic(answers);
@@ -261,5 +273,42 @@ public class QuestionActivity2 extends AppCompatActivity {
         setResult(1, result_intent);
 
         finish();
+    }
+
+
+    private String[] evaluateAnswerForSize() {
+
+        String[] values = {"-1.0", "-1.0"};
+        String selectedAnswer = "";
+        for (RadioButton rb : currentRadioButtons) {
+            if (rb.isChecked()) {
+                selectedAnswer = rb.getText().toString();
+            }
+        }
+
+        switch (selectedAnswer.split(":")[0]) {
+
+            case "Very Small":
+                values = new String[] {"0", "0.1"};
+                break;
+
+            case "Small":
+                values = new String[] {"0.11", "0.5"};
+                break;
+
+            case "Medium":
+                values = new String[] {"0.51", "2.0"};
+                break;
+
+            case "Large":
+                values = new String[] {"2.1", "5"};
+                break;
+
+            case "Very Large":
+                values = new String[] {"5.1", "500"};
+                break;
+        }
+
+        return values;
     }
 }

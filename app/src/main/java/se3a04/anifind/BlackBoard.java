@@ -32,7 +32,7 @@ public class BlackBoard {
 
         this.experts = new Expert[] {
                 new HabitatExpert(),
-                new LocationExpert(),
+//                new LocationExpert(),
                 new MobilityExpert(),
 //                new SizeExpert(),
 //                new TimeExpert(),
