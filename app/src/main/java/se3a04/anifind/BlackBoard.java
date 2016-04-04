@@ -14,6 +14,7 @@ import se3a04.anifind.Experts.HabitatExpert;
 import se3a04.anifind.Experts.LocationExpert;
 import se3a04.anifind.Experts.MobilityExpert;
 import se3a04.anifind.Experts.SizeExpert;
+import se3a04.anifind.Experts.SizeExpert2;
 import se3a04.anifind.Experts.TimeExpert;
 
 
@@ -34,7 +35,7 @@ public class BlackBoard {
                 new HabitatExpert(),
 //                new LocationExpert(),
                 new MobilityExpert(),
-//                new SizeExpert(),
+                new SizeExpert2(),
 //                new TimeExpert(),
                 new ColourExpert()
         };
@@ -76,7 +77,6 @@ public class BlackBoard {
                     case "Colour":
                         pnt = e.validateAttribute(a.getColors(), qas.get("Colour").getAnswersGivenByUsers());
                         a.updatePoint(pnt);
-                        Log.d("POINT_CHECK", "points given = " + pnt);
                         break;
 
                     case "Time":
