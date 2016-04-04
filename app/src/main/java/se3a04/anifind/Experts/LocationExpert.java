@@ -27,12 +27,37 @@ public class LocationExpert extends Expert {
 
     @Override
     public int validateAttribute(String[] animalAttributes, String[] valuesToCompare) {
-        return 0;
-    }
 
-    // Method used to call Google Maps to get get users location
-    private String getCurrentLocation() {
-        return null;
+        int matchCounter = 0;
+
+        if (valuesToCompare.length == 1) {
+
+            for (String attribute : animalAttributes) {
+                for (String target : valuesToCompare) {
+
+                    if (attribute.equalsIgnoreCase(target)) {
+                        matchCounter += 30;
+                    }
+                }
+            }
+        }
+
+        else{
+            String[] animalAttributesNew = new String[1];
+            animalAttributesNew[0] = animalAttributes[3];
+
+            for (String attribute : animalAttributesNew) {
+                for (String target : valuesToCompare) {
+
+                    if (attribute.equalsIgnoreCase(target)) {
+                        matchCounter += 30;
+                    }
+                }
+            }
+        }
+
+
+        return matchCounter;
     }
 
 }
