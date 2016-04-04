@@ -1,36 +1,36 @@
 Name,Location,Habitat,Colors,Size(m),Lifestyle,Mobility
 Adelie Penguin, , Antarctic land-ocean, Black with white chest, 0.40-0.75, daytime,fins-two legs
-Affenpinscher, Germany, domestic , Black-Grey, 0.25, ,four legs
-Afghan Hound, Afghanistan, domestic, Black-White-Brown-Yellow, 0.68, ,four legs
+Affenpinscher, Germany, households , Black-Grey, 0.25, ,four legs
+Afghan Hound, Afghanistan, households, Black-White-Brown-Yellow, 0.68, ,four legs
 African Elephant, , Forest-savannah-river, Grey-Brown, 2-3.5, daytime, four legs
 African Civet, , Tropical rainforest, Black-White-Grey-Yellow-Brown-Beige, 0.43-0.71, Nocturnal, four legs
 African Clawed Frog, , Warm stagnant water with grassland, Brown-Grey-Albino, 0.025-0.12, Nocturnal, four legs-two legs
 African Palm Civet, , Tropical rainforest, Black-White-Grey-Yellow-Brown-Beige, 0.43-0.71, twilight,  four legs
 African Penguin, , Mountain-saltwater, Black-White-Grey, 0.60-0.68, daytime,two legs
 african tree toad, , tropical rainforest, Brown-Black-White-Beige, 0.025-0.038, Nocturnal,four legs-two legs
-Ainu Dog, Japan, domestic, Grey-Beige-Brown-White, 0.50, , four legs
-Airedale Terrier, Great Britain, domestic, Black-Beige-Brown, 0.58, ,four legs
-Akbash, Turkey, domestic , White-Brown, 0.86, , four legs
-Akita, Japan, domestic , Brown-White-Black-Grey,0.86 , , four legs
-Alaskan Malamute, North America, domestic, White-Black-Grey, 0.63, , four legs
+Ainu Dog, Japan, households, Grey-Beige-Brown-White, 0.50, , four legs
+Airedale Terrier, Great Britain, households, Black-Beige-Brown, 0.58, ,four legs
+Akbash, Turkey, households , White-Brown, 0.86, , four legs
+Akita, Japan, households , Brown-White-Black-Grey,0.86 , , four legs
+Alaskan Malamute, North America, households, White-Black-Grey, 0.63, , four legs
 Albatross, , saltwater-tropical islands, Black-White-Brown-Red-Yellow, 0.9-1.3, daytime, wings-two legs
 Aldabra Giant Tortoise, , grassland-swamp, Black-Brown-Beige, 0.90-1.20, daytime, four legs
 Alligator, , swamp, Green-Grey-Black-Brown-Yellow, 0.5-4.5, daytime-Nocturnal, four legs-tail
-Alpine Dachsbracke, Austria, domestic , Red-Black-Brown, 0.35, , four legs
-American Bulldog, North America,domestic, White-Black-Red-Brown-Beige, 0.63, , four legs
-American Cocker Spaniel, North America, domestic, White-Black-Brown-Beige-Grey-Red, , , four legs
-American Coonhound, North America, domestic , Black-Beige-Brown-White, 0.70, , four legs
-American Eskimo Dog, Germany, domestic , White, , , four legs
-American Foxhound, North America, domestic, Black-White-Beige, 0.63, , four legs
-American Pit Bull Terrier, North America, domestic, Black-White-Beige-Brown, , , four legs
-American Staffordshire Terrier, North America, domestic , Black-White-Beige-Brown, , , four legs
-American Water Spaniel, North America, domestic, Black-Brown, , , four legs
-Anatolian Shepherd Dog, North America, domestic, Red-Brown-White, , , four legs
+Alpine Dachsbracke, Austria, households , Red-Black-Brown, 0.35, , four legs
+American Bulldog, North America,households, White-Black-Red-Brown-Beige, 0.63, , four legs
+American Cocker Spaniel, North America, households, White-Black-Brown-Beige-Grey-Red, , , four legs
+American Coonhound, North America, households , Black-Beige-Brown-White, 0.70, , four legs
+American Eskimo Dog, Germany, households , White, , , four legs
+American Foxhound, North America, households, Black-White-Beige, 0.63, , four legs
+American Pit Bull Terrier, North America, households, Black-White-Beige-Brown, , , four legs
+American Staffordshire Terrier, North America, households , Black-White-Beige-Brown, , , four legs
+American Water Spaniel, North America, households, Black-Brown, , , four legs
+Anatolian Shepherd Dog, North America, households, Red-Brown-White, , , four legs
 Angelfish, Southern Hemisphere, river-saltwater, Black-White-Yellow-Orange-Purple-Silver-Blue-Green, 0.07-0.30, ,fins-tail
 Ant, , forest-grassland-savanna, Brown-Black-Red, 0.002-0.025, ,many legs
 anteater, , Forest-grassland, Brown-Grey-Black-Beige, 0.9-2.1, , four legs
 antelope, , Forest-grassland, Brown-Red-Beige, 1-1.5, , four legs
-Appenzeller Dog, Switzerland, domestic , Black-Beige-White, , , four legs
+Appenzeller Dog, Switzerland, households , Black-Beige-White, , , four legs
 arctic fox, , Polar regions, White-Black-Grey, 0.70-1.10, ,
 arctic hare, , Tundra-mountains, White-Grey, 0.48-0.67, ,four legs
 arctic wolf, , Grassland-tundra, White-Grey, 0.60-1, ,four legs
@@ -38,64 +38,64 @@ armadillo, , decidious forest-grassland, Pink-Grey-Black,0.36-0.75, ,four legs
 Asian Giant Hornet, , decidious forest, Black-Brown-Red-Orange-Yellow, 0.027-0.055, daytime,wings
 asian palm civet, , Tropical rainforest, Black-White-Grey-Yellow-Brown-Beige, 0.43-0.71, , four legs
 Asiatic Black Bear, , Pine Forest-Deciduous Forest, Black-Brown-White, 1.2-1.9, Nocturnal, four legs
-Australian Cattle Dog, Australia, domestic, Grey-Red-Black, , , four legs
-Australian Kelpie Dog, Australia, domestic, Beige-Red-Black-Brown, , , four legs
-Australian Mist, Australia, domestic, Brown-Yellow-Beige, , , four legs
-Australian Shepherd, North America, domestic , Beige-Red-Black-Brown-Grey, , , four legs
-Australian Terrier, Australia, domestic, Beige-Yellow-Black, , , four legs
+Australian Cattle Dog, Australia, households, Grey-Red-Black, , , four legs
+Australian Kelpie Dog, Australia, households, Beige-Red-Black-Brown, , , four legs
+Australian Mist, Australia, households, Brown-Yellow-Beige, , , four legs
+Australian Shepherd, North America, households , Beige-Red-Black-Brown-Grey, , , four legs
+Australian Terrier, Australia, households, Beige-Yellow-Black, , , four legs
 avocet, ,wetlands, White-Black, 0.42-0.45, , two legs-wings
 axolotl, , lakes-river, Black-White-Pink-Grey-Brown, 0.15-0.45, ,four legs-tail-fins
 Aye Aye, , tropical rainforest, Black-Brown, 0.30-0.40, Nocturnal, four legs
 Baboon, , Grassland-tropical rainforest, Yellow-Grey-Silver-Brown-Black, .5-.86, daytime,arms-two legs
 bactrian camel, , Deserts, Brown-Beige, 1.7-2.1, daytime, four legs
 badger, , deciduous forest-grassland, Brown-Black-White, .4-.75, nocturnal,four legs
-Balinese, North America, domestic, Brown-Black,.4-.5, ,four legs
+Balinese, North America, households, Brown-Black,.4-.5, ,four legs
 banded palm civet, , Tropical rainforest, Black-White-Grey-Brown-Beige, .43-.71, ,four legs
 bandicoot, , tropical rainforest, Grey-Black-White-Brown-Beige-Yellow, .28-.81, , tail
 Barb, Asia, river, Black-White-Yellow-Orange-Red-Silver, .025-.07, ,fins-tail
 barn owl, , grassland-deciduous forest, Black-White-Grey-Orange-Brown, .25-.45, nocturnal, wings
 Barnacle, Worldwide, saltwater, Black-White-Yellow, .01-.07, ,none
 Barracuda, Oceans worldwide, saltwater, Grey-Blue-Black-Brown, 0.5-2, ,fins-tail
-Basenji Dog, Zaire, domestic, Brown-Beige-Black-White-Yellow, , ,four legs
+Basenji Dog, Zaire, households, Brown-Beige-Black-White-Yellow, , ,four legs
 Basking Shark, Atlantic and Pacific Oceans, saltwater, Grey-Black-Brown, 6-12, ,fins-tail
-Basset Hound Dog, Great Britain, domestic, Beige-White-Red-Brown-Black, , ,four legs
+Basset Hound Dog, Great Britain, households, Beige-White-Red-Brown-Black, , ,four legs
 bat, , Woodland-caves, Brown-Black-Grey, 0.03-1.80, nocturnal,wings
 Bavarian Mountain Hound, Germany, , Beige-Brown-Black, , ,four legs
-Beagle Dog, Great Britain, domestic, Beige-White-Red-Brown-Black, , ,four legs
+Beagle Dog, Great Britain, households, Beige-White-Red-Brown-Black, , ,four legs
 bear, , deciduous forest-pine forest-mountains, Black-brown-white, 1.2-3.3, daylight,four legs
-Bearded Collie, Great Britain,domestic , White-Black-Brown-Beige-Grey, , daylight,four legs
+Bearded Collie, Great Britain,households , White-Black-Brown-Beige-Grey, , daylight,four legs
 bearded dragon, , savanna-desert, Green-Yellow-Brown-Grey, 0.50-0.61, ,four legs
 beaver, Canada, deciduous forest-pine forest-wetlands-river, Brown-Grey, 0.80-1.20, nocturnal, tail-four legs
-Bedlington Terrier, Great Britain, domestic, Red-White-Blue-Brown-Beige-Black, , ,four legs
-Beetle, , river-grassland-savanna-desert-tropical rainforest-deciduous forest-pine forest-swamp-domestic-tropical islands-wetlands, Brown-Black-Red-Yellow-Green-Blue, 0.01-0.025, ,wings-four legs
+Bedlington Terrier, Great Britain, households, Red-White-Blue-Brown-Beige-Black, , ,four legs
+Beetle, , grassland-savanna-tropical rainforest-deciduous forest-swamp-households-tropical islands, Brown-Black-Red-Yellow-Green-Blue, 0.01-0.025, ,wings-many legs
 bengal tiger, , tropical rainforest, Orange-Black-White, 2.4-3.3, twilight-nocturnal,four legs
-Bernese Mountain Dog, Switzerland, domestic, Black-White-Beige, , daytime,four legs
-Bichon Frise, France, domestic, White, ,daytime ,four legs
+Bernese Mountain Dog, Switzerland, households, Black-White-Beige, , daytime,four legs
+Bichon Frise, France, households, White, ,daytime ,four legs
 Binturong, ,tropical rainforest, Black-Brown-Grey, 0.60-0.96, Nocturnal-twilight,four legs
-Birman, Burma, domestic, Brown-Black, , , four legs
+Birman, Burma, households, Brown-Black, , , four legs
 bison, , decidious forest-pine forest, Brown-Beige, 2-2.7, , four legs
 Black Bear, ,decidious forest-pine forest , Black-Dark Brown-Beige, 1.3-1.8, Nocturnal,
 black rhinoceros, , wetlands-savanna-grassland, Brown-Grey-White, , ,four legs
-Black Russian Terrier, Russia,domestic , Black-Grey, , , four legs
+Black Russian Terrier, Russia,households , Black-Grey, , , four legs
 Black Widow Spider, , tropical rainforest-decidious forest-pine forest, Brown-Black-Red, 0.013-0.038, ,many legs
-Bloodhound, Belgium, domestic , Brown  Beige-Black, , , four legs
-Blue Lacy Dog, North America, domestic, Blue-Grey-White-Brown--Beige, , , four legs
+Bloodhound, Belgium, households , Brown  Beige-Black, , , four legs
+Blue Lacy Dog, North America, households, Blue-Grey-White-Brown--Beige, , , four legs
 Blue Whale, , polar regions-saltwater, Grey-Blue-White-Black, 25-30, daytime, fins-tail
-Bluetick Coonhound, North America,domestic , Black-White-Grey, , , four legs
+Bluetick Coonhound, North America,households , Black-White-Grey, , , four legs
 Bobcat, , Mountains , Beige-Brown-Red-Black-White, 0.65-1, Nocturnal-twilight,
-Bolognese Dog, Italy, domestic, White, , , four legs
-Bombay, North America, domestic, Brown-Black, , , four legs
+Bolognese Dog, Italy, households, White, , , four legs
+Bombay, North America, households, Brown-Black, , , four legs
 Bongo, , decidious forest, Orange-Red-White-Brown-Black, 1.7-2.5, daytime, four legs
 bonobo, , tropical rainforest-swamp, Black-Grey-Brown, 0.73-0.90, ,two legs-amrs-tail
 booby, , tropical islands, Brown-Black-White-Grey-Blue, 0.64-0.91, ,two legs-wings
-Border Collie, Great Britain,domestic , Black-White-Brown, , , four legs
+Border Collie, Great Britain,households , Black-White-Brown, , , four legs
 Border Terrier, Great Britain, dog, Beige-Black-Brown-Grey, , , four legs
 Bornean Orang utan, , tropical rainforest-swamp, Red-Orange-Brown-Grey-Black, 1.25-1.5, daytime,
 Elephant, , savanna, Grey-Brown-Black, 2-3, ,four legs
-Boston Terrier, North America, domestic , Black-Red-Brown-White-Beige-Grey, , , four legs
+Boston Terrier, North America, households , Black-Red-Brown-White-Beige-Grey, , , four legs
 bottle nosed dolphin, , saltwater, grey, 2.5-4, , fins-tail
-Boxer Dog, Germany, domestic, Beige-Black-Brown, , , four legs
-Boykin Spaniel, North America, domestic , Brown-Black-Beige-White, , , four legs
+Boxer Dog, Germany, households, Beige-Black-Brown, , , four legs
+Boykin Spaniel, North America, households , Brown-Black-Beige-White, , , four legs
 Brazilian Terrier, Brazil, , Black-Brown-Beige-White, , , 
 brown bear,  ,  Forest-mountainous regions,  Brown-Black-Beige, 1.5-2.8,  ,
 budgerigar,  ,  Open woodland-grassland near water,  Black-White-Grey-Green-Blue-Yellow, 0.15-0.2,  Flock,
@@ -123,7 +123,7 @@ cat,  ,  ,  , 0.35,  ,
 Caterpillar,  ,  Quiet forests-pastures,  Yellow-Black-Orange-Red-Green-Blue-White. Brown, 0.03-0.06,  ,
 catfish,  Warm freshwater, river-lakes,  Brown-Black-Yellow-White-Beige-Grey, 0.01-2.7,  ,
 Cavalier King Charles Spaniel,  Great Britain,  ,  , 0.33,  ,
-Centipede,  ,  deciduous forest-domestic,  Yellow-Black-Orange-Red-White-Brown, 0.0-0.0,  , many legs
+Centipede,  ,  deciduous forest-households,  Yellow-Black-Orange-Red-White-Brown, 0.0-0.0,  , many legs
 Cesky Fousek,  Czech Republic,  ,  , 0.66,  ,
 chameleon,  ,  Tropical forests-desert,  Green-Brown-Black-Yellow-Red-Beige, 0.0279-0.685,  ,
 chamois,  ,  Mountainous-rocky terrain,  Brown-Grey-Black-Beige-White, 0.75-0.8,  Herd,
@@ -167,7 +167,7 @@ Cuttlefish,  ,  Coastal-deeper waters,  Green-Red-Blue-Yellow-Orange-Brown-Pink-
 Dachshund,  Germany,  ,  , 0.38,  ,
 Dalmation,  Yugoslavia,  ,  , 0.58,  ,
 darwins frog,  ,  Beech-tree forests-in fields,  Black-Green-Grey-Brown-Beige, 0.025-0.035,  ,
-deer,  ,  decidious forest-pine forest-grassland-domestic,  Brown-Beige-White-Orange, 0.6-1.05,  Herd,
+deer,  ,  decidious forest-pine forest-grassland-households,  Brown-Beige-White-Orange, 0.6-1.05,  Herd,
 desert tortoise,  ,  Sandy desert plains-rocky hills,  Black-Brown-Beige-Yellow, 0.25-0.36,  ,
 Deutsche Bracke,  Germany,  ,  , 0.53,  ,
 dhole,  , grassland-decidious forest,  Grey-Black-White-Brown-Beige-Yellow-Red, 0.75-1.1,  Pack,  tail
@@ -175,7 +175,7 @@ dingo,  ,  Desert  wet-dry forests,  Beige-Black-Brown-Grey-Red-Yellow, 1.0-1.25
 Discus,  ,  Deep  slow-moving waters,  Blue-Red-Green-Yellow-Orange-Black-Brown, 0.2-0.25,  daytime,
 Doberman Pinscher,  Germany,  ,  , 0.71,  ,
 dodo,  ,  tropical rainforest,  Grey-Black-White-Brown, 1.0,  Flock,
-dog,  ,  domestic,  , 0.5,  ,
+dog,  ,  households,  , 0.5,  ,
 Dogo Argentino,  Argentina,  ,  , 0.685,  ,
 Dogue De Bordeaux,  France,  ,  , 0.685,  ,
 dolphin,  ,  Temperate coastal waters  harbours-bays,  Black-White-Grey, 2.0-4.0,  Pod,
@@ -202,13 +202,13 @@ elephant shrew,  ,  Forest  woodland-grassland,  Black-Brown-Grey-White-Beige, 0
 Emperor Penguin,  ,  Compact sea-ice-ocean,  Black-White-Yellow-Orange, 1.0-1.2,  daytime,
 emperor tamarin,  ,  tropical rainforest,  Black-Grey-White-Brown, 0.18-0.3,  Troop,  tail
 emu,  ,  grassland,  Black-Grey-Brown, 1.5-1.9,  Flock,
-English Cocker Spaniel,  Great Britain, domestic ,  , 0.43,  ,
-English Shepherd,  North America, domestic ,  , 0.58,  ,
-English Springer Spaniel,  Great Britain, domestic ,  , 0.5,  ,
-Entlebucher Mountain Dog,  Switzerland, domestic ,  , 0.5,  ,
+English Cocker Spaniel,  Great Britain, households ,  , 0.43,  ,
+English Shepherd,  North America, households ,  , 0.58,  ,
+English Springer Spaniel,  Great Britain, households ,  , 0.5,  ,
+Entlebucher Mountain Dog,  Switzerland, households ,  , 0.5,  ,
 Epagneul Pont Audemer,  France,  ,  , 0.58,  ,
 Eskimo Dog,  Canada,  ,  , 0.68,  ,
-Estrela Mountain Dog,  Portugal,  domestic,  , 0.68,  ,
+Estrela Mountain Dog,  Portugal,  households,  , 0.68,  ,
 falcon,  ,  High areas like mountains-cliffs,  Black-Grey-Brown-White-Yellow, 0.22-0.4,  ,
 fennec fox,  ,  Sandy Desert,  Sandy-White, 0.35-0.4,  ,
 ferret,  ,  Forest-grassland,  Brown-Black-Beige-Grey, 0.4-0.5,  ,
