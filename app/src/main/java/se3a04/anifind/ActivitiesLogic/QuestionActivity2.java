@@ -21,6 +21,8 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import se3a04.anifind.DataEntities.QA;
 import se3a04.anifind.R;
@@ -37,7 +39,8 @@ public class QuestionActivity2 extends AppCompatActivity {
 
     //contains all the checkboxes for a multivalued question
     private LinearLayout selectBoxGroup;
-    private CheckBox[] currentCheckBoxes;
+//    private CheckBox[] currentCheckBoxes;
+    private Set<CheckBox> checkBoxSet;
 
     //contains all the radiou buttons for a singlevalued question
     private RadioGroup radiouGroup;
@@ -90,7 +93,8 @@ public class QuestionActivity2 extends AppCompatActivity {
             autocomplete_location.setVisibility(View.VISIBLE);
             radiouGroup.setVisibility(View.GONE);
 
-            currentCheckBoxes = new CheckBox[possibleAnswers.length];
+//            currentCheckBoxes = new CheckBox[possibleAnswers.length];
+            checkBoxSet = new HashSet<CheckBox>();
             setupViewContentLocation(possibleAnswers);
         }
 
@@ -102,7 +106,8 @@ public class QuestionActivity2 extends AppCompatActivity {
             useCurrentOption.setVisibility(View.GONE);
             useCurrentOptionSeperator.setVisibility(View.GONE);
 
-            currentCheckBoxes = new CheckBox[possibleAnswers.length];
+//            currentCheckBoxes = new CheckBox[possibleAnswers.length];
+            checkBoxSet = new HashSet<CheckBox>();
             setupViewContentSelectBoxes(possibleAnswers);
         }
 
@@ -151,7 +156,8 @@ public class QuestionActivity2 extends AppCompatActivity {
             cb.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
             selectBoxGroup.addView(cb);
 
-            currentCheckBoxes[i] = cb;
+//            currentCheckBoxes[i] = cb;
+            checkBoxSet.add(cb);
         }
     }
 
@@ -179,7 +185,8 @@ public class QuestionActivity2 extends AppCompatActivity {
 
                 boolean newItem = true;
 
-                for (CheckBox cb: currentCheckBoxes) {
+//                for (CheckBox cb: currentCheckBoxes) {
+                for (CheckBox cb: checkBoxSet) {
                     if (cb == null)  break;
 
                     else if (cb.getText().toString().equalsIgnoreCase(item)) {
@@ -195,7 +202,9 @@ public class QuestionActivity2 extends AppCompatActivity {
                     cb.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
                     cb.setChecked(true);
                     selectBoxGroup.addView(cb);
-                    currentCheckBoxes[currentCheckBoxes.length - 1] = cb;
+
+                    checkBoxSet.add(cb);
+//                    currentCheckBoxes[currentCheckBoxes.length - 1] = cb;
                 }
             }
         };
@@ -218,7 +227,8 @@ public class QuestionActivity2 extends AppCompatActivity {
         ArrayList<String> selectedAnswers = new ArrayList<String>();
 
         if (this.qa.getMultiVal()) {
-            for (CheckBox cb : currentCheckBoxes) {
+//            for (CheckBox cb : currentCheckBoxes) {
+            for (CheckBox cb: checkBoxSet) {
                 if (cb == null) continue;
                 else if (cb.isChecked()) {
                     selectedAnswers.add(cb.getText().toString());
