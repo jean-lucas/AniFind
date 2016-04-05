@@ -54,7 +54,7 @@
     </LinearLayout>
 
     <ScrollView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="top|center"
         android:fillViewport="false"
@@ -63,25 +63,41 @@
         android:layout_alignParentStart="false"
         android:layout_alignParentTop="false"
         android:layout_margin="0dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="0dp"
         android:minWidth="300dp"
-        android:padding="3dp">
+        android:padding="3dp"
+        android:paddingTop="15dp">
 
-        <TableLayout
-            android:layout_width="wrap_content"
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minWidth="300dp"
             android:orientation="vertical"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:id="@+id/animalResultList">
+            android:gravity="center">
+
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minWidth="300dp"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:id="@+id/animalResultList">
+            </TableLayout>
 
 
 
-        </TableLayout>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Load More"
+                android:onClick="loadMoreResults"
+                android:id="@+id/loadMoreBtn"/>
+        </LinearLayout>
+
+
     </ScrollView>
-
-
 
 
 </LinearLayout>
