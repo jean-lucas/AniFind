@@ -2,6 +2,9 @@ package se3a04.anifind.Experts;
 
 import android.util.Log;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Created by Zachary on 3/28/2016.
  *
@@ -16,45 +19,49 @@ import android.util.Log;
  */
 public class SizeExpert extends Expert {
 
+
     private final String EXPERTISE = "Size";
 
     // Specified in meters
 
     // very small
-    private static final double VERYSMALLMIN = 0;
-    private static final double VERYSMALLMAX = 0.1;
+    private final double VERYSMALLMIN = 0;
+    private final double VERYSMALLMAX = 0.1;
 
     // small
-    private static final double SMALLMIN = 0.11;
-    private static  final double SMALLMAX = 0.5;
+    private final double SMALLMIN = 0.11;
+    private final double SMALLMAX = 0.5;
 
     // medium
-    private static final double MEDIUMMIN = 0.51;
-    private static final double MEDIUMMAX = 2;
+    private final double MEDIUMMIN = 0.51;
+    private final double MEDIUMMAX = 2;
 
     // large
-    private static final double LARGEMIN = 2.1;
-    private static final double LARGEMAX = 5;
+    private final double LARGEMIN = 2.1;
+    private final double LARGEMAX = 5;
 
     // huge
-    private static final double HUGEMIN = 5.1;
-    private static final double HUGEMAX = 500;
+    private final double HUGEMIN = 5.1;
+    private final double HUGEMAX = 500;
 
     // points
 
     // full range
-    private static final int FULLPOINTS = 20;
+    private final int MAX_POINTS = 20;
 
     // 2 ranges
-    private static final int PPPOINTS = 15;
+    private final int MEDIUM_POINTS = 7;
 
     // 3 ranges
-    private static final int PPOINTS = 10;
+    private final int SMALL_POINTS = 5;
 
     // 4 ranges
-    private static final int POINTS = 5;
+    private final int MIN_POINTS = 2;
 
     // > 4 ranges = 0.
+
+    private Set<String> target_ranges;
+    private Set<String> animal_ranges;
 
 
     @Override
@@ -65,15 +72,12 @@ public class SizeExpert extends Expert {
     @Override
     public int validateAttribute(String[] animalAttributes, String[] valuesToCompare) {
 
-        int points = 0;
 
-        // take in animal attribute comes in as [min max]  [min max]
-        // values to compare comes in is [min max] [min max]
-        // with in the range full points eg. 30
-        // somewhat in in range 15 points
-        //
         double attributeMin = -1.0;
         double attributeMax = -1.0;
+
+        target_ranges = new HashSet<String>();
+        animal_ranges = new HashSet<String>();
 
 
         //value checks
@@ -91,134 +95,69 @@ public class SizeExpert extends Expert {
         double valueCompareMin = Double.parseDouble(valuesToCompare[0]);
         double valueCompareMax = Double.parseDouble(valuesToCompare[1]);
 
-        Log.d("COMAPRE", valueCompareMin + ", " + valueCompareMax);
         if (valueCompareMin == -1.0 || attributeMin == -1.0) return 0;
 
 
-        // full point scenario
-        // when attribute and value to compare  are both within in single range
-        // very small
-        if (attributeMin > VERYSMALLMIN && valueCompareMin > VERYSMALLMIN && attributeMax < VERYSMALLMAX && valueCompareMax < VERYSMALLMAX) {
-            points += FULLPOINTS;
-        }
+        target_ranges.add(getRange(valueCompareMin));
+        target_ranges.add(getRange(valueCompareMax));
 
-        // small
-        else if (attributeMin > SMALLMIN && valueCompareMin > SMALLMIN && attributeMax < SMALLMAX && valueCompareMax < SMALLMAX) {
-            points += FULLPOINTS;
-        }
+        animal_ranges.add(getRange(attributeMin));
+        animal_ranges.add(getRange(attributeMax));
 
-        // medium
-        else if (attributeMin > MEDIUMMIN && valueCompareMin > MEDIUMMIN && attributeMax < MEDIUMMAX && valueCompareMax < MEDIUMMAX) {
-            points += FULLPOINTS;
-        }
 
-        // large
-        else if (attributeMin > LARGEMIN && valueCompareMin > LARGEMIN && attributeMax < LARGEMAX && valueCompareMax < LARGEMAX) {
-            points += FULLPOINTS;
-        }
+//        Log.d("RANGE", "set is " + target_ranges.toString() + " for animal its " + animal_ranges.toString() +
+//                " for animal values " + attributeMin + " , " + attributeMax  );
+//
 
-        // huge
-        else if (attributeMin > HUGEMIN && valueCompareMin > HUGEMIN && attributeMax < HUGEMAX && valueCompareMax < HUGEMAX) {
-            points += FULLPOINTS;
+
+        //full points;
+        if (target_ranges.equals(animal_ranges)) {
+            Log.d("POINTS", "POint given " + MAX_POINTS + " for " + target_ranges.toString() + " , " + animal_ranges.toString());
+            return MAX_POINTS;
         }
 
 
-        // half point scenario
-        // partial range
-
-
-        // more range it covers the less points it gets
-
-        // first check lower bound to see range that it falls in
-        // then check upper bound to see where it falls in
-        // assign points
-
-        // range from very small --> huge
-        else if (attributeMin > VERYSMALLMIN && valueCompareMin > VERYSMALLMIN && attributeMin < VERYSMALLMAX && valueCompareMin < VERYSMALLMAX) {
-
-            // small
-            if (attributeMin > SMALLMIN && valueCompareMin > SMALLMIN && attributeMin < SMALLMAX && valueCompareMin < SMALLMAX) {
-                points += PPPOINTS;
-            }
-
-            // medium
-            else if (attributeMin > MEDIUMMIN && valueCompareMin > MEDIUMMIN && attributeMin < MEDIUMMAX && valueCompareMin < MEDIUMMAX) {
-                points += PPOINTS;
-            }
-
-            // large
-            else if (attributeMin > LARGEMIN && valueCompareMin > LARGEMIN && attributeMin < LARGEMAX && valueCompareMin < LARGEMAX) {
-                points += POINTS;
-            }
-
-            //huge
-            // This one is kind of useless but put her for completeness right now
-            else if (attributeMin > HUGEMIN && valueCompareMin > HUGEMIN && attributeMin < HUGEMAX && valueCompareMin < HUGEMAX) {
-                points += 0;
-            }
-
+        //set used to check intersects
+        Set<String> intersection = new HashSet<String>(target_ranges);
+        if (!intersection.retainAll(animal_ranges) && (animal_ranges.size() - target_ranges.size() == 1)) {
+            Log.d("POINTS", "POint given " + MEDIUM_POINTS + " for " + target_ranges.toString() + " , " + animal_ranges.toString());
+            return MEDIUM_POINTS;
         }
 
-        // small --> huge
+        intersection = new HashSet<String>(target_ranges);
+        if (!intersection.retainAll(animal_ranges) && (animal_ranges.size() - target_ranges.size() == 2)) {
+            Log.d("POINTS", "POint given " + SMALL_POINTS + " for " + target_ranges.toString() + " , " + animal_ranges.toString());
+            return SMALL_POINTS;
+        }
 
-        else if (attributeMin > SMALLMIN && valueCompareMin > SMALLMIN && attributeMin < SMALLMAX && valueCompareMin < SMALLMAX) {
+        intersection = new HashSet<String>(target_ranges);
+        if (!intersection.retainAll(animal_ranges) && (animal_ranges.size() - target_ranges.size() == 3)) {
+            Log.d("POINTS", "POint given " + MIN_POINTS + " for " + target_ranges.toString() + " , " + animal_ranges.toString());
 
-            // medium
-            if (attributeMin > MEDIUMMIN && valueCompareMin > MEDIUMMIN && attributeMin < MEDIUMMAX && valueCompareMin < MEDIUMMAX) {
-                points += PPPOINTS;
-            }
-
-            // large
-            else if (attributeMin > LARGEMIN && valueCompareMin > LARGEMIN && attributeMin < LARGEMAX && valueCompareMin < LARGEMAX) {
-                points += PPOINTS;
-            }
-
-            //huge
-            // This one is kind of useless but put her for completeness right now
-            else if (attributeMin > HUGEMIN && valueCompareMin > HUGEMIN && attributeMin < HUGEMAX && valueCompareMin < HUGEMAX) {
-                points += POINTS;
-            }
-
+            return MIN_POINTS;
         }
 
 
-        // medium --> huge
-
-        else if (attributeMin > MEDIUMMIN && valueCompareMin > MEDIUMMIN && attributeMin < LARGEMAX && valueCompareMin < LARGEMAX) {
+        Log.d("POINTS", "POint given " + 0 + " for " + animal_ranges.toString() + " , " + target_ranges.toString());
 
 
-            // large
-            if (attributeMin > LARGEMIN && valueCompareMin > LARGEMIN && attributeMin < LARGEMAX && valueCompareMin < LARGEMAX) {
-                points += PPPOINTS;
-            }
 
-            //huge
-            // This one is kind of useless but put her for completeness right now
-            else if (attributeMin > HUGEMIN && valueCompareMin > HUGEMIN && attributeMin < HUGEMAX && valueCompareMin < HUGEMAX) {
-                points += PPOINTS;
-            }
-
-        }
-
-
-        // large --> Huge
-
-        else if (attributeMin > LARGEMIN && valueCompareMin > LARGEMIN && attributeMin < HUGEMAX && valueCompareMin < HUGEMAX) {
-
-
-            //huge
-            // This one is kind of useless but put her for completeness right now
-            if (attributeMin > HUGEMIN && valueCompareMin > HUGEMIN && attributeMin < HUGEMAX && valueCompareMin < HUGEMAX) {
-                points += PPPOINTS;
-            }
-
-        }
-
-
-        Log.d("POINTS", "point given " + points);
-
-        return points;
+        return 0;
     }
 
 
+
+    public String getRange(Double size) {
+
+
+        if (size <= VERYSMALLMAX) return "VERYSMALL";
+
+        else if (size <= SMALLMAX) return "SMALL";
+
+        else if (size <= MEDIUMMAX) return "MEDIUM";
+
+        else if (size <= LARGEMAX) return "LARGE";
+
+        else return "HUGE";
+    }
 }

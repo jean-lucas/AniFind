@@ -1,8 +1,6 @@
 package se3a04.anifind;
 
 
-import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -15,8 +13,6 @@ import se3a04.anifind.Experts.HabitatExpert;
 import se3a04.anifind.Experts.LocationExpert;
 import se3a04.anifind.Experts.MobilityExpert;
 import se3a04.anifind.Experts.SizeExpert;
-import se3a04.anifind.Experts.SizeExpert2;
-import se3a04.anifind.Experts.TimeExpert;
 
 
 /**
@@ -36,7 +32,7 @@ public class BlackBoard {
                 new HabitatExpert(),
                 new LocationExpert(),
                 new MobilityExpert(),
-                new SizeExpert2(),
+                new SizeExpert(),
 //                new TimeExpert(),
                 new ColourExpert()
         };
