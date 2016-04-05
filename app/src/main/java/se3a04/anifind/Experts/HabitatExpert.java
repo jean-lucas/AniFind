@@ -20,32 +20,18 @@ public class HabitatExpert extends Expert {
     public int validateAttribute(String[] animalAttributes, String[] valuesToCompare) {
 
         int matchCounter = 0;
-        if(valuesToCompare.length > 0 && valuesToCompare[0].equalsIgnoreCase("") == false) {
-            for (String attribute : animalAttributes) {
-                for (String target : valuesToCompare) {
-                    if (attribute.equalsIgnoreCase(target)) {
-                        matchCounter += 2;
-                    }
-//                else {
-//                    for (String word : wordBankAccess.getWordBank()) {
-//                        if (word.contains(attribute)) {
-//                            matchCounter++;
-//                        }
-//
-//
-//                    }
-//                }
+
+        if (valuesToCompare.length == 0 || animalAttributes.length == 0) return 0;
+
+        for (String attribute : animalAttributes) {
+            for (String target : valuesToCompare) {
+                if (attribute.equalsIgnoreCase(target)) {
+                    matchCounter += 2;
                 }
             }
         }
 
-
         return matchCounter;
-
-
     }
 
-//    private ArrayList<String> getKeywordsFromWordBank() {
-//        return wordBankAccess.getWordBank();
-//    }
 }

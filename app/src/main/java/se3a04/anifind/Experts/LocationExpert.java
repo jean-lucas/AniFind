@@ -1,5 +1,7 @@
 package se3a04.anifind.Experts;
 
+import android.util.Log;
+
 public class LocationExpert extends Expert {
 
     private final String EXPERTISE = "Location";
@@ -16,35 +18,33 @@ public class LocationExpert extends Expert {
 
         int matchCounter = 0;
 
-        if (valuesToCompare.length > 0 && valuesToCompare[0].equalsIgnoreCase("current")) {
-            String[] valuesToCompareNew = new String[1];
-            valuesToCompareNew[0] = valuesToCompare[3];
+        if (animalAttributes.length == 0 || valuesToCompare.length == 0) return 0;
 
-            for (String attribute : animalAttributes) {
-                for (String target : valuesToCompareNew) {
+        //chekc if we want to do currentLocation or not
+        valuesToCompare = checkValueToCompare(valuesToCompare);
 
-                    if (attribute.equalsIgnoreCase(target)) {
-                        matchCounter += 5;
-                    }
-                }
-            }
-        }
-
-
-        else if(valuesToCompare.length > 0 && valuesToCompare[0].equalsIgnoreCase("") == false) {
-
-            for (String attribute : animalAttributes) {
-                for (String target : valuesToCompare) {
-
-                    if (attribute.equalsIgnoreCase(target)) {
-                        matchCounter += 5;
-                    }
+        for (String attribute : animalAttributes) {
+            for (String target : valuesToCompare) {
+                if (attribute.equalsIgnoreCase(target)) {
+                    matchCounter += 5;
                 }
             }
         }
 
         return matchCounter;
     }
+
+
+    //if the first value is "current" it means user wants to use current location
+    private String[] checkValueToCompare(String[] vals) {
+
+        if (vals[0].equalsIgnoreCase("current")) {
+            return new String[]{vals[3]};
+        }
+
+        return vals;
+    }
+
 
 }
 

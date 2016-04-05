@@ -143,6 +143,7 @@ public class GuiController extends AppCompatActivity {
 
         else {
             //get map stuff
+
             Intent intent = new Intent(GuiController.this, MapsActivity.class);
             startActivityForResult(intent, MAP_ACTIVITY_REQUEST_CODE);
         }

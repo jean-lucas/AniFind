@@ -48,41 +48,30 @@ public class ColourExpert extends Expert {
         double percentage;
         double matchCounter = 0;
 
-        if(valuesToCompare.length > 0 && valuesToCompare[0].equalsIgnoreCase("") == false) {
-            for (String attribute : animalAttributes) {
-                for (String target : valuesToCompare) {
 
-                    if (attribute.equalsIgnoreCase(target)) {
-                        matchCounter++;
-                    }
-                }
-            }
+        if (valuesToCompare.length == 0 || animalAttributes.length == 0) return 0;
 
 
-        /*
-        // comparing
-        for (int i = 0; i < animalAttributes.length; i++) {
-            for (int j = 0; j < valuesToCompare.length; j++) {
-                if (animalAttributes[i] == valuesToCompare[j]) {
+        for (String attribute : animalAttributes) {
+            for (String target : valuesToCompare) {
+                if (attribute.equalsIgnoreCase(target)) {
                     matchCounter++;
                 }
             }
         }
-        */
 
-            // percentage
-            if (animalAttributes.length <= valuesToCompare.length) {
-                percentage = 100 * (matchCounter / valuesToCompare.length);
-            } else {
-                percentage = 100 * (matchCounter / animalAttributes.length);
-            }
 
-            Log.d("MC", "" + percentage);
-            return assignPoints(percentage);
+        // percentage
+        if (animalAttributes.length <= valuesToCompare.length) {
+            percentage = 100 * (matchCounter / valuesToCompare.length);
+        } else {
+            percentage = 100 * (matchCounter / animalAttributes.length);
         }
-        else{return 0;}
 
+        Log.d("MC", "" + percentage);
+        return assignPoints(percentage);
     }
+
 
 
     private int assignPoints(double percent){

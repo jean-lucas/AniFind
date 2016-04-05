@@ -83,7 +83,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         String[] address = {"current", "", "", ""};
 
         try {
-            List<Address> addr = geo.getFromLocation(loc.getLatitude(), loc.getLongitude(), 5);
+            List<Address> addr = geo.getFromLocation(loc.getLatitude(), loc.getLongitude(), 8);
 
             if (addr.size() > 0) {
                for (Address a: addr) {
@@ -92,7 +92,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                    if (a.getFeatureName() != null)  address[3] = a.getCountryName();
                }
             }
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
 

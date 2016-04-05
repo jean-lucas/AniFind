@@ -167,7 +167,7 @@ Cuttlefish,  ,  Coastal-deeper waters,  Green-Red-Blue-Yellow-Orange-Brown-Pink-
 Dachshund,  Germany,  ,  , 0.38,  ,
 Dalmation,  Yugoslavia,  ,  , 0.58,  ,
 darwins frog,  ,  Beech-tree forests-in fields,  Black-Green-Grey-Brown-Beige, 0.025-0.035,  ,
-deer,  ,  decidious forest-pine forest-grassland-households,  Brown-Beige-White-Orange, 0.6-1.05,  Herd,
+deer,  Canada-North America-Europe-United States,  decidious forest-pine forest-grassland-households,  Brown-Beige-White-Orange, 1.5-3, ,four legs
 desert tortoise,  ,  Sandy desert plains-rocky hills,  Black-Brown-Beige-Yellow, 0.25-0.36,  ,
 Deutsche Bracke,  Germany,  ,  , 0.53,  ,
 dhole,  , grassland-decidious forest,  Grey-Black-White-Brown-Beige-Yellow-Red, 0.75-1.1,  Pack,  tail
@@ -284,7 +284,7 @@ heron,  ,  Wetland regions,  Brown-Black-White-Grey, 0.85-1.4,  ,  leg
 highland cattle,  ,  Mountainous-wet grassland,  Beige-Brown-Orange, 0.9-1.1,  Herd,
 Himalayan,  North America,  ,  Blue-Lilac-Fawn-Cream, ,  ,
 Hippopotamus,  ,  lakes-river-wetlands,  Grey-Brown-Black-Pink, 2.0-5.0,  Nocturnal,
-Honey Bee,  ,  Sheltered forests-meadows,  Brown-Yellow-Black, 0.005-0.015,  ,
+Honey Bee,  ,  decidious forest,  Brown-Yellow-Black, 0.005-0.015,  , wing
 Horn Shark,  North Pacific,  Warm continental shelves,  Grey-Brown-Black-Yellow, 0.7-1.2,  ,
 horned frog,  ,  Rainforest-tropical swamplands,  Brown-White-Yellow, 0.14-0.2,  ,
 horse,  ,  Small forests-grassland,  Brown-White-Black, 1.42-1.63,  Herd,
@@ -436,8 +436,8 @@ quail,  ,  Woodland-forest areas,  Brown-Black-White-Blue, 0.11-0.2,  ,
 Quetzal,  ,  High-moist cloud forests,  Green-Blue-Red-White-Bronze-Grey-Brown, 0.35-0.405,  twilight,
 Quokka,  ,  Dense vegetation close to water,  Brown-Grey-Red, 0.4-0.54,  Nocturnal,
 quoll,  ,  Woodland-grassland,  Black-Brown-White-Grey-Beige, 0.35-0.75,  ,
-rabbit,  ,  Forest thickets  meadows-woodland,  Brown-Beige-Grey-Black-White, 0.2-0.5,  Group,
-raccoon,  ,  Woodland areas close to water,  Grey-Black-White-Brown, 0.41-0.71,  ,
+rabbit, ,  grassland-decidious forest-pine forest-mountains,  Brown-Beige-Grey-Black-White, 0.2-0.5,  Group, four legs
+raccoon,  Canada-North America,  decidious forest-pine forest-households,  Grey-Black-White-Brown, 0.41-0.71,  ,four legs
 raccoon dog,  ,  Thick forests close to water,  Beige-Black-Brown-Yellow, 0.5-0.65,  Pack,
 Radiated Tortoise,  ,  Dry tropical forest,  Green-Black-Brown-Beige-Yellow, 0.3-0.41,  daytime,
 Ragdoll,  North America,  ,  Black-White-Fawn-Brown-Golden-Lilac, ,  ,
@@ -446,7 +446,7 @@ red knee tarantula,  ,  Semi-desert-scrub land,  Red-Black-Brown-White, 0.1-0.18
 Red Panda,  ,  High-altitude mountain forest,  Red-Brown-White, 0.6-1.2,  Nocturnal,
 red wolf,  ,  Coastal prairie-marshland,  Red-Grey-Black-Brown-White, 0.95-1.2,  Pack,  leg
 red handed tamarin,  ,  Lowland tropical forest,  Black-Brown-Beige-Yellow-Red, 0.18-0.3,  Troop,  tail
-reindeer,  ,  Forests close to the Arctic tundra,  Brown-White-Beige-Grey, 1.6-2.1,  Herd,
+reindeer, North America-Canada-Europe , polar regions-tundra-pine forest,  Brown-White-Beige-Grey, 1.6-2.1,  Herd, four legs
 rhino,  ,  Tropical bushland  grassland-savannas,  Brown-Grey-Black, 1.3-2.2,  ,
 river dolphin,  ,  river,  Grey-Pink, 2.0-2.5,  School,
 river turtle,  ,  river-lakes,  Green-Brown-Black-Yellow, 0.2-0.6,  ,
