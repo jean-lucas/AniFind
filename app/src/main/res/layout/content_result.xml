@@ -11,8 +11,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".ActivitiesLogic.ResultActivity2"
-    tools:showIn="@layout/activity_result_2">
+    tools:context=".ActivitiesLogic.ResultActivity"
+    tools:showIn="@layout/activity_result">
 
     <TextView
         android:layout_width="wrap_content"

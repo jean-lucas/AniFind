@@ -19,7 +19,7 @@ import java.util.HashSet;
 import se3a04.anifind.DataEntities.QA;
 import se3a04.anifind.R;
 
-public class AudioActivity2 extends AppCompatActivity {
+public class AudioActivity extends AppCompatActivity {
 
     private static final int REQUEST_CODE = 1234;
     private Button startRecordingBtn;
@@ -42,7 +42,7 @@ public class AudioActivity2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_audio2);
+        setContentView(R.layout.activity_audio);
 
         Bundle b = getIntent().getExtras();
         this.qa = (QA) b.getSerializable("qa");
@@ -149,7 +149,7 @@ public class AudioActivity2 extends AppCompatActivity {
             //for certain topics we need to only allow one value
             if (qa.getTopic().equals("Size")) {
                 if (validMatches.size() > 1) {
-                    Toast.makeText(AudioActivity2.this, "Only one value allowed! Try again", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AudioActivity.this, "Only one value allowed! Try again", Toast.LENGTH_SHORT).show();
                     resetCurrentValues(this.resetButton);
                 }
             }

@@ -34,19 +34,19 @@
             android:name=".ActivitiesLogic.MapsActivity"
             android:label="@string/title_activity_maps" />
         <activity
-            android:name=".ActivitiesLogic.HomeActivity2"
+            android:name=".ActivitiesLogic.HomeActivity"
             android:label="@string/title_activity_home2"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ActivitiesLogic.QuestionActivity2"
+            android:name=".ActivitiesLogic.QuestionActivity"
             android:label="@string/title_activity_question2"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ActivitiesLogic.ResultActivity2"
+            android:name=".ActivitiesLogic.ResultActivity"
             android:label="@string/title_activity_result_2"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ActivitiesLogic.AudioActivity2"
+            android:name=".ActivitiesLogic.AudioActivity"
             android:label="@string/title_activity_audio2"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

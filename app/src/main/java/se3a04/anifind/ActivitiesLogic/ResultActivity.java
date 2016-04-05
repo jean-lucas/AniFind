@@ -17,7 +17,6 @@ import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -26,7 +25,7 @@ import java.util.ArrayList;
 import se3a04.anifind.DataEntities.Animal;
 import se3a04.anifind.R;
 
-public class ResultActivity2 extends AppCompatActivity {
+public class ResultActivity extends AppCompatActivity {
 
     private ArrayList<Animal> animals;
     private TableLayout animalTable;
@@ -43,7 +42,7 @@ public class ResultActivity2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_result_2);
+        setContentView(R.layout.activity_result);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -97,7 +96,7 @@ public class ResultActivity2 extends AppCompatActivity {
                     is = am.open(fullpath);
                     break;
                 } catch (IOException e) {
-//                    Toast.makeText(ResultActivity2.this, "error loading some images", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(ResultActivity.this, "error loading some images", Toast.LENGTH_SHORT).show();
                 } finally {
                     if (is == null) {
                         is = is_error;
@@ -106,7 +105,7 @@ public class ResultActivity2 extends AppCompatActivity {
             }
 
             //make new ImageView
-            ImageView animal_img = new ImageView(ResultActivity2.this);
+            ImageView animal_img = new ImageView(ResultActivity.this);
             animal_img.setImageDrawable(Drawable.createFromStream(is, null));
             animal_img.setScaleType(ImageView.ScaleType.FIT_XY);
             animal_img.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
@@ -115,7 +114,7 @@ public class ResultActivity2 extends AppCompatActivity {
             animal_img.setMinimumHeight(100);
 
             //make new TextView
-            TextView animal_name = new TextView(ResultActivity2.this);
+            TextView animal_name = new TextView(ResultActivity.this);
             animal_name.setText(animal.toString());
             animal_name.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
             animal_name.setPadding(0, 5, 15, 5);
@@ -123,7 +122,7 @@ public class ResultActivity2 extends AppCompatActivity {
 
 
             //make get hints clickable text
-            TextView see_facts = new TextView(ResultActivity2.this);
+            TextView see_facts = new TextView(ResultActivity.this);
             see_facts.setText("See facts");
             see_facts.setTypeface(null, Typeface.ITALIC);
             see_facts.setTextColor(Color.BLUE);
@@ -132,7 +131,7 @@ public class ResultActivity2 extends AppCompatActivity {
             see_facts.setOnClickListener(getAnimalDetails(animal, fullpath));
 
             //make new Row
-            TableRow animal_row = new TableRow(ResultActivity2.this);
+            TableRow animal_row = new TableRow(ResultActivity.this);
             animal_row.addView(animal_name);
             animal_row.addView(animal_img);
             animal_row.addView(see_facts);
@@ -185,7 +184,7 @@ public class ResultActivity2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(ResultActivity2.this, AnimalFactsActivity.class);
+                Intent intent = new Intent(ResultActivity.this, AnimalFactsActivity.class);
                 intent.putExtra("animal", a);
                 intent.putExtra("img_path",path);
                 startActivity(intent);
