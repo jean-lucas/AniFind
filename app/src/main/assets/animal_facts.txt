@@ -67,7 +67,7 @@ Bearded Collie, Great Britain,households , White-Black-Brown-Beige-Grey, , dayli
 bearded dragon, , savanna-desert, Green-Yellow-Brown-Grey, 0.50-0.61, ,four legs
 beaver, Canada, deciduous forest-pine forest-wetlands-river, Brown-Grey, 0.80-1.20, nocturnal, tail-four legs
 Bedlington Terrier, Great Britain, households, Red-White-Blue-Brown-Beige-Black, , ,four legs
-Beetle, , grassland-savanna-tropical rainforest-deciduous forest-swamp-households-tropical islands, Brown-Black-Red-Yellow-Green-Blue, 0.01-0.025, ,wings-many legs
+Beetle, , grassland-savanna-tropical rainforest-deciduous forest-swamp-tropical islands, Brown-Black-Red-Yellow-Green-Blue, 0.01-0.025, ,wings-many legs
 bengal tiger, , tropical rainforest, Orange-Black-White, 2.4-3.3, twilight-nocturnal,four legs
 Bernese Mountain Dog, Switzerland, households, Black-White-Beige, , daytime,four legs
 Bichon Frise, France, households, White, ,daytime ,four legs
