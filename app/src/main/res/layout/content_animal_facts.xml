@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/animal_name"
         android:textSize="20sp"
-        android:textColor="#779bff"
+        android:textColor="#b5102785"
         android:textStyle="bold"
         android:paddingBottom="10dp"
         android:paddingTop="15dp" />

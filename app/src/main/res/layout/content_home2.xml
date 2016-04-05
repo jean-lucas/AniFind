@@ -24,7 +24,7 @@
         android:text="AniFind"
         android:textSize="40sp"
         android:paddingTop="30dp"
-        android:textColor="#f39595"
+        android:textColor="#be0a1f74"
         android:typeface="normal"
         style="@style/Base.TextAppearance.AppCompat.Title" />
 

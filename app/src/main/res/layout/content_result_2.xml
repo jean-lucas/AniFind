@@ -20,7 +20,7 @@
         android:text="Results"
         android:textSize="20sp"
         android:id="@+id/resultViewTitle"
-        android:textColor="#f39595" />
+        android:textColor="#be0a1f74" />
 
 
     <LinearLayout
