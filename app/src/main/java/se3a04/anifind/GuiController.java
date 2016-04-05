@@ -9,19 +9,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 
 
-import se3a04.anifind.ActivitiesLogic.AudioActivity2;
+import se3a04.anifind.ActivitiesLogic.AudioActivity;
 import se3a04.anifind.ActivitiesLogic.ErrorReportActivity;
-import se3a04.anifind.ActivitiesLogic.HomeActivity2;
+import se3a04.anifind.ActivitiesLogic.HomeActivity;
 import se3a04.anifind.ActivitiesLogic.MapsActivity;
-import se3a04.anifind.ActivitiesLogic.QuestionActivity2;
-import se3a04.anifind.ActivitiesLogic.ResultActivity2;
+import se3a04.anifind.ActivitiesLogic.QuestionActivity;
+import se3a04.anifind.ActivitiesLogic.ResultActivity;
 import se3a04.anifind.DataEntities.Animal;
 import se3a04.anifind.DataEntities.QA;
 import se3a04.anifind.Misc.CustomComparator;
@@ -139,7 +137,7 @@ public class GuiController extends AppCompatActivity {
         //if we removed Location expert go straight to home,
         //else go to map activity first
         if (!qa_map.containsKey("Location")) {
-            Intent intent = new Intent(GuiController.this, HomeActivity2.class);
+            Intent intent = new Intent(GuiController.this, HomeActivity.class);
             startActivityForResult(intent, HOME_ACTIVITY_REQUEST_CODE);
         }
 
@@ -204,7 +202,7 @@ public class GuiController extends AppCompatActivity {
         //go to text questions
         if (identificationType == 0) {
             for (String qa_topic: qa_map.keySet()) {
-                Intent intent = new Intent(GuiController.this, QuestionActivity2.class);
+                Intent intent = new Intent(GuiController.this, QuestionActivity.class);
                 intent.putExtra("qa", qa_map.get(qa_topic));
                 startActivityForResult(intent, QUESTION_ACTIVITY_REQUEST_CODE);
             }
@@ -213,7 +211,7 @@ public class GuiController extends AppCompatActivity {
         //go to audio questions
         else {
             for (String qa_topic: qa_map.keySet()) {
-                Intent intent = new Intent(GuiController.this, AudioActivity2.class);
+                Intent intent = new Intent(GuiController.this, AudioActivity.class);
                 intent.putExtra("qa", qa_map.get(qa_topic));
                 startActivityForResult(intent, AUDIO_ACTIVITY_REQUEST_CODE);
             }
@@ -272,7 +270,7 @@ public class GuiController extends AppCompatActivity {
             Collections.sort(this.listOfAnimals, new CustomComparator());
             ArrayList<Animal> bestResults = new ArrayList<> (this.listOfAnimals);
 
-            Intent intent = new Intent(GuiController.this, ResultActivity2.class);
+            Intent intent = new Intent(GuiController.this, ResultActivity.class);
             intent.putExtra("animals", bestResults);
             startActivityForResult(intent, RESULT_ACTIVITY_REQUEST_CODE);
         }
@@ -343,7 +341,7 @@ public class GuiController extends AppCompatActivity {
 
 
         //now start the app
-        Intent intent = new Intent(GuiController.this, HomeActivity2.class);
+        Intent intent = new Intent(GuiController.this, HomeActivity.class);
         startActivityForResult(intent, HOME_ACTIVITY_REQUEST_CODE);
     }
 

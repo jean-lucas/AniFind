@@ -5,10 +5,6 @@ public class LocationExpert extends Expert {
     private final String EXPERTISE = "Location";
 
 
-     /* This variable is will implement the Google Maps API
-    and allow us to get the users current location.
-
-    private locationAccessObj = GoogleMapsAPI */
 
     @Override
     public String getExpertise() {
@@ -28,7 +24,7 @@ public class LocationExpert extends Expert {
                 for (String target : valuesToCompareNew) {
 
                     if (attribute.equalsIgnoreCase(target)) {
-                        matchCounter += 30;
+                        matchCounter += 5;
                     }
                 }
             }
@@ -41,7 +37,7 @@ public class LocationExpert extends Expert {
                 for (String target : valuesToCompare) {
 
                     if (attribute.equalsIgnoreCase(target)) {
-                        matchCounter += 30;
+                        matchCounter += 5;
                     }
                 }
             }
