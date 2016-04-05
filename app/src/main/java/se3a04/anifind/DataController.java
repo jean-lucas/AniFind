@@ -12,6 +12,7 @@ import se3a04.anifind.DataEntities.Animal;
 import se3a04.anifind.DataEntities.QA;
 import se3a04.anifind.DataEntities.Result;
 import se3a04.anifind.DataEntities.ResultsDataStructure;
+import se3a04.anifind.Misc.Encryption;
 
 /**
  * Created by Mathew on 2016-03-29.
@@ -54,8 +55,11 @@ public class DataController {
 
     private void initialize(){
 //        dataAccess = new DatastoreAccess(context);
-        animalParse(Encryption.Dencrypt(dataAccess.getAnimalContent()));
-        qaParse(Encryption.Dencrypt(dataAccess.getQuestionContent()));
+
+        animalParse(Encryption.decrypt(dataAccess.getAnimalContent()));
+        qaParse(Encryption.decrypt(dataAccess.getQuestionContent()));
+//        animalParse(Encryption.Dencrypt(dataAccess.getAnimalContent()));
+//        qaParse(Encryption.Dencrypt(dataAccess.getQuestionContent()));
     }
 
     public void sessionCompleted(List<String[]> sessionAnswers, String selectedAnimal){

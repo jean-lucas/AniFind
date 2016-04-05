@@ -4,20 +4,15 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.util.Log;
 
-import junit.framework.Test;
-
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.lang.reflect.Array;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+
+import se3a04.anifind.Misc.Encryption;
 
 /**
  * Accesses text data files with read and write capability
@@ -66,7 +61,9 @@ public class DatastoreAccess {
         //removes first line in text file which is just titles of elements
         mLines.remove(0);
 
-        mLines = Encryption.Encrypt(mLines);
+        mLines = Encryption.encrypt(mLines);
+
+        Log.d("CHECK_CRYPT", "file = " + filename + "  " + mLines.toString());
 
         return mLines;
     }

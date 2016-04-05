@@ -50,7 +50,7 @@ public class SizeExpert2 extends Expert {
     private final int MAX_POINTS = 20;
 
     // 2 ranges
-    private final int MEDIUM_POINTS = 10;
+    private final int MEDIUM_POINTS = 7;
 
     // 3 ranges
     private final int SMALL_POINTS = 5;
