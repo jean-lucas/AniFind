@@ -66,6 +66,8 @@ public class DatastoreAccess {
         //removes first line in text file which is just titles of elements
         mLines.remove(0);
 
+        mLines = Encryption.Encrypt(mLines);
+
         return mLines;
     }
 

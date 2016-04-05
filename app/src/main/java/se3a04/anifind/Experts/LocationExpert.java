@@ -1,15 +1,5 @@
 package se3a04.anifind.Experts;
 
-
-
-/**
- * Created by Zachary on 3/28/2016.
- * Points
- * < 25 km 3 points
- * 26 - 50 km 2 points
- * 51 - 150 1 points
- *  > 150 0 points
- */
 public class LocationExpert extends Expert {
 
     private final String EXPERTISE = "Location";
@@ -30,34 +20,32 @@ public class LocationExpert extends Expert {
 
         int matchCounter = 0;
 
-//        if (valuesToCompare[0].equalsIgnoreCase("current")) {
-//            //do the text file thing
-//            on the remainign valeus to compare
-//        }
-//
-//
-//        else {
-//        for (String attribute : animalAttributes) {
-//            for (String target : valuesToCompare) {
-//
-//                if (attribute.equalsIgnoreCase(target)) {
-//                    matchCounter += 5;
-//                }
-//            }
-//        }
-//
-////            String[] animalAttributesNew = new String[1];
-////            animalAttributesNew[0] = animalAttributes[3];
-////
-////            for (String attribute : animalAttributesNew) {
-////                for (String target : valuesToCompare) {
-////
-////                    if (attribute.equalsIgnoreCase(target)) {
-////                        matchCounter += 30;
-////                    }
-////                }
-////            }
+        if (valuesToCompare.length > 0 && valuesToCompare[0].equalsIgnoreCase("current")) {
+            String[] valuesToCompareNew = new String[1];
+            valuesToCompareNew[0] = valuesToCompare[3];
 
+            for (String attribute : animalAttributes) {
+                for (String target : valuesToCompareNew) {
+
+                    if (attribute.equalsIgnoreCase(target)) {
+                        matchCounter += 30;
+                    }
+                }
+            }
+        }
+
+
+        else if(valuesToCompare.length > 0) {
+
+            for (String attribute : animalAttributes) {
+                for (String target : valuesToCompare) {
+
+                    if (attribute.equalsIgnoreCase(target)) {
+                        matchCounter += 30;
+                    }
+                }
+            }
+        }
 
         return matchCounter;
     }

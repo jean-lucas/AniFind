@@ -10,4 +10,5 @@
     <string name="google_maps_key">AIzaSyAnu54IEoV8zvkSbtjpDXcHHF9a0587toY</string>
     <string name="title_activity_animal_facts">Animal Facts</string>
     <string name="title_activity_error_report">ErrorReportActivity</string>
+    <string name="title_activity_maps2">Map</string>
 </resources>

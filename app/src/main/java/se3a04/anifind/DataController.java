@@ -54,8 +54,8 @@ public class DataController {
 
     private void initialize(){
 //        dataAccess = new DatastoreAccess(context);
-        animalParse(dataAccess.getAnimalContent());
-        qaParse(dataAccess.getQuestionContent());
+        animalParse(Encryption.Dencrypt(dataAccess.getAnimalContent()));
+        qaParse(Encryption.Dencrypt(dataAccess.getQuestionContent()));
     }
 
     public void sessionCompleted(List<String[]> sessionAnswers, String selectedAnimal){
