@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Example: 'red, blue, black'"
-        android:textColor="#c10000"
+        android:textColor="#72c30e"
         android:id="@+id/exampleText"
         android:paddingTop="5dp"/>
 
