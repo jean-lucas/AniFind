@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -28,9 +29,13 @@ import se3a04.anifind.R;
 public class ResultActivity2 extends AppCompatActivity {
 
     private ArrayList<Animal> animals;
-    private TableLayout animalList;
+    private TableLayout animalTable;
     private Button doneBtn;
     private Button errorBtn;
+    private Button loadMoreBtn;
+
+    private int initialResultSize = 5;
+    private int maxResultSize = 20;
 
     private final int HIGHLIGHT_COLOR = Color.parseColor("#ffff99");
 
@@ -45,50 +50,54 @@ public class ResultActivity2 extends AppCompatActivity {
 
         this.doneBtn = (Button) findViewById(R.id.doneBtn);
         this.errorBtn = (Button) findViewById(R.id.errorBtn);
+        this.loadMoreBtn = (Button) findViewById(R.id.loadMoreBtn);
 
         this.doneBtn.setVisibility(View.INVISIBLE);
         this.errorBtn.setVisibility(View.INVISIBLE);
 
-        this.animalList = (TableLayout) findViewById(R.id.animalResultList);
-        this.animalList.setPadding(0,20,0,0);
+        this.animalTable = (TableLayout) findViewById(R.id.animalResultList);
+        this.animalTable.setPadding(0, 20, 0, 0);
 
 
         Bundle b = getIntent().getExtras();
 
 
-        //this need to be fixed. removed cast
-        animals = new ArrayList<Animal>();
-
         this.animals = (ArrayList<Animal>) b.getSerializable("animals");
 
 
+        setupResults(5);
 
-//        TextView animal_name = new TextView(this.getApplicationContext());
-//        ImageView animal_img = new ImageView(this.getApplicationContext());
+    }
 
-
+    private void setupResults(int resultSize) {
 
         AssetManager am = this.getApplicationContext().getAssets();
         InputStream is = null;
         InputStream is_error = null;
 
-        int rowCounter = 1;
-        for (Animal animal: animals) {
-            rowCounter++;
+
+        //make sure we dont get an overflow on the list
+        if (resultSize > maxResultSize - 1) {
+            resultSize =  maxResultSize;
+            this.loadMoreBtn.setVisibility(View.GONE);
+        }
+
+        for (int i = resultSize - 5; i < resultSize; i++) {
+            Animal animal = this.animals.get(i);
             is = null;
             String foldername = "animal_images/"+animal.getName().toLowerCase().replace(" ", "-");
             String filename = animal.getName().toLowerCase().replace(" ", "-");
             String extension = ".jpg";
             String fullpath = "";
 
-            for (int i = 1; i <= 4; i++) {
-                fullpath = foldername + "/" + filename + i + extension;
+            for (int j = 1; j <= 4; j++) {
+                fullpath = foldername + "/" + filename + j + extension;
                 try {
                     is_error = am.open(DEFAULT_IMAGE);
                     is = am.open(fullpath);
                     break;
                 } catch (IOException e) {
-
+//                    Toast.makeText(ResultActivity2.this, "error loading some images", Toast.LENGTH_SHORT).show();
                 } finally {
                     if (is == null) {
                         is = is_error;
@@ -130,17 +139,17 @@ public class ResultActivity2 extends AppCompatActivity {
             animal_row.setTag(animal.getName());
             animal_row.setMinimumWidth(400);
             animal_row.setPadding(5, 5, 5, 5);
-            animal_row.setOnClickListener(highlightRow(animal_row, animalList));
+            animal_row.setOnClickListener(highlightRow(animal_row, animalTable));
             animal_row.setGravity(Gravity.CENTER_VERTICAL);
 
-            if (rowCounter%2 == 0) {
+            if (i%2 == 0) {
                 animal_row.setBackgroundColor(Color.parseColor("#f2f2f2"));
             }
             else {
                 animal_row.setBackgroundColor(Color.WHITE);
             }
-            animalList.addView(animal_row);
-//            animalList.addView(animal_img);
+            animalTable.addView(animal_row);
+//            animalTable.addView(animal_img);
 
 
         }
@@ -223,10 +232,10 @@ public class ResultActivity2 extends AppCompatActivity {
         Animal animal = null;
         String animal_name = "";
         //get the highlighted animal
-        for (int i = 0 ; i < animalList.getChildCount(); i++) {
+        for (int i = 0 ; i < animalTable.getChildCount(); i++) {
             //check which one is yellow
-            if ( ((ColorDrawable) animalList.getChildAt(i).getBackground()).getColor() == HIGHLIGHT_COLOR)  {
-                animal_name = animalList.getChildAt(i).getTag().toString();
+            if ( ((ColorDrawable) animalTable.getChildAt(i).getBackground()).getColor() == HIGHLIGHT_COLOR)  {
+                animal_name = animalTable.getChildAt(i).getTag().toString();
             }
         }
 
@@ -237,5 +246,11 @@ public class ResultActivity2 extends AppCompatActivity {
         }
 
         return animal;
+    }
+
+    public void loadMoreResults(View view) {
+        this.initialResultSize += 5;
+        setupResults(this.initialResultSize);
+
     }
 }

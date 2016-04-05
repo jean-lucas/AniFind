@@ -268,9 +268,9 @@ public class GuiController extends AppCompatActivity {
             this.listOfAnimals = blackBoard.consultAllExperts(listOfAnimals, qa_map);
 
 
-            //sort the list by points, and only get the top 5
+            //sort the list by points
             Collections.sort(this.listOfAnimals, new CustomComparator());
-            ArrayList<Animal> bestResults = new ArrayList<> (this.listOfAnimals.subList(0,4));
+            ArrayList<Animal> bestResults = new ArrayList<> (this.listOfAnimals);
 
             Intent intent = new Intent(GuiController.this, ResultActivity2.class);
             intent.putExtra("animals", bestResults);
