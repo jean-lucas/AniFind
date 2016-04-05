@@ -31,7 +31,7 @@ public class LocationExpert extends Expert {
         }
 
 
-        else if(valuesToCompare.length > 0) {
+        else if(valuesToCompare.length > 0 && valuesToCompare[0].equalsIgnoreCase("") == false) {
 
             for (String attribute : animalAttributes) {
                 for (String target : valuesToCompare) {

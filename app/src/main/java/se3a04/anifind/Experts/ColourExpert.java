@@ -48,15 +48,15 @@ public class ColourExpert extends Expert {
         double percentage;
         double matchCounter = 0;
 
+        if(valuesToCompare.length > 0 && valuesToCompare[0].equalsIgnoreCase("") == false) {
+            for (String attribute : animalAttributes) {
+                for (String target : valuesToCompare) {
 
-        for (String attribute: animalAttributes) {
-            for (String target: valuesToCompare) {
-
-                if (attribute.equalsIgnoreCase(target)) {
-                    matchCounter++;
+                    if (attribute.equalsIgnoreCase(target)) {
+                        matchCounter++;
+                    }
                 }
             }
-        }
 
 
         /*
@@ -70,17 +70,17 @@ public class ColourExpert extends Expert {
         }
         */
 
-        // percentage
-        if (animalAttributes.length <= valuesToCompare.length) {
-            percentage = 100 * (matchCounter / valuesToCompare.length);
-        }
-        else{
-            percentage = 100 * (matchCounter/animalAttributes.length);
-        }
+            // percentage
+            if (animalAttributes.length <= valuesToCompare.length) {
+                percentage = 100 * (matchCounter / valuesToCompare.length);
+            } else {
+                percentage = 100 * (matchCounter / animalAttributes.length);
+            }
 
-        Log.d("MC", "" + percentage);
-        return assignPoints(percentage);
-
+            Log.d("MC", "" + percentage);
+            return assignPoints(percentage);
+        }
+        else{return 0;}
 
     }
 

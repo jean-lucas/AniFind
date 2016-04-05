@@ -18,11 +18,12 @@ public class MobilityExpert extends Expert {
     public int validateAttribute(String[] animalAttributes, String[] valuesToCompare) {
         int matchCounter = 0;
 
-        for (String attribute : animalAttributes) {
-            for (String target : valuesToCompare) {
-                if (attribute.equalsIgnoreCase(target)) {
-                    matchCounter += 10;
-                }
+        if(valuesToCompare.length > 0 && valuesToCompare[0].equalsIgnoreCase("") == false) {
+            for (String attribute : animalAttributes) {
+                for (String target : valuesToCompare) {
+                    if (attribute.equalsIgnoreCase(target)) {
+                        matchCounter += 10;
+                    }
 //                else {
 //                    for (String word : wordBankAccess.getWordBank()) {
 //                        if (word.contains(attribute)) {
@@ -30,9 +31,9 @@ public class MobilityExpert extends Expert {
 //                        }
 //                    }
 //                }
+                }
             }
         }
-
 
         return matchCounter;
     }
