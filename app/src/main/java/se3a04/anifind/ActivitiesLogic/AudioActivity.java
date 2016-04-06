@@ -2,6 +2,7 @@ package se3a04.anifind.ActivitiesLogic;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -10,10 +11,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 
 import se3a04.anifind.DataEntities.QA;
@@ -28,10 +31,13 @@ public class AudioActivity extends AppCompatActivity {
 
     private TextView title;
     private TextView question;
-    private TextView hintExamples;
-    private TextView finalRecognizedSpeech;
 
-    private ArrayList<String> possibleMatches;
+    //the recognized values after parsing
+    private TextView finalRecognizedSpeechView; //this one is to be displayed
+    private HashSet<String> finalRecognizedSpeechValues;//this one is to be sent back to guiCtrl
+
+    private LinearLayout questionHintsLayout;
+    private ArrayList<String> recordedValues;
 
     private String[] validAnswers;
     private QA qa;
@@ -47,7 +53,7 @@ public class AudioActivity extends AppCompatActivity {
         Bundle b = getIntent().getExtras();
         this.qa = (QA) b.getSerializable("qa");
 
-        possibleMatches  = new ArrayList<String>();
+        recordedValues = new ArrayList<String>();
 
         String newTitle = qa.getTopic();
         String newQuestion = qa.getQuestion();
@@ -64,16 +70,17 @@ public class AudioActivity extends AppCompatActivity {
 
         title = (TextView) findViewById(R.id.attributeTitle);
         question = (TextView) findViewById(R.id.attributeQuestion);
-        hintExamples = (TextView) findViewById(R.id.exampleText);
+//        hintExamples = (TextView) findViewById(R.id.exampleText);
+
+        questionHintsLayout = (LinearLayout) findViewById(R.id.question_hints);
 
 
 
         setupViewContent(newTitle, newQuestion, answerHints);
 
-        //hide button until valeus are generated
-//        nextButton.setVisibility(View.GONE);
 
-        finalRecognizedSpeech = (TextView)findViewById(R.id.parsedSpeechValues);
+        finalRecognizedSpeechView = (TextView)findViewById(R.id.parsedSpeechValues);
+        finalRecognizedSpeechValues = new HashSet<String>();
 
 
         //intiate recording
@@ -98,27 +105,32 @@ public class AudioActivity extends AppCompatActivity {
 
     public void setupViewContent(String title, String question, String[] hints ) {
 
+        //set up title
         this.title.setText(title);
 
+        //set up question
         this.question.setText(question);
 
-        //reset hints
-        this.hintExamples.setText("Example: ");
+        //set up hints
+        for (int i = 0; i < hints.length; i++ ) {
+            TextView hint = new TextView(AudioActivity.this);
+            hint.setGravity(View.TEXT_ALIGNMENT_CENTER);
+            hint.setText(hints[i]);
 
-        //add hints
-        int counter = 0; //for formatting the commas
-        for (String hint: hints) {
-            counter++;
-            if (counter == hints.length) {
-                this.hintExamples.append(hint);
-            }
-            else {
-                this.hintExamples.append(hint + ", ");
-            }
+            questionHintsLayout.addView(hint);
         }
 
+        //add text notifying users if only one value allowed
 
+        if (!this.qa.getMultiVal()) {
+            TextView warning = new TextView(AudioActivity.this);
 
+            warning.setText("ONLY ONE VALUE ALLOWED");
+            warning.setTextColor(Color.RED);
+            warning.setTextSize(15);
+            warning.setPadding(0, 10, 0, 0);
+            questionHintsLayout.addView(warning);
+        }
     }
 
 
@@ -139,41 +151,29 @@ public class AudioActivity extends AppCompatActivity {
         if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
 
 
-            possibleMatches = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+            recordedValues = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
             HashSet<String> validMatches = new HashSet<>();
 
-            //get valid options based ont the QA type...
-
+            //get valid options based on the QA type...
             validMatches = parseAudioValues(qa.getTopic());
 
+
+            //put the valid matches into our current set of finalValues
+            finalRecognizedSpeechValues.addAll(validMatches);
+
             //for certain topics we need to only allow one value
-            if (qa.getTopic().equals("Size")) {
-                if (validMatches.size() > 1) {
-                    Toast.makeText(AudioActivity.this, "Only one value allowed! Try again", Toast.LENGTH_SHORT).show();
-                    resetCurrentValues(this.resetButton);
+            if (!qa.getMultiVal()) {
+                if (finalRecognizedSpeechValues.size() > 1) {
+                    Toast.makeText(AudioActivity.this, "Only one value allowed!", Toast.LENGTH_SHORT).show();
+                    resetCurrentValues(finalRecognizedSpeechView);
                 }
             }
 
-            Log.d("Audio_values", possibleMatches.toString());
-            //filter for valid colors
-//            for (String s: possibleMatches) {
-//                String[] values = s.split(" ");
-//
-//                for (String v: values) {
-//                    if (contains(v, validAnswers)) {
-//                        validMatches.add(v);
-//                    }
-//                }
-//
-//            }
-
-
-            for (String s: validMatches) {
-                finalRecognizedSpeech.append(s + "\n");
+            //finally add the values to the view, only if they are new values
+            finalRecognizedSpeechView.setText("");
+            for (String s: finalRecognizedSpeechValues) {
+                finalRecognizedSpeechView.append(s + "\n");
             }
-
-            nextButton.setVisibility(View.VISIBLE);
-
 
         }
         super.onActivityResult(requestCode, resultCode, data);
@@ -181,88 +181,118 @@ public class AudioActivity extends AppCompatActivity {
 
 
 
+    //based on the current question, it knows what logic is need to parse audio values
     private HashSet<String> parseAudioValues(String topic) {
         HashSet<String> tempMatches = new HashSet<>();
 
+        HashSet<String> testVal = new HashSet<>(Arrays.asList(validAnswers));
+
         switch(topic) {
 
-            case "Color":
-                //for color we can simply split the values and compare it
-                // to the possible answers in the qa object
-                for (String s: possibleMatches) {
-                    String[] values = s.split(" ");
-
-                    for (String v: values) {
-                        if (contains(v, validAnswers)) {
-                            tempMatches.add(v);
-                        }
-                    }
-                }
-                break;
-
+            case "Colour":
             case "Location":
-
-                for (String s: possibleMatches) {
-                    String[] values = s.split(",");
-
-                    for (String v: values) {
-                        if (contains(v, validAnswers)) {
-                            tempMatches.add(v);
-                        }
-                    }
-                }
-
-                break;
-
-            //Only one size allowrd
-            case "Size":
-
-                for (String s: possibleMatches) {
-                    String[] values = s.split(",");
-                    for (String v: values) {
-                        for (String p: validAnswers) {
-                            if (contains(v, p.split("\\s\\("))) {
-                                tempMatches.add(s);
-                            }
-                        }
-                    }
-                }
-
-                break;
-
             case "Habitat":
-                break;
-
             case "Mobility":
+                for (String s : getValidWords()) tempMatches.add(s);
                 break;
 
-            case "Time":
+            case "Size":
+                for (String s : getValidWordsWithReplace(":", "")) tempMatches.add(s);
                 break;
 
         }
-
         return tempMatches;
     }
 
 
 
-    private boolean contains(String target, String[] values) {
 
-        for (String s: values) {
-            if (s.toLowerCase().equals(target.toLowerCase())) {
-                return true;
+    //currently not needed...
+//    private ArrayList<String> checkSingleWord() {
+//
+//        ArrayList<String> goodMatches = new ArrayList<String>();
+//
+//        for (String s: recordedValues) {
+//            String[] values = s.split(" ");
+//
+//            for (String v: values) {
+//                if (contains(v, validAnswers)) {
+//                    goodMatches.add(v.toLowerCase());
+//                }
+//            }
+//        }
+//
+//        return goodMatches;
+//    }
+
+
+    //goes through the list of recorded values, and the lsit of valid values (taken from the qa object)
+    //and decides whether a recorded word should be added as an answer
+    private ArrayList<String> getValidWords(){
+
+        ArrayList<String> goodMatches = new ArrayList<String>();
+
+        for (String s: recordedValues) {
+            String[] nWord_values = s.split(","); //for when an answer is more than one word
+            for (String v0 : nWord_values) {
+                for (String v1 : validAnswers) {
+
+                    v0 = v0.toLowerCase(); //v0 corresponds to the recorded values
+                    v1 = v1.toLowerCase(); //v1 corresponds to a value from qa object
+
+                    if ( v0.contains(v1)) {
+                        goodMatches.add(v1);
+                    }
+                }
             }
         }
 
-        return false;
+        return goodMatches;
     }
 
+
+    //sometimes the qa object's set of valid answer has a funky format,
+    //for which makes it difficults to recognize answers properly.
+    //this function allows us to slightly customize our valid answers
+    private ArrayList<String> getValidWordsWithReplace(String oldVal, String newVal) {
+
+        ArrayList<String> goodMatches = new ArrayList<String>();
+
+        for (String s: recordedValues) {
+            String[] nWord_values = s.split(","); //for when an answer is more than one word
+            for (String v0 : nWord_values) {
+                for (String v1 : validAnswers) {
+                    //if we require to clean up the strings being compared, do it on this string
+                    String cleanText  = v1.replace(oldVal, newVal).toLowerCase();
+
+                    Log.d("Comparing", cleanText + " cointans ? " + v0);
+                    if (cleanText.contains(v0)) {
+                        goodMatches.add(v0);
+                    }
+                }
+            }
+        }
+        return  goodMatches;
+    }
+
+
+    //when the 'Next' button is clicked
     public void evaluateAudioAnswer(View view) {
+        String[] answers = finalRecognizedSpeechValues.toArray(new String[finalRecognizedSpeechValues.size()]);
+
+        this.qa.setGivenAnswerByTopic(answers);
+
+        Intent result_intent = new Intent();
+        result_intent.putExtra("current_qa", this.qa);
+        setResult(1, result_intent);
 
         finish();
     }
 
+
+    //reset all the values that were recorded for that current question
     public void resetCurrentValues(View view) {
-        finalRecognizedSpeech.setText("");
+        this.finalRecognizedSpeechView.setText("");
+        this.finalRecognizedSpeechValues.clear();
     }
 }

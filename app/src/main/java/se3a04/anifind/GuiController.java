@@ -169,7 +169,7 @@ public class GuiController extends AppCompatActivity {
                     break;
 
                 case AUDIO_ACTIVITY_REQUEST_CODE:
-                    //do something
+                    questionActivityLogic(data);
                     break;
 
                 case RESULT_ACTIVITY_REQUEST_CODE:
@@ -250,18 +250,11 @@ public class GuiController extends AppCompatActivity {
         }
 
 
-
-        Log.d("QQ", "qq " +  this.qa_map.get(temp_topic).getAnswersGivenByUsers()[0]);
-
-
-
-
         question_counter++;
 
-                //this is true if user has gone through all questions
+        //this is true if user has gone through all questions
         if (question_counter == qa_map.size()) {
             question_counter = 0;
-
 
             //now we can consult all the experts
             this.listOfAnimals = blackBoard.consultAllExperts(listOfAnimals, qa_map);

@@ -222,13 +222,9 @@ public class QuestionActivity extends AppCompatActivity {
     //user clicked the next button, so get all needed values
     public void evaluateAnswer(View view) {
 
-
-
-
         ArrayList<String> selectedAnswers = new ArrayList<String>();
 
         if (this.qa.getMultiVal()) {
-//            for (CheckBox cb : currentCheckBoxes) {
             for (CheckBox cb: checkBoxSet) {
                 if (cb == null) continue;
                 else if (cb.isChecked()) {

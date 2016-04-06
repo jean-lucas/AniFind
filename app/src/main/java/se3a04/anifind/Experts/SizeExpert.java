@@ -1,6 +1,7 @@
 package se3a04.anifind.Experts;
 
 import android.util.Log;
+import android.widget.RadioButton;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -58,7 +59,10 @@ public class SizeExpert extends Expert {
     // 4 ranges
     private final int MIN_POINTS = 2;
 
-    // > 4 ranges = 0.
+
+    //counter to avoid memoryOverflow on recursive calls.
+    private int recurisveCounter = 0;
+
 
     private Set<String> target_ranges;
     private Set<String> animal_ranges;
@@ -73,29 +77,47 @@ public class SizeExpert extends Expert {
     public int validateAttribute(String[] animalAttributes, String[] valuesToCompare) {
 
 
-        double attributeMin = -1.0;
-        double attributeMax = -1.0;
+        double attributeMin = -1;
+        double attributeMax = -1;
+
+        double valueCompareMin = -1;
+        double valueCompareMax = -1;
 
         target_ranges = new HashSet<String>();
         animal_ranges = new HashSet<String>();
 
 
         //value checks
-        if (animalAttributes.length == 0) return 0;
-        else if (animalAttributes[0].equalsIgnoreCase("") || animalAttributes[0].equalsIgnoreCase(" ")) return 0;
-        else if (animalAttributes.length == 1) {
-            attributeMin = Double.parseDouble(animalAttributes[0]);
-            attributeMax = attributeMin;
-        }
-        else {
-            attributeMin = Double.parseDouble(animalAttributes[0]);
-            attributeMax = Double.parseDouble(animalAttributes[1]);
+        try {
+            if (animalAttributes.length == 0 || valuesToCompare.length == 0 ) return 0;
+
+//            else if (animalAttributes[0].equalsIgnoreCase("") || animalAttributes[0].equalsIgnoreCase(" "))
+//                return 0;
+//
+            else if (animalAttributes.length == 1) {
+                attributeMin = Double.parseDouble(animalAttributes[0]);
+                attributeMax = attributeMin;
+            }
+
+            else {
+                attributeMin = Double.parseDouble(animalAttributes[0]);
+                attributeMax = Double.parseDouble(animalAttributes[1]);
+            }
+
+            valueCompareMin = Double.parseDouble(valuesToCompare[0]);
+            valueCompareMax = Double.parseDouble(valuesToCompare[1]);
         }
 
-        double valueCompareMin = Double.parseDouble(valuesToCompare[0]);
-        double valueCompareMax = Double.parseDouble(valuesToCompare[1]);
+        //very bad to just catch all possible Exceptions... just for debugging purposes
+        catch (Exception e) {
 
-        if (valueCompareMin == -1.0 || attributeMin == -1.0) return 0;
+            Double[] newTargetValues = fixValues(valuesToCompare[0]);
+            valueCompareMin = newTargetValues[0];
+            valueCompareMax = newTargetValues[1];
+        }
+
+
+        if (valueCompareMin == -1 || attributeMin == -1) return 0;
 
 
         target_ranges.add(getRange(valueCompareMin));
@@ -147,7 +169,7 @@ public class SizeExpert extends Expert {
 
 
 
-    public String getRange(Double size) {
+    private String getRange(Double size) {
 
 
         if (size <= VERYSMALLMAX) return "VERYSMALL";
@@ -160,4 +182,44 @@ public class SizeExpert extends Expert {
 
         else return "HUGE";
     }
+
+
+
+    //when the gui does not convert values to their respective size
+    //for example Medium to 0.5m-2m. etc..
+    private Double[] fixValues(String compareValue) {
+
+        Double[] values = {-1.0, -1.0};
+        String selectedAnswer = "";
+
+        switch (compareValue) {
+
+            case "very small":
+                values = new Double[] {0.0, 0.1};
+                break;
+
+            case "small":
+                values = new Double[] {0.11, 0.5};
+                break;
+
+            case "medium":
+                values = new Double[] {0.51, 2.0};
+                break;
+
+            case "large":
+                values = new Double[] {2.1, 5.0};
+                break;
+
+            case "very large":
+                values = new Double[] {5.1, 500.0};
+                break;
+        }
+
+        return values;
+
+    }
+
+
+
+
 }

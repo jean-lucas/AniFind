@@ -31,18 +31,38 @@
         android:gravity="center"
         android:text="question "
         android:textSize="20sp"
+        android:paddingTop="10dp"
         android:id="@+id/attributeQuestion"
         android:textColor="#2c3800" />
 
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:gravity="center"
-        android:text="Example: 'red, blue, black'"
-        android:textColor="#72c30e"
-        android:id="@+id/exampleText"
-        android:paddingTop="5dp"/>
+        android:layout_gravity="center"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:id="@+id/question_hints">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Examples:"
+        />
+
+    </LinearLayout>
+
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:gravity="center"-->
+        <!--android:text="Example: 'red, blue, black'"-->
+        <!--android:textColor="#72c30e"-->
+        <!--android:id="@+id/exampleText"-->
+        <!--android:paddingTop="5dp"/>-->
 
 
     <Button
@@ -61,22 +81,33 @@
 
 
 
-    <Button
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Reset Values"
-        android:id="@+id/resetButton"
-        android:onClick="resetCurrentValues"/>
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_gravity="center|bottom"
+        android:gravity="center">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="next"
-        android:id="@+id/changeAttribute"
-        android:background="#c1bdc9"
-        android:layout_marginTop="40dp"
-        android:padding="8dp"
-        android:onClick="evaluateAudioAnswer"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reset Values"
+            android:id="@+id/resetButton"
+            android:onClick="resetCurrentValues"
+            android:layout_marginRight="10dp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Next"
+            android:id="@+id/changeAttribute"
+            android:background="#c1bdc9"
+            android:layout_marginLeft="10dp"
+            android:onClick="evaluateAudioAnswer"/>
+
+    </LinearLayout>
+
+
 
 
 
