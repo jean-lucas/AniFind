@@ -6,9 +6,7 @@ import java.util.List;
  * An ADT for a Result object. Holds a user session's answers and selected animal.
  */
 
-/**
- * TODO -change compareTo method to return an int that is proportional to likeness
- */
+
 
 public class Result {
 

@@ -4,22 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 /**
- * Created by Zachary on 3/28/2016.
- *
- * Time of day revisited.
- * To simplify time of day logic we are going to assume 4 "states" to a day. The user is going to
- * be asked what states that they saw the animal in. The user should be able to only choose 1.
- *
- * The 4 day options that should be available to the user
- *
- * NOTE This class expects spelling as such
- *
- * "Morning", "Day", "Evening", "Night", "SystemTime"
- *
- * Morning 5:00 AM - 9:00 AM
- * Day 9:01 AM - 6:00 PM
- * Evening 6:01 PM - 10:00 PM
- * Night 10:01 PM - 4:59 AM
+ * CURRENTLY INVALID
  */
 public class TimeExpert extends Expert {
 

@@ -25,18 +25,6 @@ import se3a04.anifind.DataEntities.QA;
 import se3a04.anifind.Misc.CustomComparator;
 
 
-/*
-    TODO: fill up the animal dataset
-    TODO: fix question dataset
-    TODO: hints for audio need to be better
-    TODO: parse valid answers from audio questions
-    TODO: Fix size expert
-    TODO: create logic for location expert
-    TODO: if user selects Use current location, or Use current time, make sure the qa_map gets the right value saved!
-    TODO: In Audio activy tell the user when only ONE answer is allowed
-    TODO: USER MANUAL
-
- */
 
 
 
@@ -289,6 +277,12 @@ public class GuiController extends AppCompatActivity {
             //do something else with animal here
 
             //if we had something to store results it would go in here
+
+            ArrayList<String[]> answerValues = new ArrayList<String[]>();
+
+            for (String topic: this.qa_map.keySet()) {
+                answerValues.add(this.qa_map.get(topic).getAnswersGivenByUsers());
+            }
 
             //restart the app
             recreate();

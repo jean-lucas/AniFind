@@ -3,14 +3,20 @@ package se3a04.anifind;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import se3a04.anifind.Misc.Encryption;
 
@@ -29,10 +35,9 @@ public class DatastoreAccess {
     private String animalFilename, resultsFilename, questionsFilename, imagesFilename;
     private Context mContext;
 
-
     public DatastoreAccess(Context context){
         animalFilename = "animal_facts.txt";
-        resultsFilename = "old_results_test.txt";
+        resultsFilename = "data/old_results.txt";
         questionsFilename = "question_answer_content.txt";
         imagesFilename = null;  //TODO
 
@@ -57,14 +62,10 @@ public class DatastoreAccess {
             e.printStackTrace();
         }
 
-        Log.d("NULL_LIST", mLines.toString());
         //removes first line in text file which is just titles of elements
         mLines.remove(0);
 
         mLines = Encryption.encrypt(mLines);
-
-        Log.d("CHECK_CRYPT", "file = " + filename + "  " + mLines.toString());
-
         return mLines;
     }
 
@@ -82,31 +83,6 @@ public class DatastoreAccess {
 
     public List<String> getResultsContent(){
         return getFileContent(resultsFilename);
-    }
-
-    private void writeToFile(String filename, List<String> content){
-        //TODO
-        try {
-            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(mContext.openFileOutput(filename, Context.MODE_PRIVATE));
-            for (String e : content) {
-                outputStreamWriter.write(e);
-            }
-            outputStreamWriter.close();
-        }
-        catch (IOException e) {
-            Log.e("Exception", "File write failed: " + e.toString());
-        }
-    }
-
-
-    public void writeAnimalContent(List<String> content){
-        writeToFile(animalFilename,content);
-    }
-
-    public void writeResultsContent(List<String> content){
-        content.add(0,"name,lifestyle,location,mobility,habitat,colors,sizes");
-        Log.d("print",content.toString());
-        writeToFile(resultsFilename,content);
     }
 
 }

@@ -206,26 +206,6 @@ public class AudioActivity extends AppCompatActivity {
 
 
 
-
-    //currently not needed...
-//    private ArrayList<String> checkSingleWord() {
-//
-//        ArrayList<String> goodMatches = new ArrayList<String>();
-//
-//        for (String s: recordedValues) {
-//            String[] values = s.split(" ");
-//
-//            for (String v: values) {
-//                if (contains(v, validAnswers)) {
-//                    goodMatches.add(v.toLowerCase());
-//                }
-//            }
-//        }
-//
-//        return goodMatches;
-//    }
-
-
     //goes through the list of recorded values, and the lsit of valid values (taken from the qa object)
     //and decides whether a recorded word should be added as an answer
     private ArrayList<String> getValidWords(){

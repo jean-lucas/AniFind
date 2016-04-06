@@ -15,11 +15,7 @@ import se3a04.anifind.Experts.MobilityExpert;
 import se3a04.anifind.Experts.SizeExpert;
 
 
-/**
- * TODO: Confirm the arguments for consultAlLExperts is valid, and do-able
- * TODO: Should BlackBoard sort the results based on points once finished?
- *
- */
+
 
 public class BlackBoard {
 

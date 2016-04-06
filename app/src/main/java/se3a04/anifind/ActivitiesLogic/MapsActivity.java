@@ -38,11 +38,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
 
 
-
-
-
-        Log.d("MAP", "hello");
-        Toast.makeText(MapsActivity.this, "Hello from Map", Toast.LENGTH_SHORT).show();
     }
 
 

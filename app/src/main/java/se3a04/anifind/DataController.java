@@ -11,17 +11,8 @@ import java.util.List;
 import se3a04.anifind.DataEntities.Animal;
 import se3a04.anifind.DataEntities.QA;
 import se3a04.anifind.DataEntities.Result;
-import se3a04.anifind.DataEntities.ResultsDataStructure;
 import se3a04.anifind.Misc.Encryption;
 
-/**
- * Created by Mathew on 2016-03-29.
- */
-
-/**
- * TODO -data set updating/learning
- * TODO -Look into context wizardry
- */
 
 public class DataController {
 
@@ -29,10 +20,8 @@ public class DataController {
     private DatastoreAccess dataAccess;
 
     //needed to update and analyse results for possible changes to data sets
-    private ResultsDataStructure resultsData;
+//    private ResultsDataStructure resultsData;
 
-    //needs to be used when reading in data from text file
-    private Context context;
 
     //data structures that contain all animals, and all questions and associated answers
     private HashMap<String, Animal> animalMap;
@@ -42,58 +31,40 @@ public class DataController {
     private ArrayList<Result> listOfResults;
 
     public DataController(Context context){
-        this.context = context;
         this.dataAccess = new DatastoreAccess(context);
-        this.resultsData = new ResultsDataStructure();
 
         this.animalMap = new HashMap<String, Animal>();
         this.qaMap = new HashMap<String, QA>();
         this.listOfResults = new ArrayList<Result>();
 
-        initialize();
-    }
 
-    private void initialize(){
-//        dataAccess = new DatastoreAccess(context);
-
+        //decrypt message from datastoreAccess and parse values
         animalParse(Encryption.decrypt(dataAccess.getAnimalContent()));
         qaParse(Encryption.decrypt(dataAccess.getQuestionContent()));
-//        animalParse(Encryption.Dencrypt(dataAccess.getAnimalContent()));
-//        qaParse(Encryption.Dencrypt(dataAccess.getQuestionContent()));
     }
 
-    public void sessionCompleted(List<String[]> sessionAnswers, String selectedAnimal){
-        Result sessionResult = new Result(sessionAnswers,selectedAnimal);
-        listOfResults.add(sessionResult);   //adds the latest session's result to result list
-        resultParse(dataAccess.getResultsContent());
-        checkForUpdates();
-        saveResults();
-    }
+
+
+//    public String sessionCompleted(List<String[]> sessionAnswers, String selectedAnimal){
+//        Result sessionResult = new Result(sessionAnswers,selectedAnimal);
+//        listOfResults.add(sessionResult);   //adds the latest session's result to result list
+////        resultParse(dataAccess.getResultsContent());
+////        checkForUpdates();
+//        saveResults();
+//        return dataAccess.checkIfWeAreRight();
+//    }
 
     //Parses lines from animal data set and creates animal obj's and adds them to animalMap
     private void animalParse(List<String> animalLines){
 
         if (animalLines == null) {
-            Log.d("NULL_LIST", "The list is null");
             return;
         }
 
         for (String line : animalLines) {
             List<String> attributes = Arrays.asList(line.split("\\s*,\\s*",-1));
 
-//            Log.d("attr", Integer.toString(attributes.size()));
-//            Log.d("attr",attributes.toString());
-//            Log.d("attr",attributes.get(0));
-//            Log.d("attr",attributes.get(1));
-//            Log.d("attr",attributes.get(2));
-//            Log.d("attr",attributes.get(3));
-//            Log.d("attr",attributes.get(4));
-//            Log.d("attr",attributes.get(5));
-//            Log.d("attr",attributes.get(6));
-
-
             //Create temp animal attributes
-
             //capitalize the animal names
             String name = "";
             for (String names: attributes.get(0).split(" ")) {
@@ -123,10 +94,8 @@ public class DataController {
     private void qaParse(List<String> qaLines){
 
         if (qaLines == null) {
-            Log.d("NULL_LIST", "The list is null");
             return;
         }
-
 
         for (String line : qaLines){
             List<String> qElements = Arrays.asList(line.split("\\s*-\\s*"));
@@ -154,17 +123,16 @@ public class DataController {
         return qaMap;
     }
 
+
     //Parses lines from past results data set and creates Result obj's and adds them to listOfResults
     private void resultParse(List<String> rLines){
         if (rLines == null) {
-            Log.d("NULL_LIST", "The list is null");
             return;
         }
 
         for (String line : rLines){
             List<String> rElements = Arrays.asList(line.split("\\s*,\\s*"));
 
-            Log.d("rElements",rElements.toString());
             //Create temp result elements
             String animalName = rElements.get(0);
 //            rElements.remove(0);
@@ -172,7 +140,6 @@ public class DataController {
             List<String[]> answers = new ArrayList<String[]>();
             String[] emptyS = {""};
             for(int i = 1; i<rElements.size(); i++){
-                Log.d("element",rElements.get(i));
                 String[] answerVals =  rElements.get(i).split("\\s*-\\s*", -1);
                 answers.add(emptyS);
                 answers.set(i-1,answerVals);
@@ -187,23 +154,20 @@ public class DataController {
         }
     }
 
-    private void checkForUpdates(){
-        //TODO this method will compare past results with current QA data set and make necessary changes
-    }
 
-    private void saveResults(){
-        List<String> resultLines = new ArrayList<String>();
-        for(Result e : listOfResults){
-            resultLines.add(e.toString());
-            Log.d("RESULTS", e.toString());
-        }
-        dataAccess.writeResultsContent(resultLines);
-    }
-
-    private void resetAllDatastructures(){
-        //TODO is this all this method needs to do?
-        animalMap.clear();
-        qaMap.clear();
-        listOfResults.clear();
-    }
+//    private void saveResults(){
+//        List<String> resultLines = new ArrayList<String>();
+//        for(Result e : listOfResults){
+//            resultLines.add(e.toString());
+//            Log.d("RESULTS", e.toString());
+//        }
+//        dataAccess.writeResultsContent(resultLines);
+//    }
+//
+//    private void resetAllDatastructures(){
+//        //TODO is this all this method needs to do?
+//        animalMap.clear();
+//        qaMap.clear();
+//        listOfResults.clear();
+//    }
 }
