@@ -19,6 +19,7 @@ public class LocationExpert extends Expert {
         int matchCounter = 0;
 
         if (animalAttributes.length == 0 || valuesToCompare.length == 0) return 0;
+        if (animalAttributes[0].equals("") || animalAttributes[0].equals(" ") ) return 0;
 
         //chekc if we want to do currentLocation or not
         valuesToCompare = checkValueToCompare(valuesToCompare);

@@ -19,6 +19,7 @@ public class MobilityExpert extends Expert {
         int matchCounter = 0;
 
         if (valuesToCompare.length == 0 || animalAttributes.length == 0) return 0;
+        if (animalAttributes[0].equals("") || animalAttributes[0].equals(" ") ) return 0;
 
         for (String attribute : animalAttributes) {
             for (String target : valuesToCompare) {

@@ -90,6 +90,7 @@ public class SizeExpert extends Expert {
         //value checks
         try {
             if (animalAttributes.length == 0 || valuesToCompare.length == 0 ) return 0;
+            if (animalAttributes[0].equals("") || animalAttributes[0].equals(" ") ) return 0;
 
 //            else if (animalAttributes[0].equalsIgnoreCase("") || animalAttributes[0].equalsIgnoreCase(" "))
 //                return 0;
