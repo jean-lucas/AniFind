@@ -119,7 +119,7 @@ Capybara,  ,  Dense vegetation close to freshwater,  Brown-Yellow-Red-Grey, 1.0-
 caracal,  ,  Dry woodland-savannah,  Beige-Brown-Black, 0.65-0.9,  ,
 Carolina Dog,  North America,  ,  , 0.56,  ,
 cassowary,  ,  Wet tropical forests,  Blue-Yellow-Black-Beige, 1.5-2.0,  ,
-cat,  ,  ,  , 0.35,  ,
+cat, ,households  ,brown-black-white-beige-grey  , 0.35-1,  ,four legs
 Caterpillar,  ,  Quiet forests-pastures,  Yellow-Black-Orange-Red-Green-Blue-White. Brown, 0.03-0.06,  ,
 catfish,  Warm freshwater, river-lakes,  Brown-Black-Yellow-White-Beige-Grey, 0.01-2.7,  ,
 Cavalier King Charles Spaniel,  Great Britain,  ,  , 0.33,  ,
@@ -127,10 +127,10 @@ Centipede,  ,  deciduous forest-households,  Yellow-Black-Orange-Red-White-Brown
 Cesky Fousek,  Czech Republic,  ,  , 0.66,  ,
 chameleon,  ,  Tropical forests-desert,  Green-Brown-Black-Yellow-Red-Beige, 0.0279-0.685,  ,
 chamois,  ,  Mountainous-rocky terrain,  Brown-Grey-Black-Beige-White, 0.75-0.8,  Herd,
-Cheetah,  ,  Open grassland,  Yellow-Beige-Brown-Black, 1.15-1.36,  daytime,
+Cheetah,  ,  grassland,  Yellow-Beige-Brown-Black, 1.15-1.36,  daytime,
 Chesapeake Bay Retriever,  North America,  ,  , 0.66,  ,
 chicken,  ,  Open woodland-sheltered grassland,  Red-Black-Brown-White-Yellow-Orange, 0.3-0.45,  Flock,
-Chihuahua,  Mexico,  ,  , 0.23,  ,
+Chihuahua,  Mexico, households ,  , 0.1-.5,  ,four legs
 Chimpanzee,  ,  tropical rainforest-savanna,  Black-Brown, 1.0-1.7,  daytime,
 chinchilla,  ,  mountains,  Beige-Brown-Grey, 0.25-0.35,  ,  leg
 Chinese Crested Dog,  China,  ,  , 0.33,  ,
@@ -224,9 +224,9 @@ Flounder,  Atlantic and Pacific Oceans,  Tropical coastal waters,  Brown-Black-Y
 Fly,  ,  Close to organic waste,  Black-Brown-Blue, 0.025-0.03,  ,
 flying squirrel,  ,  Forest-woodland,  Black-Brown-Grey-White-Beige, 0.2-0.3,  ,
 Fossa,  ,  tropical rainforest,  Red-Brown-Black, 0.61-0.8,  Nocturnal,
-fox,  ,  Woodland areas-urban parks,  Brown-Black-Beige-Red, 0.4-0.83,  ,  tail
-Fox Terrier,  Great Britain,  ,  , 0.38,  ,
-French Bulldog,  France,  ,  , 0.3,  ,
+fox,  ,  Woodland areas-urban parks,  Brown-Black-Beige-Red, 0.4-0.83,  ,  tail-four legs
+Fox Terrier,  Great Britain,  ,  , 0.38,  ,four legs
+French Bulldog,  France,  ,  , 0.3-0.5,  ,four legs
 frigatebird,  ,  Tropical coasts-islands,  Black-White-Brown-Red, 0.65-1.0,  Colony,
 frilled lizard,  ,  Tropical forests-woodland,  Black-Brown-Beige-Yellow, 0.6-1.0,  ,  tail
 frog,  ,  Rainforest-swampland,  Multi-coloured, 0.001-0.3,  ,
@@ -260,9 +260,9 @@ gorilla,  ,  Rainforest-dense jungle,  Black-Grey, 1.4-1.7,  Troop,
 Grasshopper,  ,  Fields-meadows,  Brown-Yellow-Green, 0.038-0.05,  ,
 Great Dane,  Germany,  ,  , 0.81,  ,
 great white shark,  ,  Temperate-coastal waters,  Black-Grey-White, 5.5-7.0,  ,
-Greater Swiss Mountain Dog,  Switzerland,  ,  , 0.68,  ,
+Greater Swiss Mountain Dog,  Switzerland,  ,  , 0.68,  ,four legs
 green bee eater,  ,  grassland-open forests,  Green-Orange-Blue-Brown-Yellow-Black-White, 0.16-0.18,  ,
-Greenland Dog,  Norway,  ,  , 0.61,  ,
+Greenland Dog,  Norway,  ,  , 0.61,  ,four legs
 grey mouse lemur,  ,  Tropical Woodland,  Grey-Black-Brown-White, 0.25-0.28,  ,
 grey reef shark,  ,  Warm waters-coral reefs,  Grey-White-Black, 1.5-2.0,  ,
 grey seal,  ,  Cool waters-rocky shores,  Grey-Beige, 2.0-3.3,  Herd,
@@ -390,7 +390,7 @@ nurse shark,  ,  Warm waters-tropical coastal regions,  Black-Brown-Grey-White, 
 Ocelot,  ,  Tropical jungle  grassland-swamp,  Beige-Yellow-Red-Grey-Black, 0.55-1.0,  Nocturnal-twilight,
 octopus,  ,  Tropical-temperate waters worldwide,  Beige-Brown-Red-Orange-Blue-Purple, 0.3-4.0,  ,
 Okapi,  ,  Dense mountain rainforest,  Red-Brown-Black-White, 1.5-2.0,  daytime,
-Old English Sheepdog,  Great Britain,  ,  , 0.58,  ,
+Old English Sheepdog,  Great Britain,  ,  , 0.58,  ,four legs
 olm,  ,  Underground watery caves,  Pink-White-Peach, 0.025-0.3,  ,
 opossum,  ,  Forest-farmland close to water,  Black-Brown-White-Grey, 0.15-0.45,  ,
 Orang utan,  ,  Lowland tropical forest,  Red-Orange-Grey-Brown-Black, 1.25-1.5,  daytime,
