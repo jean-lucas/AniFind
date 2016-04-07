@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:text="Done"
             android:id="@+id/doneBtn"
-            android:background="#8bd23e"
+            android:background="#bf95aa38"
             android:padding="5dp"
             android:layout_margin="10dp"
             android:onClick="finishIdentification"/>
@@ -45,13 +45,23 @@
             android:text="Error"
             android:onClick="openErrorForm"
             android:id="@+id/errorBtn"
-            android:background="#cc8822"
+            android:background="#e66464"
             android:padding="5dp"
             android:layout_margin="10dp" />
 
 
 
     </LinearLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No valid results found :("
+        android:textSize="20sp"
+        android:id="@+id/noResultsFound"
+        android:textColor="#ff6169"
+        android:layout_marginTop="50dp" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -66,7 +76,8 @@
         android:layout_marginTop="0dp"
         android:minWidth="300dp"
         android:padding="3dp"
-        android:paddingTop="15dp">
+        android:paddingTop="15dp"
+        android:id="@+id/results_scrollView">
 
 
         <LinearLayout

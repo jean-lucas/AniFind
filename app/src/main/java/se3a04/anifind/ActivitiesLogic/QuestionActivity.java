@@ -95,7 +95,7 @@ public class QuestionActivity extends AppCompatActivity {
         }
 
         //check if we want radio buttons or select boxes, and remove
-        //unecessary views;
+        //unnecessary views;
         else if (qa.getMultiVal()) {
             this.radiouGroup.setVisibility(View.GONE);
             this.autocomplete_location.setVisibility(View.GONE);

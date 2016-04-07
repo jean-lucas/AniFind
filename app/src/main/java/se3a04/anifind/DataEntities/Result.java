@@ -4,6 +4,9 @@ import java.util.List;
 
 /**
  * An ADT for a Result object. Holds a user session's answers and selected animal.
+ *
+ *
+ * CURRENTLY INACTIVE.
  */
 
 

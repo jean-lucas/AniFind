@@ -55,10 +55,6 @@ public class GuiController extends AppCompatActivity {
     private final int MAP_ACTIVITY_REQUEST_CODE = 6;
 
 
-    //identification type, can have only two options
-    // 0 for text based questions
-    // 1 for audio based questions
-    private int identificationType = -1;
 
     //keeping track of how many questions have been attempted
     private int question_counter;
@@ -66,8 +62,6 @@ public class GuiController extends AppCompatActivity {
 
 
     //views for the starting activity
-//    private ProgressBar loading_spinner;
-//    private TextView loading_text;
     private Button goHome_btn;
 
 
@@ -80,12 +74,8 @@ public class GuiController extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-        //create loading animation
-//        loading_text = (TextView) findViewById(R.id.loading_text);
-//        loading_spinner = (ProgressBar) findViewById(R.id.loading_spinner);
         goHome_btn = (Button) findViewById(R.id.goHome_btn);
 
-//        loading_spinner.setVisibility(View.VISIBLE);
         goHome_btn.setVisibility(View.GONE);
 
 
@@ -116,8 +106,6 @@ public class GuiController extends AppCompatActivity {
 
         //everything loaded at this point
 
-//        loading_text.setText("App Ready");
-//        loading_spinner.setVisibility(View.GONE);
         goHome_btn.setVisibility(View.VISIBLE);
 
 
@@ -187,7 +175,6 @@ public class GuiController extends AppCompatActivity {
 
         int identificationType = data.getIntExtra("identificationType", -1);
 
-
         //go to text questions
         if (identificationType == 0) {
             for (String qa_topic: qa_map.keySet()) {
@@ -205,6 +192,7 @@ public class GuiController extends AppCompatActivity {
                 startActivityForResult(intent, AUDIO_ACTIVITY_REQUEST_CODE);
             }
         }
+
     }
 
 
@@ -265,7 +253,10 @@ public class GuiController extends AppCompatActivity {
         Animal selectedAnimal = (Animal) data.getSerializableExtra("selectedAnimal");
         boolean needErrorForm = data.getBooleanExtra("needErrorForm", false);
 
-
+        //returned animal is null
+        if (selectedAnimal == null) {
+            recreate();
+        }
         //start the errorActivity
         if (needErrorForm) {
             Intent intent = new Intent(GuiController.this, ErrorReportActivity.class);
@@ -324,9 +315,6 @@ public class GuiController extends AppCompatActivity {
         //get the location information retrieved from mapactivity,
         //and save it to the respective qa object
         this.userLocation =  data.getStringArrayExtra("loc");
-
-//        qa_map.get("Location").setGivenAnswerByTopic(locations);
-
 
         //now start the app
         Intent intent = new Intent(GuiController.this, HomeActivity.class);

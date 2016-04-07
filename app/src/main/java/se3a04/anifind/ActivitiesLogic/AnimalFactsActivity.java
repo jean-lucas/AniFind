@@ -36,6 +36,7 @@ public class AnimalFactsActivity extends AppCompatActivity {
     private TableLayout animal_facts;
 
 
+    //error image if desired is not found
     private final String DEFAULT_IMAGE = "animal_images/file_not_found.jpg";
 
     @Override

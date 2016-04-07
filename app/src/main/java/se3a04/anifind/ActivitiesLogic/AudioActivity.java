@@ -83,7 +83,7 @@ public class AudioActivity extends AppCompatActivity {
         finalRecognizedSpeechValues = new HashSet<String>();
 
 
-        //intiate recording
+        //initiate recording
         startRecordingBtn.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -103,6 +103,7 @@ public class AudioActivity extends AppCompatActivity {
 
     }
 
+    //layout the views of the acitivity based on what the current question is
     public void setupViewContent(String title, String question, String[] hints ) {
 
         //set up title
@@ -275,4 +276,5 @@ public class AudioActivity extends AppCompatActivity {
         this.finalRecognizedSpeechView.setText("");
         this.finalRecognizedSpeechValues.clear();
     }
+
 }

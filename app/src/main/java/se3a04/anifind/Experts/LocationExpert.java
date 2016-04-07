@@ -1,6 +1,5 @@
 package se3a04.anifind.Experts;
 
-import android.util.Log;
 
 public class LocationExpert extends Expert {
 

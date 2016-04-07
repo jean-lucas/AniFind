@@ -6,17 +6,10 @@ import android.widget.RadioButton;
 import java.util.HashSet;
 import java.util.Set;
 
+
 /**
- * Created by Zachary on 3/28/2016.
- *
- * Assigns points based on range of size values as discussed.
- *
- * It first checks to see if the size of answers and size of animal being compared to are within
- * a single range.
- *
- * Then it checks the lower bound of answer and animal being compared to. Once it finds the
- * the lower bound it finds the upper bound range in the same way and assigns points.
- *
+ * Assing points based on how many ranges an animal sizes falls into the set of pre-determined
+ * size ranges.
  */
 public class SizeExpert extends Expert {
 
@@ -41,12 +34,12 @@ public class SizeExpert extends Expert {
     private final double LARGEMIN = 2.1;
     private final double LARGEMAX = 5;
 
-    // huge
+    // very large
     private final double HUGEMIN = 5.1;
     private final double HUGEMAX = 500;
 
     // points
-
+    //small points and min points currently not working...
     // full range
     private final int MAX_POINTS = 20;
 
@@ -60,8 +53,6 @@ public class SizeExpert extends Expert {
     private final int MIN_POINTS = 2;
 
 
-    //counter to avoid memoryOverflow on recursive calls.
-    private int recurisveCounter = 0;
 
 
     private Set<String> target_ranges;
@@ -92,9 +83,6 @@ public class SizeExpert extends Expert {
             if (animalAttributes.length == 0 || valuesToCompare.length == 0 ) return 0;
             if (animalAttributes[0].equals("") || animalAttributes[0].equals(" ") ) return 0;
 
-//            else if (animalAttributes[0].equalsIgnoreCase("") || animalAttributes[0].equalsIgnoreCase(" "))
-//                return 0;
-//
             else if (animalAttributes.length == 1) {
                 attributeMin = Double.parseDouble(animalAttributes[0]);
                 attributeMax = attributeMin;
@@ -128,42 +116,28 @@ public class SizeExpert extends Expert {
         animal_ranges.add(getRange(attributeMax));
 
 
-//        Log.d("RANGE", "set is " + target_ranges.toString() + " for animal its " + animal_ranges.toString() +
-//                " for animal values " + attributeMin + " , " + attributeMax  );
-//
-
-
         //full points;
         if (target_ranges.equals(animal_ranges)) {
-            Log.d("POINTS", "POint given " + MAX_POINTS + " for " + target_ranges.toString() + " , " + animal_ranges.toString());
             return MAX_POINTS;
         }
 
-
         //set used to check intersects
         Set<String> intersection = new HashSet<String>(target_ranges);
+
+
         if (!intersection.retainAll(animal_ranges) && (animal_ranges.size() - target_ranges.size() == 1)) {
-            Log.d("POINTS", "POint given " + MEDIUM_POINTS + " for " + target_ranges.toString() + " , " + animal_ranges.toString());
             return MEDIUM_POINTS;
         }
 
         intersection = new HashSet<String>(target_ranges);
         if (!intersection.retainAll(animal_ranges) && (animal_ranges.size() - target_ranges.size() == 2)) {
-            Log.d("POINTS", "POint given " + SMALL_POINTS + " for " + target_ranges.toString() + " , " + animal_ranges.toString());
             return SMALL_POINTS;
         }
 
         intersection = new HashSet<String>(target_ranges);
         if (!intersection.retainAll(animal_ranges) && (animal_ranges.size() - target_ranges.size() == 3)) {
-            Log.d("POINTS", "POint given " + MIN_POINTS + " for " + target_ranges.toString() + " , " + animal_ranges.toString());
-
             return MIN_POINTS;
         }
-
-
-        Log.d("POINTS", "POint given " + 0 + " for " + animal_ranges.toString() + " , " + target_ranges.toString());
-
-
 
         return 0;
     }

@@ -1,12 +1,8 @@
 package se3a04.anifind.Experts;
 
-/**
- * Created by Zachary on 3/28/2016.
- */
 public class MobilityExpert extends Expert {
 
     private final String EXPERTISE = "Mobility";
-//    private WordBank wordBankAccess = new WordBank();
 
 
     @Override

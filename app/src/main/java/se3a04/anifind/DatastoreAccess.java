@@ -24,12 +24,6 @@ import se3a04.anifind.Misc.Encryption;
  * Accesses text data files with read and write capability
  */
 
-/**
- * TODO -state images filename in no-parameter constructor
- * TODO -read and write methods (Figure out wtf this context bullshit is...)
- * TODO -also need to figure out how to test java modules separately in Android Studio
- */
-
 public class DatastoreAccess {
 
     private String animalFilename, resultsFilename, questionsFilename, imagesFilename;

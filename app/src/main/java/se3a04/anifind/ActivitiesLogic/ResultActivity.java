@@ -33,6 +33,8 @@ public class ResultActivity extends AppCompatActivity {
     private Button errorBtn;
     private Button loadMoreBtn;
 
+    private TextView noValidResulsText;
+
     private int initialResultSize = 5;
     private int maxResultSize = 20;
 
@@ -50,6 +52,9 @@ public class ResultActivity extends AppCompatActivity {
         this.doneBtn = (Button) findViewById(R.id.doneBtn);
         this.errorBtn = (Button) findViewById(R.id.errorBtn);
         this.loadMoreBtn = (Button) findViewById(R.id.loadMoreBtn);
+
+        this.noValidResulsText = (TextView) findViewById(R.id.noResultsFound);
+        this.noValidResulsText.setVisibility(View.GONE);
 
         this.doneBtn.setVisibility(View.INVISIBLE);
         this.errorBtn.setVisibility(View.INVISIBLE);
@@ -74,6 +79,12 @@ public class ResultActivity extends AppCompatActivity {
         InputStream is = null;
         InputStream is_error = null;
 
+
+        // if the first animal on the list has less than 4 points, do not show animal list
+        //show no valid results found.
+        if (this.animals.isEmpty() || this.animals.get(0).getPoints() < 5) {
+            setupNoResults();
+        }
 
         //make sure we dont get an overflow on the list
         if (resultSize > maxResultSize - 1) {
@@ -177,6 +188,16 @@ public class ResultActivity extends AppCompatActivity {
 
             }
         };
+    }
+
+
+    //set up Activity views when no results are found
+    private void setupNoResults() {
+        noValidResulsText.setVisibility(View.VISIBLE);
+        animalTable.setVisibility(View.GONE);
+        loadMoreBtn.setVisibility(View.GONE);
+        errorBtn.setVisibility(View.GONE);
+        doneBtn.setVisibility(View.VISIBLE);
     }
 
     public View.OnClickListener getAnimalDetails(final Animal a, final String path) {

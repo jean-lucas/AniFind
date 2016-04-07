@@ -15,7 +15,9 @@ import se3a04.anifind.Experts.MobilityExpert;
 import se3a04.anifind.Experts.SizeExpert;
 
 
-
+/**
+ * Responsible for consulting each expert, and getting its evaluations.
+ */
 
 public class BlackBoard {
 
