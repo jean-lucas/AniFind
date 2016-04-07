@@ -115,6 +115,15 @@ public class SizeExpert extends Expert {
         animal_ranges.add(getRange(attributeMin));
         animal_ranges.add(getRange(attributeMax));
 
+        int target_range_counter = 1;   //should always be one
+        int animal_range_counter = 1;
+
+
+        Log.d("RANGE", "range count for " + attributeMin + "," + attributeMax + "  is " + getRangeNew(attributeMin, attributeMax));
+        Log.d("RANGE", "range count for (should be 1?) " + valueCompareMin + "," + valueCompareMax + "  is " + getRangeNew(valueCompareMin, valueCompareMax));
+
+        target_range_counter = getRangeNew(valueCompareMin, valueCompareMax);
+        animal_range_counter = getRangeNew(attributeMin, attributeMax);
 
         //full points;
         if (target_ranges.equals(animal_ranges)) {
@@ -125,19 +134,38 @@ public class SizeExpert extends Expert {
         Set<String> intersection = new HashSet<String>(target_ranges);
 
 
-        if (!intersection.retainAll(animal_ranges) && (animal_ranges.size() - target_ranges.size() == 1)) {
+        if (!intersection.retainAll(animal_ranges) && (animal_range_counter - target_range_counter == 1)) {
+            Log.d("RANGEPOINT" , "Giving : " + MEDIUM_POINTS + " for " + animal_ranges.toString() + " , " + target_ranges.toString());
             return MEDIUM_POINTS;
         }
 
         intersection = new HashSet<String>(target_ranges);
-        if (!intersection.retainAll(animal_ranges) && (animal_ranges.size() - target_ranges.size() == 2)) {
+        if (!intersection.retainAll(animal_ranges) && (animal_range_counter - target_range_counter == 2)) {
+            Log.d("RANGEPOINT" , "Giving : " + SMALL_POINTS + " for " + animal_ranges.toString() + " , " + target_ranges.toString());
             return SMALL_POINTS;
         }
 
         intersection = new HashSet<String>(target_ranges);
-        if (!intersection.retainAll(animal_ranges) && (animal_ranges.size() - target_ranges.size() == 3)) {
+        if (!intersection.retainAll(animal_ranges) && (animal_range_counter - target_range_counter == 3)) {
+            Log.d("RANGEPOINT" , "Giving : " + MIN_POINTS + " for " + animal_ranges.toString() + " , " + target_ranges.toString());
             return MIN_POINTS;
         }
+
+
+
+//        if (!intersection.retainAll(animal_ranges) && (animal_ranges.size() - target_ranges.size() == 1)) {
+//            return MEDIUM_POINTS;
+//        }
+//
+//        intersection = new HashSet<String>(target_ranges);
+//        if (!intersection.retainAll(animal_ranges) && (animal_ranges.size() - target_ranges.size() == 2)) {
+//            return SMALL_POINTS;
+//        }
+//
+//        intersection = new HashSet<String>(target_ranges);
+//        if (!intersection.retainAll(animal_ranges) && (animal_ranges.size() - target_ranges.size() == 3)) {
+//            return MIN_POINTS;
+//        }
 
         return 0;
     }
@@ -156,6 +184,26 @@ public class SizeExpert extends Expert {
         else if (size <= LARGEMAX) return "LARGE";
 
         else return "HUGE";
+    }
+
+
+
+    private int getRangeNew(double d1, double d2) {
+
+        double[] sizes = {VERYSMALLMIN, VERYSMALLMAX,SMALLMIN, SMALLMAX, MEDIUMMIN, MEDIUMMAX, LARGEMIN, LARGEMAX, HUGEMIN, HUGEMAX};
+
+        int rangeCounter = -1;
+        boolean beginRangeCount = false;
+
+        for (int i = 0 ; i < sizes.length; i++) {
+
+            if (d1 == sizes[i]) beginRangeCount = true;
+            if (d2 < sizes[i]) beginRangeCount = false;
+
+            if (beginRangeCount) rangeCounter++;
+        }
+
+        return  rangeCounter;
     }
 
 
